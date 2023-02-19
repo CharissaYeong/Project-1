@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Semi+Condensed&display=swap" rel="stylesheet">
+
+    <!-- Own CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <title>Dengue Statitics 2023 Update</title>
+</head>
+
+<body class="bg-light">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Navbar -->
+            <nav class="col-sm-auto sticky-top" style="background-color: rgba(0, 0, 0, 0.85)" id="navbar">
+                <div class="d-flex flex-sm-column flex-row flex-nowrap align-items-center sticky-top">
+                    <ul class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap mx-auto text-center justify-content-around w-100 align-items-center my-md-4"
+                        style="gap: 1em">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" title="Home" data-bs-toggle="tooltip" data-bs-placement="right"
+                                data-bs-original-title="Home">
+                                <i class="bi bi-house-door fs-1"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link" title="Charts" data-bs-toggle="tooltip"
+                                data-bs-placement="right" data-bs-original-title="Dashboard">
+                                <i class="bi bi-bar-chart-line fs-1"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link" title="Tables" data-bs-toggle="tooltip"
+                                data-bs-placement="right" data-bs-original-title="Orders">
+                                <i class="bi-table fs-1"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <!-- Navbar end -->
+            <!-- Content -->
+            <div class="col-sm min-vh-100 p-3">
+                <main>
+                    <!-- Header -->
+                    <div class="container-fluid p-0 p-sm-4">
+                        <header class="">
+                            <h1 class="display-5 d-flex align-items-center">
+                                <span class="me-3"><iconify-icon icon="healthicons:mosquito-negative"
+                                        width="70"></iconify-icon></span>
+                                DengueWatch 2023
+                            </h1>
+                            <hr class="m-0 p-0">
+                            </hr>
+                        </header>
+                        <p class="py-4">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex totam commodi consequuntur,
+                            maiores in sapiente doloribus earum? Quam maiores dolores, magnam et, sequi, laboriosam
+                            non
+                            commodi minima impedit cupiditate nulla!
+                        </p>
+                        <!-- Header end -->
+                        <!-- Highlight cards -->
+                        <div class="row">
+
+                            <!-- Card 1 -->
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-primary text-white mb-4 shadow-sm border-0" style="height: auto">
+                                    <div class="card-body row">
+                                        <div class="col-10" id="card-content">
+                                            <h5>
+                                                Cases reported today:
+                                            </h5>
+                                            <h2>
+                                                16 <small class="ms-1"
+                                                    style="color: lightgreen; font-size: 0.6em;">(-42%)</small>
+                                            </h2>
+                                        </div>
+                                        <div class="col-2 d-flex align-items-end justify-content-end">
+                                            <i class="bi bi-clipboard2-pulse fs-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <small class="text-white">Last updated 17th Feb 2023, 3:00pm</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Card 2 -->
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-warning text-white mb-4 shadow-sm border-0" style="height: auto">
+                                    <div class="card-body row">
+                                        <div class="col-10" id="card-content">
+                                            <h5>
+                                                Cases reported today:
+                                            </h5>
+                                            <h2>
+                                                16
+                                            </h2>
+                                        </div>
+                                        <div class="col-2 d-flex align-items-end justify-content-end">
+                                            <i class="bi bi-capsule-pill fs-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <small class="text-white">Last updated 17th Feb 2023, 3:00pm</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Card 3 -->
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-success text-white mb-4 shadow-sm border-0" style="height: auto">
+                                    <div class="card-body row">
+                                        <div class="col-10" id="card-content">
+                                            <h5>
+                                                Cases reported today:
+                                            </h5>
+                                            <h2>
+                                                16
+                                            </h2>
+                                        </div>
+                                        <div class="col-2 d-flex align-items-end justify-content-end">
+                                            <i class="bi bi-journal-medical fs-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <small class="text-white">Last updated 17th Feb 2023, 3:00pm</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Card 4 -->
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-danger text-white mb-4 shadow-sm border-0" style="height: auto">
+                                    <div class="card-body row">
+                                        <div class="col-10" id="card-content">
+                                            <h5>
+                                                Cases reported today:
+                                            </h5>
+                                            <h2>
+                                                16
+                                            </h2>
+                                        </div>
+                                        <div class="col-2 d-flex align-items-end justify-content-end">
+                                            <i class="bi bi-hospital fs-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <small class="text-white">Last updated 17th Feb 2023, 3:00pm</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- highlights end -->
+
+                        <!-- Charts row 1 -->
+                        <div class="card mb-4 p-3 shadow-sm border-0">
+                            <div class="d-flex justify-content-between chart-title mb-3">
+                                <h5>Cases</h5>
+                                <div class="filter">
+                                    <a class="icon" href="#" data-bs-toggle="dropdown"><i
+                                            class="bi bi-three-dots"></i></a>
+                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                        <li class="dropdown-header text-start">
+                                            <h6>Filter</h6>
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">Today</a></li>
+                                        <li><a class="dropdown-item" href="#">This Month</a></li>
+                                        <li><a class="dropdown-item" href="#">This Year</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div style="height: 70vh;">
+                                <div id="chart_1"></div>
+                            </div>
+                        </div>
+
+                        <!-- Charts row 2 -->
+                        <!-- Chart A -->
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <div class="card mb-4 p-3 shadow-sm border-0">
+                                    <div class="d-flex justify-content-between">
+                                        <h5>Cases</h5>
+                                        <div class="filter">
+                                            <a class="icon" href="#" data-bs-toggle="dropdown"><i
+                                                    class="bi bi-three-dots"></i></a>
+                                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                                <li class="dropdown-header text-start">
+                                                    <h6>Filter</h6>
+                                                </li>
+                                                <li><a class="dropdown-item" href="#">Today</a></li>
+                                                <li><a class="dropdown-item" href="#">This Month</a></li>
+                                                <li><a class="dropdown-item" href="#">This Year</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Chart B -->
+                            <div class="col-xl-6">
+                                <div class="card mb-4 p-3 shadow-sm border-0">
+                                    <div class="d-flex justify-content-between">
+                                        <h5>Cases</h5>
+                                        <div class="filter">
+                                            <a class="icon" href="#" data-bs-toggle="dropdown"><i
+                                                    class="bi bi-three-dots"></i></a>
+                                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                                <li class="dropdown-header text-start">
+                                                    <h6>Filter</h6>
+                                                </li>
+                                                <li><a class="dropdown-item" href="#">Today</a></li>
+                                                <li><a class="dropdown-item" href="#">This Month</a></li>
+                                                <li><a class="dropdown-item" href="#">This Year</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Charts row 3 -->
+                        <div class="card mb-0 p-3 shadow-sm border-0">
+                            <div class="d-flex justify-content-between">
+                                <h5>Cases</h5>
+                                <div class="filter">
+                                    <a class="icon" href="#" data-bs-toggle="dropdown"><i
+                                            class="bi bi-three-dots"></i></a>
+                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                        <li class="dropdown-header text-start">
+                                            <h6>Filter</h6>
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">Today</a></li>
+                                        <li><a class="dropdown-item" href="#">This Month</a></li>
+                                        <li><a class="dropdown-item" href="#">This Year</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+
+            </div>
+
+            <!-- Content end -->
+
+            <!-- Footer -->
+        </div>
+        <footer class="row bg-primary text-center text-lg-start">
+            <div class="text-center p-3">
+                © Data from NEA, Data.gov, MOH
+            </div>
+        </footer>
+
+
+    </div>
+
+
+
+
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <!-- Axios -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.2/axios.min.js"
+        integrity="sha512-NCiXRSV460cHD9ClGDrTbTaw0muWUBf/zB/yLzJavRsPNUl9ODkUVmUHsZtKu17XknhsGlmyVoJxLg/ZQQEeGA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+        </script>
+    
+    <!-- Apex Charts -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+    <!-- Own JS -->
+    <script src="script.js"></script>
+
+    <!-- Data JS -->
+    <script src="data.js"></script>
+
+    <!-- Iconify -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.5/iconify-icon.min.js"></script>
+
+</body>
+
+</html>
