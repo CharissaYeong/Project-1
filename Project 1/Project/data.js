@@ -25,8 +25,8 @@ async function transformData() {
     // Map the data
     let mappedData = filteredData.map(function(dataPoint){
         return {
-            "E-Week": dataPoint.epi_week,
-            "Number_of_Cases": dataPoint
+            "Epi-week": dataPoint.epi_week,
+            "No_of_Cases": dataPoint.no._of_cases 
         }
     }); console.log(mappedData);
 
