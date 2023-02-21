@@ -79,7 +79,7 @@
                         <!-- Header end -->
 
                         <!-- Highlight cards -->
-                        <div class="row">
+                        <div class="row d-flex">
 
                             <!-- Card 1 -->
                             <div class="col-xl-3 col-md-6">
@@ -109,7 +109,7 @@
                                     <div class="card-body row">
                                         <div class="col-10" id="card-content">
                                             <h5>
-                                                Number of active clusters:
+                                                Active clusters:
                                             </h5>
                                             <h2>
                                                 16 <small class="ms-1"
@@ -157,7 +157,7 @@
                                             </h5>
                                             <h2> 
                                                 0 <small class="ms-1"
-                                                style="color: lightgreen; font-size: 0.6em;">(-42%)</small>
+                                                style="color: lightgreen; font-size: 0.6em;">(19 in 2022)</small>
                                             </h2>
                                         </div>
                                         <div class="col-2 d-flex align-items-end justify-content-end">
@@ -179,14 +179,18 @@
                                 <div class="filter">
                                     <a class="icon" href="#" data-bs-toggle="dropdown"><i
                                             class="bi bi-three-dots"></i></a>
-                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                        <li class="dropdown-header text-start">
-                                            <h6>Filter</h6>
-                                        </li>
-                                        <li><a class="dropdown-item" href="#">2012</a></li>
-                                        <li><a class="dropdown-item" href="#">2013</a></li>
-                                        <li><a class="dropdown-item" href="#">2014</a></li>
-                                    </ul>
+                                    <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                        <div class="container-fluid">
+                                            <select class="select container-fluid" multiple data-mdb-placeholder="Example placeholder" multiple>
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                                <option value="4">Four</option>
+                                                <option value="5">Five</option>
+                                              </select>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                             <div style="width: 100%; height: auto;">
