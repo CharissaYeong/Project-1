@@ -1,7 +1,7 @@
 // Data
 
 // Data paths
-const weeklyPath = "https://charissayeong.github.io/Project-1/Project%201/Data/weekly-infectious-disease-bulletin-cases/weekly.json" // Weekly infectious disease records
+const weeklyPath = "https://charissayeong.github.io/Project-1/Project%201/Data/weekly.json" // Weekly infectious disease records
 
 // Weekly data
 async function loadData() {
@@ -16,42 +16,97 @@ async function transformData() {
     // Store promise results in variable
     let data = await loadData();
     console.log(Array.isArray(data)); //check if it is array
-    console.log(data)
 
     // Filter only Dengue cases
     let filteredData = data.filter(function (dataPoint) {
         return dataPoint.disease == "Dengue Fever";
 
-    }); console.log(filteredData);
+    });
 
     // Map the data
-    let mappedData = filteredData.map(function(dataPoint){
+    let mappedData = filteredData.map(function (dataPoint) {
         return {
-            "Epi_week": dataPoint.epi_week,
-            "No_of_cases": dataPoint.no_of_cases 
+            "E_week": dataPoint.epi_week,
+            "No_of_cases": dataPoint.no_of_cases
         }
     }); console.log(mappedData);
+
+    
+
+
+    let series_1 = []
+    for (let i = 0; i < mappedData.length; i++) {
+        series_1.push(
+            {
+                'x': mappedData[i]['E_week'],
+                'y': mappedData[i]['No_of_cases']
+            })
+    };
+    console.log(series_1);
+    return series_1
 }
 
-transformData()
 
 
 
 // Charts
+
+window.addEventListener("DOMContentLoaded", async function () {
+    const data = await loadData();
+    const series_1 = await transformData();
+    console.log(series_1);
+    chart_1.updateSeries([{
+        "name": "Dengue",
+        "data": series_1
+    }]);
+})
+
 
 // Empty Charts
 
 // Empty Chart_1
 const options_1 = {
     "chart": {
-        "type": "line",
+        "type": "area",
         "height": "100%"
     },
     series: [],  // look ma, no data!!
     noData: {
         "text": "loading"
+    },
+    dataLabels: {
+        enabled: false
+    },
+    stroke: {
+        curve: 'straight'
+    },
+
+    title: {
+        text: 'Weekly Infectious Disease Report 2012 - 2022',
+        align: 'left'
+    },
+    subtitle: {
+        text: 'Dengue Fever and Dengue Haemmorrahgic Fever',
+        align: 'left'
+    },
+    labels: [],
+    xaxis: {
+        type: '',
+    },
+    yaxis: {
+        opposite: false
+    },
+    legend: {
+        horizontalAlign: 'left'
+    },
+    tooltip: {
+        enabled: true,
+
     }
-}
+    
+};
+
+
 const chart_1 = new ApexCharts(
     document.querySelector("#chart_1"),
     options_1

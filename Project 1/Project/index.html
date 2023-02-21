@@ -113,7 +113,7 @@
                                             </h5>
                                             <h2>
                                                 16 <small class="ms-1"
-                                                style="color: lightgreen; font-size: 0.6em;">(-42%)</small>
+                                                    style="color: lightgreen; font-size: 0.6em;">(-42%)</small>
                                             </h2>
                                         </div>
                                         <div class="col-2 d-flex align-items-end justify-content-end">
@@ -135,7 +135,7 @@
                                             </h5>
                                             <h2>
                                                 16 <small class="ms-1"
-                                                style="color: lightgreen; font-size: 0.6em;">(-42%)</small>
+                                                    style="color: lightgreen; font-size: 0.6em;">(-42%)</small>
                                             </h2>
                                         </div>
                                         <div class="col-2 d-flex align-items-end justify-content-end">
@@ -155,9 +155,9 @@
                                             <h5>
                                                 Number of deaths 2023:
                                             </h5>
-                                            <h2> 
+                                            <h2>
                                                 0 <small class="ms-1"
-                                                style="color: lightgreen; font-size: 0.6em;">(-42%)</small>
+                                                    style="color: lightgreen; font-size: 0.6em;">(-42%)</small>
                                             </h2>
                                         </div>
                                         <div class="col-2 d-flex align-items-end justify-content-end">
@@ -179,17 +179,14 @@
                                 <div class="filter">
                                     <a class="icon" href="#" data-bs-toggle="dropdown"><i
                                             class="bi bi-three-dots"></i></a>
-                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                        <li class="dropdown-header text-start">
-                                            <h6>Filter</h6>
-                                        </li>
-                                        <li><a class="dropdown-item" href="#">2012</a></li>
-                                        <li><a class="dropdown-item" href="#">2013</a></li>
-                                        <li><a class="dropdown-item" href="#">2014</a></li>
-                                    </ul>
+                                    <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                        <label for="customRange3" class="form-label">Example range</label>
+                                        <input type="range" class="form-range" min="2012" max="2022" step="1"
+                                            id="customRange3">
+                                    </div>
                                 </div>
                             </div>
-                            <div style="width: 100%; height: auto;">
+                            <div class="w-100 vh-100">
                                 <div id="chart_1"></div>
                             </div>
                         </div>
@@ -298,7 +295,7 @@
         integrity="sha512-NCiXRSV460cHD9ClGDrTbTaw0muWUBf/zB/yLzJavRsPNUl9ODkUVmUHsZtKu17XknhsGlmyVoJxLg/ZQQEeGA=="
         crossorigin="anonymous" referrerpolicy="no-referrer">
         </script>
-    
+
     <!-- Apex Charts -->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
