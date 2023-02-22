@@ -47,7 +47,7 @@ const options_1 = {
         "type": "line",
         "height": "100%"
     },
-    series: [],  // look ma, no data!!
+    series: [],
     noData: {
         "text": "loading"
     }
