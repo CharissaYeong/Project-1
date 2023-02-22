@@ -27,7 +27,7 @@ async function transformData() {
     let mappedData = filteredData.map(function (dataPoint) {
         return {
             "E_week": dataPoint.epi_week,
-            "No_of_cases": dataPoint.no_of_cases
+            "No_of_cases": dataPoint.no_of_cases 
         }
     }); console.log(mappedData);
 
@@ -91,7 +91,7 @@ const options_1 = {
     tooltip: {
         enabled: true,
 
-    }
+}
     
 };
 
