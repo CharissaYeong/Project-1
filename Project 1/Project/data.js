@@ -9,13 +9,11 @@ async function loadData() {
     return response.data
 }
 
-console.log(loadData())
-
-async function transformData() {
+async function transformData_1() {
 
     // Store promise results in variable
     let data = await loadData();
-    console.log(Array.isArray(data)); //check if it is array
+    // console.log(Array.isArray(data)); //check if it is array
 
     // Filter only Dengue cases
     let filteredData = data.filter(function (dataPoint) {
@@ -27,9 +25,10 @@ async function transformData() {
     let mappedData = filteredData.map(function (dataPoint) {
         return {
             "E_week": dataPoint.epi_week,
-            "No_of_cases": dataPoint.no_of_cases 
+            "No_of_cases": dataPoint.no_of_cases
         }
-    }); console.log(mappedData);
+    });
+
 
     let series_1 = []
     for (let i = 0; i < mappedData.length; i++) {
@@ -39,17 +38,74 @@ async function transformData() {
                 'y': mappedData[i]['No_of_cases']
             })
     };
-    console.log(series_1);
+
     return series_1
+
+}
+
+async function transformData_1_year() {
+    let Data = await loadData();
+    let data = await transformData_1();
+
+    // Group Data into years
+    let years = {
+        "2012": [],  // Jan because month number starts at 0 for JavaScript
+        "2013": [],
+        "2014": [],
+        "2015": [],
+        "2016": [],
+        "2017": [],
+        "2018": [],
+        "2019": [],
+        "2020": [],
+        "2021": [],
+        "2022": []
+    }
+
+    let series_1_year = []
+
+    for (let dataPoint of data) {
+        // find the year number that the data point is in
+        let date = dataPoint.x
+        let yearNum = date.slice(0, 4);
+
+        // add the data point to that year's container (i.e array)
+        if (date.includes(yearNum)) {
+            years[yearNum].push(dataPoint);
+        }
+    }; console.log(years)
+
+    // extract each month from the `months` object
+    let cases = 0;
+    let total = 0;
+    for (let key of Object.keys(years)) {
+        for (n of years[key]) {
+            cases = parseInt(n['y'])
+        }
+
+        total += cases;
+
+        series_1_year.push({
+            'x': parseInt(key),
+            'y': total
+        })
+
+    } console.log(series_1_year)
+
+    return series_1_year
+
 }
 
 
-// Charts
+transformData_1_year()
 
+
+// Chart update series 
+
+// Chart_1 all data
 window.addEventListener("DOMContentLoaded", async function () {
     const data = await loadData();
-    const series_1 = await transformData();
-    console.log(series_1);
+    const series_1 = await transformData_1();
     chart_1.updateSeries([{
         "name": "Dengue",
         "data": series_1
@@ -76,11 +132,11 @@ const options_1 = {
     },
 
     title: {
-        text: 'Weekly Infectious Disease Report 2012 - 2022',
+        text: 'Weekly Report',
         align: 'left'
     },
     subtitle: {
-        text: 'Dengue Fever and Dengue Haemmorrahgic Fever',
+        text: 'Dengue Fever',
         align: 'left'
     },
     labels: [],
@@ -96,8 +152,8 @@ const options_1 = {
     tooltip: {
         enabled: true,
 
-}
-    
+    }
+
 };
 
 
