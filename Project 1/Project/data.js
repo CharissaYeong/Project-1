@@ -31,9 +31,6 @@ async function transformData() {
         }
     }); console.log(mappedData);
 
-    
-
-
     let series_1 = []
     for (let i = 0; i < mappedData.length; i++) {
         series_1.push(
