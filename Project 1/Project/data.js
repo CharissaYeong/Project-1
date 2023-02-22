@@ -63,38 +63,44 @@ async function transformData_1_year() {
     }
 
     let series_1_year = []
+    let cases = 0;
+    let total = 0;
 
     for (let dataPoint of data) {
         // find the year number that the data point is in
-        let date = dataPoint.x
+        let date = dataPoint.x;
         let yearNum = date.slice(0, 4);
 
         // add the data point to that year's container (i.e array)
         if (date.includes(yearNum)) {
             years[yearNum].push(dataPoint);
         }
-    }; console.log(years)
+    };
 
     // extract each month from the `months` object
-    let cases = 0;
-    let total = 0;
+
     for (let key of Object.keys(years)) {
         for (n of years[key]) {
-            cases = parseInt(n['y'])
-        }
-
-        total += cases;
+            console.log(n)
+            cases = parseInt(n['y']);
+            total = total + cases
+        };
 
         series_1_year.push({
             'x': parseInt(key),
             'y': total
         })
 
-    } console.log(series_1_year)
+        total = 0;
+    }
 
+    console.log(series_1_year)
     return series_1_year
 
 }
+
+
+
 
 
 transformData_1_year()
@@ -106,10 +112,18 @@ transformData_1_year()
 window.addEventListener("DOMContentLoaded", async function () {
     const data = await loadData();
     const series_1 = await transformData_1();
-    chart_1.updateSeries([{
-        "name": "Dengue",
-        "data": series_1
-    }]);
+    const series_1_year = await transformData_1_year();
+    chart_1.updateSeries([
+        {
+            "name": "e-week",
+            "data": series_1
+        },
+
+        // {
+        //     "name": "year",
+        //     "data": series_1_year
+        // }
+    ]);
 })
 
 // Empty Charts
@@ -120,7 +134,13 @@ const options_1 = {
         "type": "area",
         "height": "100%"
     },
-    series: [],  // look ma, no data!!
+    series: [{
+        name: 'e_week',
+        type: 'area',
+        data: []
+    }
+    ],
+
     noData: {
         "text": "loading"
     },
