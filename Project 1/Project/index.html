@@ -79,7 +79,7 @@
                         <!-- Header end -->
 
                         <!-- Highlight cards -->
-                        <div class="row d-flex">
+                        <div class="row">
 
                             <!-- Card 1 -->
                             <div class="col-xl-3 col-md-6">
@@ -109,11 +109,11 @@
                                     <div class="card-body row">
                                         <div class="col-10" id="card-content">
                                             <h5>
-                                                Active clusters:
+                                                Number of active clusters:
                                             </h5>
                                             <h2>
                                                 16 <small class="ms-1"
-                                                style="color: lightgreen; font-size: 0.6em;">(-42%)</small>
+                                                    style="color: lightgreen; font-size: 0.6em;">(-42%)</small>
                                             </h2>
                                         </div>
                                         <div class="col-2 d-flex align-items-end justify-content-end">
@@ -135,7 +135,7 @@
                                             </h5>
                                             <h2>
                                                 16 <small class="ms-1"
-                                                style="color: lightgreen; font-size: 0.6em;">(-42%)</small>
+                                                    style="color: lightgreen; font-size: 0.6em;">(-42%)</small>
                                             </h2>
                                         </div>
                                         <div class="col-2 d-flex align-items-end justify-content-end">
@@ -155,9 +155,9 @@
                                             <h5>
                                                 Number of deaths 2023:
                                             </h5>
-                                            <h2> 
+                                            <h2>
                                                 0 <small class="ms-1"
-                                                style="color: lightgreen; font-size: 0.6em;">(19 in 2022)</small>
+                                                    style="color: lightgreen; font-size: 0.6em;">(-42%)</small>
                                             </h2>
                                         </div>
                                         <div class="col-2 d-flex align-items-end justify-content-end">
@@ -180,20 +180,13 @@
                                     <a class="icon" href="#" data-bs-toggle="dropdown"><i
                                             class="bi bi-three-dots"></i></a>
                                     <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                        <div class="container-fluid">
-                                            <select class="select container-fluid" multiple data-mdb-placeholder="Example placeholder" multiple>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
-                                                <option value="4">Four</option>
-                                                <option value="5">Five</option>
-                                              </select>
-                                        </div>
+                                        <label for="customRange3" class="form-label">Example range</label>
+                                        <input type="range" class="form-range" min="2012" max="2022" step="1"
+                                            id="customRange3">
                                     </div>
-
                                 </div>
                             </div>
-                            <div style="width: 100%; height: auto;">
+                            <div class="w-100 vh-100">
                                 <div id="chart_1"></div>
                             </div>
                         </div>
@@ -302,7 +295,7 @@
         integrity="sha512-NCiXRSV460cHD9ClGDrTbTaw0muWUBf/zB/yLzJavRsPNUl9ODkUVmUHsZtKu17XknhsGlmyVoJxLg/ZQQEeGA=="
         crossorigin="anonymous" referrerpolicy="no-referrer">
         </script>
-    
+
     <!-- Apex Charts -->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
