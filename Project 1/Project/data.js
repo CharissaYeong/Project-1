@@ -51,17 +51,6 @@ async function transformData() {
 
 // Charts
 
-window.addEventListener("DOMContentLoaded", async function () {
-    const data = await loadData();
-    const series_1 = await transformData();
-    console.log(series_1);
-    chart_1.updateSeries([{
-        "name": "Dengue",
-        "data": series_1
-    }]);
-})
-
-
 // Empty Charts
 
 // Empty Chart_1
