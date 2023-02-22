@@ -180,13 +180,23 @@
                         <div class="card mb-4 p-3 shadow-sm border-0">
                             <div class="d-flex justify-content-between chart-title mb-3">
                                 <h5>Cases</h5>
-                                <div class="filter">
-                                    <a class="icon" href="#" data-bs-toggle="dropdown"><i
-                                            class="bi bi-three-dots"></i></a>
-                                    <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                        <label for="customRange3" class="form-label">Example range</label>
-                                        <input type="range" class="form-range" min="2012" max="2022" step="1"
-                                            id="customRange3">
+                                <div class="filter">                                   
+                                    <a class="icon text-decoration-none" href="#" data-bs-toggle="dropdown">
+                                        <span class="me-1">Filter</span>
+                                        <i class="bi bi-three-dots"></i></a>
+                                    <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow p-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="timeView" id="weekView">
+                                            <label class="form-check-label" for="weekView">
+                                              Default radio
+                                            </label>
+                                          </div>
+                                          <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="timeView" id="yearView">
+                                            <label class="form-check-label" for="yearView">
+                                              Default checked radio
+                                            </label>
+                                          </div>
                                     </div>
                                 </div>
                             </div>

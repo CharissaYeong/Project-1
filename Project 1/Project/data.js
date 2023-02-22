@@ -13,7 +13,6 @@ async function transformData_1() {
 
     // Store promise results in variable
     let data = await loadData();
-    // console.log(Array.isArray(data)); //check if it is array
 
     // Filter only Dengue cases
     let filteredData = data.filter(function (dataPoint) {
@@ -44,7 +43,6 @@ async function transformData_1() {
 }
 
 async function transformData_1_year() {
-    let Data = await loadData();
     let data = await transformData_1();
 
     // Group Data into years
@@ -62,10 +60,6 @@ async function transformData_1_year() {
         "2022": []
     }
 
-    let series_1_year = []
-    let cases = 0;
-    let total = 0;
-
     for (let dataPoint of data) {
         // find the year number that the data point is in
         let date = dataPoint.x;
@@ -77,11 +71,20 @@ async function transformData_1_year() {
         }
     };
 
+    return years
+
+}
+
+async function transformData_1_yearView() {
+    let data = await transformData_1_year();
+    let series_1_year = []
+    let cases = 0;
+    let total = 0;
+
     // extract each month from the `months` object
 
-    for (let key of Object.keys(years)) {
-        for (n of years[key]) {
-            console.log(n)
+    for (let key of Object.keys(data)) {
+        for (n of data[key]) {
             cases = parseInt(n['y']);
             total = total + cases
         };
@@ -93,26 +96,25 @@ async function transformData_1_year() {
 
         total = 0;
     }
-
-    console.log(series_1_year)
     return series_1_year
-
 }
 
-
-
-
-
-transformData_1_year()
-
+transformData_1_yearView()
 
 // Chart update series 
 
 // Chart_1 all data
-window.addEventListener("DOMContentLoaded", async function () {
-    const data = await loadData();
+window.addEventListener("DOMContentLoaded", async function() {
     const series_1 = await transformData_1();
-    const series_1_year = await transformData_1_year();
+    const series_1_year = await transformData_1_yearView();
+    // let series = []
+
+    // const weekRadio = document.getElementById('weekView');
+    // const yearRadio = document.getElementById('yearView');
+
+    // console.log(weekRadio.value)
+    // console.log(yearRadio.value)
+
     chart_1.updateSeries([
         {
             "name": "e-week",
@@ -125,7 +127,6 @@ window.addEventListener("DOMContentLoaded", async function () {
         // }
     ]);
 })
-
 // Empty Charts
 
 // Empty Chart_1
