@@ -102,13 +102,13 @@ async function transformData_1_yearView() {
 async function filter_by_year(n) {
     let data = await transformData_1();
     let series_1 = []
-
+    
     for (let dataPoint of data) {
         // find the year number that the data point is in
         let date = dataPoint.x;
         if (date.includes(n)) {
             series_1.push({
-                'x': date,
+                'x': date.slice(-3),
                 'y': dataPoint.y
             })
         }
@@ -161,8 +161,10 @@ const options_1 = {
     },
     tooltip: {
         enabled: true,
-
-    }
+    },
+    theme: {
+        palette: 'palette3' // upto palette10
+    },
 };
 const chart_1 = new ApexCharts(
     document.querySelector("#chart_1"),
@@ -235,6 +237,7 @@ window.addEventListener("DOMContentLoaded", async function () {
     let data_year = await transformData_1_yearView();
     const yearRange = document.getElementById('yearRange')
     let year_label =  document.getElementById('year_label')
+    let clear_btn = document.getElementById('clear_1')
 
     chart_1.updateSeries([
         {
@@ -264,6 +267,8 @@ window.addEventListener("DOMContentLoaded", async function () {
 
     yearBtn.addEventListener("click", function () {
         let yearRadio = document.getElementById('yearView').checked;
+        year_label.innerHTML = ''
+
         if (yearRadio == true) {
             console.log('year selected');
             let series_1 = data_year;
@@ -275,7 +280,7 @@ window.addEventListener("DOMContentLoaded", async function () {
                 },
             ]);
         }
-    })
+    });
 
     
 
@@ -291,7 +296,20 @@ window.addEventListener("DOMContentLoaded", async function () {
             },
         ])
         
-    })
+    });
+
+    clear_btn.addEventListener("click", function() {
+        let series_1 = data_week;
+        chart_1.updateSeries([
+            {
+                "name": "Dengue",
+                "data": series_1
+            },
+        ])
+        
+    });
+
+    
 
 
 })
