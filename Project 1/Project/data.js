@@ -99,36 +99,22 @@ async function transformData_1_yearView() {
     return series_1
 }
 
-async function filter_1_radio() {
-
-    const weekBtn = document.getElementById('weekView');
-    const yearBtn = document.getElementById('yearView');
-    let weekRadio = document.getElementById('weekView').checked;
-    let yearRadio = document.getElementById('yearView').checked;
+async function filter_by_year(n) {
+    let data = await transformData_1();
     let series_1 = []
 
-    weekBtn.addEventListener("click", async function () {
-
-        if (weekRadio == true) {
-            console.log('week selected');
-            let series_1 = await transformData_1();
-            console.log(series_1)
-            return series_1
+    for (let dataPoint of data) {
+        // find the year number that the data point is in
+        let date = dataPoint.x;
+        if (date.includes(n)) {
+            series_1.push({
+                'x': date,
+                'y': dataPoint.y
+            })
         }
-    })
-
-    yearBtn.addEventListener("click", async function () {
-
-        if (yearRadio == true) {
-            console.log('year selected');
-            let series_1 = await transformData_1_yearView();
-            console.log(series_1)
-            return series_1
-        }
-    })
-
+    };
+    return series_1
 }
-
 
 // Empty Charts
 
@@ -239,14 +225,16 @@ const chart_3 = new ApexCharts(
 );
 chart_3.render();
 
+// Charts series update
 
 // Chart_1
-
 
 window.addEventListener("DOMContentLoaded", async function () {
 
     let data_week = await transformData_1();
     let data_year = await transformData_1_yearView();
+    const yearRange = document.getElementById('yearRange')
+    let year_label =  document.getElementById('year_label')
 
     chart_1.updateSeries([
         {
@@ -260,12 +248,11 @@ window.addEventListener("DOMContentLoaded", async function () {
 
     weekBtn.addEventListener("click", function () {
         let weekRadio = document.getElementById('weekView').checked;
+        year_label.innerHTML = ''
 
         if (weekRadio == true) {
             console.log('week selected');
             let series_1 = data_week;
-            console.log(series_1)
-
             chart_1.updateSeries([
                 {
                     "name": "Dengue",
@@ -290,20 +277,21 @@ window.addEventListener("DOMContentLoaded", async function () {
         }
     })
 
+    
+
+    yearRange.addEventListener("input", async function() {
+        let year = yearRange.value;
+        year_label.innerHTML = year;
+        let data_year_select = await filter_by_year(year);
+        let series_1 = data_year_select;
+        chart_1.updateSeries([
+            {
+                "name": "Dengue",
+                "data": series_1
+            },
+        ])
+        
+    })
+
+
 })
-
-
-
-
-// window.addEventListener("DOMContentLoaded", async function () {
-
-//     let series_1 = await transformData_1_yearView()
-//     console.log(series_1)
-
-//     chart_1.updateSeries([
-//         {
-//             "name": "Dengue",
-//             "data": series_1
-//         },
-//     ]);
-// })
