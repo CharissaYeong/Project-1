@@ -1,8 +1,6 @@
 // Data paths
 const weeklyPath = "https://charissayeong.github.io/Project-1/Project%201/Data/weekly.json" // Weekly infectious disease records
 
-let series_1 = []
-
 // Weekly data
 async function loadData() {
     const response = await axios.get(weeklyPath);
@@ -28,6 +26,8 @@ async function transformData_1() {
         }
     });
 
+    let series_1 = []
+
     for (let i = 0; i < mappedData.length; i++) {
         series_1.push(
             {
@@ -39,6 +39,8 @@ async function transformData_1() {
     return series_1
 
 }
+
+// Yearly data 
 
 async function transformData_1_year() {
     let data = await transformData_1();
@@ -77,6 +79,7 @@ async function transformData_1_yearView() {
     let data = await transformData_1_year();
     let cases = 0;
     let total = 0;
+    let series_1 = []
 
     // extract each month from the `months` object
 
@@ -96,101 +99,36 @@ async function transformData_1_yearView() {
     return series_1
 }
 
-// Chart update series 
+async function filter_1_radio() {
 
-// Chart_1
+    const weekBtn = document.getElementById('weekView');
+    const yearBtn = document.getElementById('yearView');
+    let weekRadio = document.getElementById('weekView').checked;
+    let yearRadio = document.getElementById('yearView').checked;
+    let series_1 = []
 
-window.addEventListener("DOMContentLoaded", async function(){
+    weekBtn.addEventListener("click", async function () {
 
-    let radioWeek = document.getElementById('weekView').checked;
-    console.log(radioWeek);
-    let radioYear = document.getElementById('yearView').checked;
-    console.log(radioYear);
-    
-    radioWeek.addEventListener("click", function(){
-        const year = document.querySelector("#year").value;
-        const country = document.querySelector("#country").value;
-        // filter by year when transforming the data
-        const series = transformData(data, year, country);
-        chart.updateSeries([
-            {
-                "name":"Revenue",
-                "data": series
-            }
-        ]);
-   
+        if (weekRadio == true) {
+            console.log('week selected');
+            let series_1 = await transformData_1();
+            console.log(series_1)
+            return series_1
+        }
     })
-    
-    const chart = createGraph();
-    const data = await loadData();
-    const series = transformData(data);
 
-    chart.updateSeries([{
-        "name":"Revenue",
-        "data": series
-    }]);
+    yearBtn.addEventListener("click", async function () {
 
-    
+        if (yearRadio == true) {
+            console.log('year selected');
+            let series_1 = await transformData_1_yearView();
+            console.log(series_1)
+            return series_1
+        }
+    })
 
-})
+}
 
-
-
- let radioWeek = document.getElementById('weekView').checked;
-    console.log(radioWeek);
-    let radioYear = document.getElementById('yearView').checked;
-    console.log(radioYear);
-
-    if (radioWeek == true) {
-        console.log("week radio button is selected");
-        window.addEventListener("DOMContentLoaded", async function () {
-            series_1 = transformData_1();
-        
-            chart_1.updateSeries([
-                {
-                    "name": "e-week",
-                    "data": series_1
-                },
-            ]);
-        })
-    } else if (radioYear == true) {
-        console.log("year radio button is selected");
-        window.addEventListener("DOMContentLoaded", async function () {
-            let series = await transformData_1_yearView();
-        
-            chart_1.updateSeries([
-                {
-                    "name": "e-week",
-                    "data": series_1
-                },
-            ]);
-        })
-    } else {
-        console.log("default")
-        window.addEventListener("DOMContentLoaded", async function () {
-            let series = await transformData_1();
-        
-            chart_1.updateSeries([
-                {
-                    "name": "e-week",
-                    "data": series_1
-                },
-            ]);
-        })
-    }
-
-
-
-// window.addEventListener("DOMContentLoaded", async function () {
-//     let series = await transformData_1();
-
-//     chart_1.updateSeries([
-//         {
-//             "name": "e-week",
-//             "data": series
-//         },
-//     ]);
-// })
 
 // Empty Charts
 
@@ -239,10 +177,7 @@ const options_1 = {
         enabled: true,
 
     }
-
 };
-
-
 const chart_1 = new ApexCharts(
     document.querySelector("#chart_1"),
     options_1
@@ -303,3 +238,72 @@ const chart_3 = new ApexCharts(
     options_3
 );
 chart_3.render();
+
+
+// Chart_1
+
+
+window.addEventListener("DOMContentLoaded", async function () {
+
+    let data_week = await transformData_1();
+    let data_year = await transformData_1_yearView();
+
+    chart_1.updateSeries([
+        {
+            "name": "Dengue",
+            "data": data_week
+        },
+    ]);
+
+    const weekBtn = document.getElementById('weekView');
+    const yearBtn = document.getElementById('yearView');
+
+    weekBtn.addEventListener("click", function () {
+        let weekRadio = document.getElementById('weekView').checked;
+
+        if (weekRadio == true) {
+            console.log('week selected');
+            let series_1 = data_week;
+            console.log(series_1)
+
+            chart_1.updateSeries([
+                {
+                    "name": "Dengue",
+                    "data": series_1
+                },
+            ]);
+        }
+    })
+
+    yearBtn.addEventListener("click", function () {
+        let yearRadio = document.getElementById('yearView').checked;
+        if (yearRadio == true) {
+            console.log('year selected');
+            let series_1 = data_year;
+
+            chart_1.updateSeries([
+                {
+                    "name": "Dengue",
+                    "data": series_1
+                },
+            ]);
+        }
+    })
+
+})
+
+
+
+
+// window.addEventListener("DOMContentLoaded", async function () {
+
+//     let series_1 = await transformData_1_yearView()
+//     console.log(series_1)
+
+//     chart_1.updateSeries([
+//         {
+//             "name": "Dengue",
+//             "data": series_1
+//         },
+//     ]);
+// })
