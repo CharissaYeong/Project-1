@@ -1,7 +1,7 @@
-// Data
-
 // Data paths
 const weeklyPath = "https://charissayeong.github.io/Project-1/Project%201/Data/weekly.json" // Weekly infectious disease records
+
+let series_1 = []
 
 // Weekly data
 async function loadData() {
@@ -28,8 +28,6 @@ async function transformData_1() {
         }
     });
 
-
-    let series_1 = []
     for (let i = 0; i < mappedData.length; i++) {
         series_1.push(
             {
@@ -77,7 +75,6 @@ async function transformData_1_year() {
 
 async function transformData_1_yearView() {
     let data = await transformData_1_year();
-    let series_1_year = []
     let cases = 0;
     let total = 0;
 
@@ -89,44 +86,112 @@ async function transformData_1_yearView() {
             total = total + cases
         };
 
-        series_1_year.push({
+        series_1.push({
             'x': parseInt(key),
             'y': total
         })
 
         total = 0;
     }
-    return series_1_year
+    return series_1
 }
-
-transformData_1_yearView()
 
 // Chart update series 
 
-// Chart_1 all data
-window.addEventListener("DOMContentLoaded", async function() {
-    const series_1 = await transformData_1();
-    const series_1_year = await transformData_1_yearView();
-    // let series = []
+// Chart_1
 
-    // const weekRadio = document.getElementById('weekView');
-    // const yearRadio = document.getElementById('yearView');
+window.addEventListener("DOMContentLoaded", async function(){
 
-    // console.log(weekRadio.value)
-    // console.log(yearRadio.value)
+    let radioWeek = document.getElementById('weekView').checked;
+    console.log(radioWeek);
+    let radioYear = document.getElementById('yearView').checked;
+    console.log(radioYear);
+    
+    radioWeek.addEventListener("click", function(){
+        const year = document.querySelector("#year").value;
+        const country = document.querySelector("#country").value;
+        // filter by year when transforming the data
+        const series = transformData(data, year, country);
+        chart.updateSeries([
+            {
+                "name":"Revenue",
+                "data": series
+            }
+        ]);
+   
+    })
+    
+    const chart = createGraph();
+    const data = await loadData();
+    const series = transformData(data);
 
-    chart_1.updateSeries([
-        {
-            "name": "e-week",
-            "data": series_1
-        },
+    chart.updateSeries([{
+        "name":"Revenue",
+        "data": series
+    }]);
 
-        // {
-        //     "name": "year",
-        //     "data": series_1_year
-        // }
-    ]);
+    
+
 })
+
+
+
+ let radioWeek = document.getElementById('weekView').checked;
+    console.log(radioWeek);
+    let radioYear = document.getElementById('yearView').checked;
+    console.log(radioYear);
+
+    if (radioWeek == true) {
+        console.log("week radio button is selected");
+        window.addEventListener("DOMContentLoaded", async function () {
+            series_1 = transformData_1();
+        
+            chart_1.updateSeries([
+                {
+                    "name": "e-week",
+                    "data": series_1
+                },
+            ]);
+        })
+    } else if (radioYear == true) {
+        console.log("year radio button is selected");
+        window.addEventListener("DOMContentLoaded", async function () {
+            let series = await transformData_1_yearView();
+        
+            chart_1.updateSeries([
+                {
+                    "name": "e-week",
+                    "data": series_1
+                },
+            ]);
+        })
+    } else {
+        console.log("default")
+        window.addEventListener("DOMContentLoaded", async function () {
+            let series = await transformData_1();
+        
+            chart_1.updateSeries([
+                {
+                    "name": "e-week",
+                    "data": series_1
+                },
+            ]);
+        })
+    }
+
+
+
+// window.addEventListener("DOMContentLoaded", async function () {
+//     let series = await transformData_1();
+
+//     chart_1.updateSeries([
+//         {
+//             "name": "e-week",
+//             "data": series
+//         },
+//     ]);
+// })
+
 // Empty Charts
 
 // Empty Chart_1
@@ -136,7 +201,7 @@ const options_1 = {
         "height": "100%"
     },
     series: [{
-        name: 'e_week',
+        name: 'Dengue',
         type: 'area',
         data: []
     }
