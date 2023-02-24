@@ -28,8 +28,6 @@ async function transformData_1() {
         }
     });
 
-
-    let series_1 = []
     for (let i = 0; i < mappedData.length; i++) {
         series_1.push(
             {
@@ -77,7 +75,6 @@ async function transformData_1_year() {
 
 async function transformData_1_yearView() {
     let data = await transformData_1_year();
-    let series_1 = []
     let cases = 0;
     let total = 0;
 
@@ -103,35 +100,98 @@ async function transformData_1_yearView() {
 
 // Chart_1
 
-window.addEventListener("DOMContentLoaded", async function () {
-    // Weekly/yearly view radio buttons
+window.addEventListener("DOMContentLoaded", async function(){
+
     let radioWeek = document.getElementById('weekView').checked;
     console.log(radioWeek);
     let radioYear = document.getElementById('yearView').checked;
     console.log(radioYear);
-    let series_1 = []
+    
+    radioWeek.addEventListener("click", function(){
+        const year = document.querySelector("#year").value;
+        const country = document.querySelector("#country").value;
+        // filter by year when transforming the data
+        const series = transformData(data, year, country);
+        chart.updateSeries([
+            {
+                "name":"Revenue",
+                "data": series
+            }
+        ]);
+   
+    })
+    
+    const chart = createGraph();
+    const data = await loadData();
+    const series = transformData(data);
+
+    chart.updateSeries([{
+        "name":"Revenue",
+        "data": series
+    }]);
+
+    
+
+})
+
+
+
+ let radioWeek = document.getElementById('weekView').checked;
+    console.log(radioWeek);
+    let radioYear = document.getElementById('yearView').checked;
+    console.log(radioYear);
 
     if (radioWeek == true) {
         console.log("week radio button is selected");
-        let series_1 = await transformData_1
+        window.addEventListener("DOMContentLoaded", async function () {
+            series_1 = transformData_1();
+        
+            chart_1.updateSeries([
+                {
+                    "name": "e-week",
+                    "data": series_1
+                },
+            ]);
+        })
     } else if (radioYear == true) {
         console.log("year radio button is selected");
-        let series_1 = await transformData_1_year
+        window.addEventListener("DOMContentLoaded", async function () {
+            let series = await transformData_1_yearView();
+        
+            chart_1.updateSeries([
+                {
+                    "name": "e-week",
+                    "data": series_1
+                },
+            ]);
+        })
     } else {
         console.log("default")
-        let series_1 = await transformData_1
+        window.addEventListener("DOMContentLoaded", async function () {
+            let series = await transformData_1();
+        
+            chart_1.updateSeries([
+                {
+                    "name": "e-week",
+                    "data": series_1
+                },
+            ]);
+        })
     }
 
-    let series = series_1
-    // let series = await transformData_1_yearView();
 
-    chart_1.updateSeries([
-        {
-            "name": "e-week",
-            "data": series
-        },
-    ]);
-})
+
+// window.addEventListener("DOMContentLoaded", async function () {
+//     let series = await transformData_1();
+
+//     chart_1.updateSeries([
+//         {
+//             "name": "e-week",
+//             "data": series
+//         },
+//     ]);
+// })
+
 // Empty Charts
 
 // Empty Chart_1
