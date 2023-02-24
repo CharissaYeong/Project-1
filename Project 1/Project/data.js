@@ -1,7 +1,7 @@
-// Data
-
 // Data paths
 const weeklyPath = "https://charissayeong.github.io/Project-1/Project%201/Data/weekly.json" // Weekly infectious disease records
+
+let series_1 = []
 
 // Weekly data
 async function loadData() {
@@ -77,7 +77,7 @@ async function transformData_1_year() {
 
 async function transformData_1_yearView() {
     let data = await transformData_1_year();
-    let series_1_year = []
+    let series_1 = []
     let cases = 0;
     let total = 0;
 
@@ -89,42 +89,47 @@ async function transformData_1_yearView() {
             total = total + cases
         };
 
-        series_1_year.push({
+        series_1.push({
             'x': parseInt(key),
             'y': total
         })
 
         total = 0;
     }
-    return series_1_year
+    return series_1
 }
-
-transformData_1_yearView()
 
 // Chart update series 
 
-// Chart_1 all data
-window.addEventListener("DOMContentLoaded", async function() {
-    const series_1 = await transformData_1();
-    const series_1_year = await transformData_1_yearView();
-    // let series = []
+// Chart_1
 
-    // const weekRadio = document.getElementById('weekView');
-    // const yearRadio = document.getElementById('yearView');
+window.addEventListener("DOMContentLoaded", async function () {
+    // Weekly/yearly view radio buttons
+    let radioWeek = document.getElementById('weekView').checked;
+    console.log(radioWeek);
+    let radioYear = document.getElementById('yearView').checked;
+    console.log(radioYear);
+    let series_1 = []
 
-    // console.log(weekRadio.value)
-    // console.log(yearRadio.value)
+    if (radioWeek == true) {
+        console.log("week radio button is selected");
+        let series_1 = await transformData_1
+    } else if (radioYear == true) {
+        console.log("year radio button is selected");
+        let series_1 = await transformData_1_year
+    } else {
+        console.log("default")
+        let series_1 = await transformData_1
+    }
+
+    let series = series_1
+    // let series = await transformData_1_yearView();
 
     chart_1.updateSeries([
         {
             "name": "e-week",
-            "data": series_1
+            "data": series
         },
-
-        // {
-        //     "name": "year",
-        //     "data": series_1_year
-        // }
     ]);
 })
 // Empty Charts
@@ -136,7 +141,7 @@ const options_1 = {
         "height": "100%"
     },
     series: [{
-        name: 'e_week',
+        name: 'Dengue',
         type: 'area',
         data: []
     }
