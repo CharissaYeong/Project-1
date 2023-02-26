@@ -1,2 +1,1 @@
-// dengue_HF.checked = false
-
+console
