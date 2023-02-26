@@ -1,16 +1,58 @@
-[
-    {
-        "year": "2012-W01",
-        "quarter": "",
-        "epiweek": "",
-        "type": "Acute Viral hepatitis B",
-        "no_of_cases": "0",
-        "deaths": "",
-        "denv1": "",
-        "denv2": "",
-        "denv3": "",
-        "clusters": "",
-        "habitats": ""
-    }
-]
-
+{
+    "dengue": [
+        {
+            "id": 1,
+            "year": "2022",
+            "quarter": "Q1",
+            "month": "Jan-Mar",
+            "epiweek": "W1-W13",
+            "total_cases": "3335",
+            "dengue": "3,328",
+            "dengue_HF": "7",
+            "deaths": "1",
+            "clusters": 316,
+            "habitats": 5000,
+            "top5_home": [],
+            "top5_pub": []
+        },
+        {
+            "id": 2,
+            "year": "",
+            "quarter": "",
+            "month": "",
+            "epiweek": "",
+            "total_cases": "",
+            "dengue": "",
+            "dengue_HF": "",
+            "deaths": "",
+            "clusters": "",
+            "habitats": "",
+            "top5_home": ["Domestic Containers", "as"],
+            "top5_pub": []
+        }
+    ],
+    "serology": [
+        {
+            "id": 1,
+            "year": "2022",
+            "quarter": "Q1",
+            "month": "Jan",
+            "epiweek": "W1-13",
+            "denv1": 0.005,
+            "denv2": 0.405,
+            "denv3": 0.590,
+            "denv4": 0.0
+        },
+        {
+            "id": 2,
+            "year": "",
+            "quarter": "",
+            "month": "",
+            "epiweek": "",
+            "denv1": "",
+            "denv2": "",
+            "denv3": "",
+            "denv4": ""
+        }
+    ]
+}
