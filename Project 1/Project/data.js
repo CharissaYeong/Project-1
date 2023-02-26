@@ -1,7 +1,15 @@
 // Data paths
 const weeklyPath = "https://charissayeong.github.io/Project-1/Project%201/Data/weekly.json" // Weekly infectious disease records
 const rainyPath = "https://data.gov.sg/api/action/datastore_search?resource_id=8b94f596-91fd-4545-bf9e-7a426493b674&limit=493"
+const serology = "https://charissayeong.github.io/Project-1/Project%201/Data/dengue_serology.csv" // Weekly infectious disease records
 
+async function load_CSV(path) {
+        const response = await axios.get(path);
+        // console.log(response.data);
+        let json = await csv().fromString(response.data);
+        // console.log(json)
+        return json;
+}
 
 // Weekly data
 async function loadData(path) {
@@ -219,6 +227,21 @@ async function filter_by_year_hf(n) {
 // Chart_1 data end
 
 // Chart_2 data start
+
+async function transformData_2() {
+    let data = await load_CSV(serology);
+    let series_2 = []
+
+    for (let dataPoint of data) {
+        series_2.push({
+            'x': dataPoint['year'],
+            'y': dataPoint['total_cases']
+        })  
+    }
+    console.log(series_2)
+}
+
+transformData_2()
 // Chart_2 data end
 
 // Chart_3 data start
@@ -271,7 +294,7 @@ async function transformData_3_yearView() {
 
     for (let key of Object.keys(data)) {
         for (n of data[key]) {
-            console.log(n)
+            // console.log(n)
             cases = parseInt(n['no_of_rainy_days']);
             total = total + cases
         };
@@ -283,12 +306,9 @@ async function transformData_3_yearView() {
 
         total = 0;
     }
-    console.log(series_3)
+    // console.log(series_3)
     return series_3
 }
-
-transformData_3_yearView()
-
 
 // Chart_3 data end
 
