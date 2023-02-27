@@ -515,6 +515,47 @@ window.addEventListener("DOMContentLoaded", async function () {
     let week_btn = document.getElementById('weekView')
     let year_btn = document.getElementById('yearView')
 
+    let dengue_btn = document.getElementById('dengue');
+    let dengueHF_btn = document.getElementById('dengue_HF');
+
+    async function checkbox_dengue() {
+
+        if (dengue_btn.checked == true && dengueHF_btn.checked == false) {
+            data_year_hf = []
+            data_week_hf = []
+
+        } else if (dengue_btn.checked == false && dengueHF_btn.checked == true) {
+            data_year = []
+            data_week = []
+        } else if (dengue_btn.checked == false && dengueHF_btn.checked == false) {
+            data_year = []
+            data_week = []
+            data_week_hf = []
+            data_year_hf = []
+        }
+    }
+
+    async function get_data() {
+        let data_week = await transformData_1();
+        let data_year = await transformData_1_yearView();
+        let data_week_hf = await transformData_1_hf();
+        let data_year_hf = await transformData_1_yearView_hf();
+    }
+
+    async function update_series(a, b) {
+
+        chart_1.updateSeries([
+            {
+                "name": "Dengue",
+                "data": a
+            },
+            {
+                "name": "Dengue_HF",
+                "data": b
+            }
+        ])
+    }
+
     async function update_week() {
         let data1 = data_week;
         let data2 = data_week_hf
@@ -557,21 +598,20 @@ window.addEventListener("DOMContentLoaded", async function () {
         if (year > 2022) {
             update_year()
         } else {
-            chart_1.updateSeries([
-                {
-                    "name": "Dengue",
-                    "data": data1
-                },
-                {
-                    "name": "Dengue_HF",
-                    "data": data2
-                }
-            ])
+            if (dengue_btn.checked == true && dengueHF_btn.checked == false) {
+                data2 = []
+                update_series(data1, data2)
+            } else if (dengue_btn.checked == false && dengueHF_btn.checked == true) {
+                update_series(data1, data2)
+                data1 = []
+                update_series(data1, data2)
+            } else if (dengue_btn.checked == false && dengueHF_btn.checked == false) {
+                data1 = [];
+                data2 = []
+            } else {
+                year_filter()
+            }
         }
-    }
-
-    async function dengue_filter() {
-        
     }
 
     update_year()
@@ -582,9 +622,21 @@ window.addEventListener("DOMContentLoaded", async function () {
 
         if (week_btn.checked == true) {
             update_week()
-        } else if (year_btn.checked == true) {
-            update_year()
-        }
+            checkbox_dengue()
+            update_series(data_week, data_week_hf)
+            get_data()
+        } 
+        
+        // else if (year_btn.checked == true) {
+        //     checkbox_dengue()
+        //     update_year(data_year, data_year_hf)
+        // }
+
+        // if (week_btn.checked == true) {
+        //     update_week()
+        // } else if (year_btn.checked == true) {
+        //     update_year()
+        // }
 
     });
 
@@ -592,11 +644,23 @@ window.addEventListener("DOMContentLoaded", async function () {
         yearRange.value = '2023';
         year_label.innerHTML = ''
 
-        if (week_btn.checked == true) {
-            update_week()
-        } else if (year_btn.checked == true) {
+        if (year_btn.checked == true) {
             update_year()
-        }
+            checkbox_dengue()
+            update_series(data_year, data_year_hf)
+            get_data()
+        } 
+        
+        // else if (week_btn.checked == true) {
+        //     checkbox_dengue()
+        //     update_year(data_week, data_week_hf)
+        // }
+
+        // if (week_btn.checked == true) {
+        //     update_week()
+        // } else if (year_btn.checked == true) {
+        //     update_year()
+        // }
 
     });
 
