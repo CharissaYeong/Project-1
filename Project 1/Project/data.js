@@ -3,14 +3,6 @@ const weeklyPath = "https://charissayeong.github.io/Project-1/Project%201/Data/w
 const rainyPath = "https://data.gov.sg/api/action/datastore_search?resource_id=8b94f596-91fd-4545-bf9e-7a426493b674&limit=493"
 const serology = "https://charissayeong.github.io/Project-1/Project%201/Data/dengue_serology.csv" // Weekly infectious disease records
 
-async function load_CSV(path) {
-        const response = await axios.get(path);
-        // console.log(response.data);
-        let json = await csv().fromString(response.data);
-        // console.log(json)
-        return json;
-}
-
 // Weekly data
 async function loadData(path) {
     const response = await axios.get(path);
@@ -226,23 +218,71 @@ async function filter_by_year_hf(n) {
 }
 // Chart_1 data end
 
-// Chart_2 data start
+// CSV data
 
-async function transformData_2() {
-    let data = await load_CSV(serology);
-    let series_2 = []
-
-    for (let dataPoint of data) {
-        series_2.push({
-            'x': dataPoint['year'],
-            'y': dataPoint['total_cases']
-        })  
-    }
-    console.log(series_2)
+async function load_CSV(path) {
+    const response = await axios.get(path);
+    // console.log(response.data);
+    let json = await csv().fromString(response.data);
+    // console.log(json)
+    return json;
 }
 
-transformData_2()
+async function transformCSV_year(path) {
+        let data = await load_CSV(path);
+    
+        // Group Data into years
+        let years = {
+            "2018": [],
+            "2019": [],
+            "2020": [],
+            "2021": [],
+            "2022": []
+        }
+    
+        for (let dataPoint of data) {
+            // find the year number that the data point is in
+            let yr = dataPoint['year'];
+    
+            // add the data point to that year's container (i.e array)
+                years[yr].push(dataPoint);
+        };
+        console.log(years)
+        return years
+}
+
+async function CSV_filter_by_year(path) {
+    let data = await transformCSV_year(path);
+    let series_2 = []
+
+    for (let key of Object.keys(data)) {
+        for (n of data[key]) {
+            console.log(key)
+    }
+    console.log(series_2)
+    return series_2
+    }
+}
+
+CSV_filter_by_year(serology)
+
+// Chart_2 data start
+// async function transformData_2() {
+//     let data = await load_CSV(serology);
+//     let series_2 = []
+
+//     for (let dataPoint of data) {
+//         series_2.push({
+//             'x': dataPoint['year'],
+//             'y': dataPoint['total_cases']
+//         })  
+//     }
+//     console.log(series_2)
+// }
+
+
 // Chart_2 data end
+
 
 // Chart_3 data start
 
