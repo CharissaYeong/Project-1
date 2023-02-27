@@ -9,6 +9,11 @@ async function loadData(path) {
     return response.data
 }
 
+async function swap_axis(a, b) {
+    
+
+}
+
 // Chart 1 data start
 async function transformData_1() {
 
@@ -79,8 +84,6 @@ async function transformData_1_yearView() {
     let cases = 0;
     let total = 0;
     let series_1 = []
-
-    // extract each month from the `months` object
 
     for (let key of Object.keys(data)) {
         for (n of data[key]) {
@@ -534,18 +537,13 @@ window.addEventListener("DOMContentLoaded", async function () {
     let year_label = document.getElementById('year_label')
     let clear_btn = document.getElementById('clear_1')
     let clear_btn_year = document.getElementById('clear_1_year')
-    let weekRadio = document.getElementById('weekView').checked;
-    let yearRadio = document.getElementById('yearView').checked;
     let week_btn = document.getElementById('weekView')
     let year_btn = document.getElementById('yearView')
 
     let dengue_btn = document.getElementById('dengue');
     let dengueHF_btn = document.getElementById('dengue_HF');
-    let dengue_check = document.getElementById('dengue').checked;
-    let dengueHF_check = document.getElementById('dengue_HF').checked;
 
     async function checkbox_dengue(data1, data2) {
-        // console.log(dengue_check, dengueHF_check)
 
         if (dengue_btn.checked == true && dengueHF_btn.checked == false) {
             console.log('dengue')
@@ -682,8 +680,6 @@ window.addEventListener("DOMContentLoaded", async function () {
     });
 
     dengueHF_btn.addEventListener("click", async function () {
-
-        console.log(dengueHF_check)
 
         if (yearRange.value <= 2022) {
             let year = yearRange.value;
