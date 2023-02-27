@@ -229,26 +229,26 @@ async function load_CSV(path) {
 }
 
 async function transformCSV_year(path) {
-        let data = await load_CSV(path);
-    
-        // Group Data into years
-        let years = {
-            "2018": [],
-            "2019": [],
-            "2020": [],
-            "2021": [],
-            "2022": []
-        }
-    
-        for (let dataPoint of data) {
-            // find the year number that the data point is in
-            let yr = dataPoint['year'];
-    
-            // add the data point to that year's container (i.e array)
-                years[yr].push(dataPoint);
-        };
-        console.log(years)
-        return years
+    let data = await load_CSV(path);
+
+    // Group Data into years
+    let years = {
+        "2018": [],
+        "2019": [],
+        "2020": [],
+        "2021": [],
+        "2022": []
+    }
+
+    for (let dataPoint of data) {
+        // find the year number that the data point is in
+        let yr = dataPoint['year'];
+
+        // add the data point to that year's container (i.e array)
+        years[yr].push(dataPoint);
+    };
+    console.log(years)
+    return years
 }
 
 async function CSV_filter_by_year(path) {
@@ -258,33 +258,12 @@ async function CSV_filter_by_year(path) {
     for (let key of Object.keys(data)) {
         for (n of data[key]) {
             console.log(key)
-    }
-    console.log(series_2)
-    return series_2
+        }
+        console.log(series_2)
+        return series_2
     }
 }
 
-CSV_filter_by_year(serology)
-
-// Chart_2 data start
-// async function transformData_2() {
-//     let data = await load_CSV(serology);
-//     let series_2 = []
-
-//     for (let dataPoint of data) {
-//         series_2.push({
-//             'x': dataPoint['year'],
-//             'y': dataPoint['total_cases']
-//         })  
-//     }
-//     console.log(series_2)
-// }
-
-
-// Chart_2 data end
-
-
-// Chart_3 data start
 
 async function transformData_3() {
 
@@ -358,46 +337,46 @@ async function transformData_3_yearView() {
 
 const options_1 = {
     series: [{
-    name: 'Dengue',
-    type: 'area',
-    data: []
-  }, {
-    name: 'Degue_HF',
-    type: 'column',
-    data: []
-  }
-],
+        name: 'Dengue',
+        type: 'area',
+        data: []
+    }, {
+        name: 'Degue_HF',
+        type: 'column',
+        data: []
+    }
+    ],
     chart: {
-    height: '100%',
-    type: 'line',
-    stacked: false,
-  },
-  stroke: {
-    width: [4, 1],
-    curve: 'smooth'
-  },
-  plotOptions: {
-    bar: {
-      columnWidth: '50%'
-    }
-  },
-  
-  fill: {
-    opacity: [0.8, 0.35],
-    gradient: {
-      inverseColors: false,
-      shade: 'light',
-      type: "vertical",
-      opacityFrom: 0.85,
-      opacityTo: 0.55,
-      stops: [0, 100, 100, 100]
-    }
-  },
-  labels: [
-  ],
-  markers: {
-    size: 0
-  },
+        height: '100%',
+        type: 'line',
+        stacked: false,
+    },
+    stroke: {
+        width: [4, 1],
+        curve: 'smooth'
+    },
+    plotOptions: {
+        bar: {
+            columnWidth: '50%'
+        }
+    },
+
+    fill: {
+        opacity: [0.8, 0.35],
+        gradient: {
+            inverseColors: false,
+            shade: 'light',
+            type: "vertical",
+            opacityFrom: 0.85,
+            opacityTo: 0.55,
+            stops: [0, 100, 100, 100]
+        }
+    },
+    labels: [
+    ],
+    markers: {
+        size: 0
+    },
 
     yaxis: [
         {
@@ -414,15 +393,15 @@ const options_1 = {
 
         }
     ],
-  tooltip: {
-    shared: true,
-    intersect: false,
-  },
+    tooltip: {
+        shared: true,
+        intersect: false,
+    },
     theme: {
         palette: 'palette6' // upto palette10
     },
-  
-  };
+
+};
 
 const chart_1 = new ApexCharts(
     document.querySelector("#chart_1"),
@@ -473,44 +452,44 @@ const options_3 = {
         name: 'Rainy_days',
         type: 'area',
         data: []
-      }, {
+    }, {
         name: 'Dengue_cases',
         type: 'line',
         data: []
-      }],
-        chart: {
+    }],
+    chart: {
         height: '100%',
         type: 'line'
-      },
-      stroke: {
+    },
+    stroke: {
         curve: 'smooth'
-      },
-      fill: {
-        type:'solid',
+    },
+    fill: {
+        type: 'solid',
         opacity: [0.35, 1],
-      },
-      labels: [],
-      markers: {
+    },
+    labels: [],
+    markers: {
         size: 0
-      },
-      yaxis: [
+    },
+    yaxis: [
         {
-          title: {
-            text: 'Number of rainy days',
-          },
+            title: {
+                text: 'Number of rainy days',
+            },
         },
         {
-          opposite: true,
-          title: {
-            text: 'Dengue cases',
-          },
+            opposite: true,
+            title: {
+                text: 'Dengue cases',
+            },
         },
-      ],
-      tooltip: {
+    ],
+    tooltip: {
         shared: true,
         intersect: false,
-      },
-      theme: {
+    },
+    theme: {
         palette: 'palette6' // upto palette10
     }
 
@@ -533,206 +512,113 @@ window.addEventListener("DOMContentLoaded", async function () {
     let yearRange = document.getElementById('yearRange')
     let year_label = document.getElementById('year_label')
     let clear_btn = document.getElementById('clear_1')
-    let clear_btn_year = document.getElementById('clear_1_year')
-    let weekRadio = document.getElementById('weekView').checked;
-    let yearRadio = document.getElementById('yearView').checked;
     let week_btn = document.getElementById('weekView')
     let year_btn = document.getElementById('yearView')
 
-    let dengue_btn = document.getElementById('dengue');
-    let dengueHF_btn = document.getElementById('dengue_HF');
-    let dengue_check = document.getElementById('dengue').checked;
-    let dengueHF_check = document.getElementById('dengue_HF').checked;
+    async function update_week() {
+        let data1 = data_week;
+        let data2 = data_week_hf
 
-    async function checkbox_dengue(data1, data2) {
-        // console.log(dengue_check, dengueHF_check)
+        chart_1.updateSeries([
+            {
+                "name": "Dengue",
+                "data": data1
+            },
+            {
+                "name": "Dengue_HF",
+                "data": data2
+            }
+        ])
+    }
 
-        if (dengue_btn.checked == true && dengueHF_btn.checked == false) {
-            console.log('dengue')
+    async function update_year() {
+        let data1 = data_year;
+        let data2 = data_year_hf
+
+        chart_1.updateSeries([
+            {
+                "name": "Dengue",
+                "data": data1
+            },
+            {
+                "name": "Dengue_HF",
+                "data": data2
+            }
+        ])
+    }
+
+    async function year_filter() {
+        let year = yearRange.value;
+        year_label.innerHTML = year;
+
+        let data1 = await filter_by_year(year);
+        let data2 = await filter_by_year_hf(year);
+
+        if (year > 2022) {
+            update_year()
+        } else {
             chart_1.updateSeries([
                 {
                     "name": "Dengue",
                     "data": data1
-                },
-                {
-                    "name": "Dengue_HF",
-                    "data": []
-                }
-            ]);
-        } else if (dengue_btn.checked == false && dengueHF_btn.checked == true) {
-            console.log('HF')
-            chart_1.updateSeries([
-                {
-                    "name": "Dengue",
-                    "data": data1
-                },
-                {
-                    "name": "Dengue_HF",
-                    "data": data2
-                }
-            ]);
-            chart_1.updateSeries([
-                {
-                    "name": "Dengue",
-                    "data": []
                 },
                 {
                     "name": "Dengue_HF",
                     "data": data2
                 }
             ])
-        } else if (dengue_btn.checked == true && dengueHF_btn.checked == true) {
-            console.log('dengue and HF')
-            chart_1.updateSeries([
-                {
-                    "name": "Dengue",
-                    "data": data1
-                },
-                {
-                    "name": "Dengue_HF",
-                    "data": data2
-                }
-            ]);
-        } else if (dengue_btn.checked == false && dengueHF_btn.checked == false) {
-            console.log('nothing')
-            chart_1.updateSeries([
-                {
-                    "name": "Dengue",
-                    "data": []
-                },
-                {
-                    "name": "Dengue_HF",
-                    "data": []
-                }
-            ]);
         }
     }
 
-    checkbox_dengue(data_year, data_year_hf)
+    async function dengue_filter() {
+        
+    }
 
-    const weekBtn = document.getElementById('weekView');
-    const yearBtn = document.getElementById('yearView');
+    update_year()
 
-    weekBtn.addEventListener("click", function () {
+    week_btn.addEventListener("click", async function () {
         yearRange.value = '2023';
         year_label.innerHTML = ''
-        // let weekRadio = document.getElementById('weekView').checked;
-        yearRange.value = '2023';
-        year_label.innerHTML = ''
 
-        if (weekBtn.checked == true) {
-            console.log('week selected');
-            checkbox_dengue(data_week, data_week_hf)
-
+        if (week_btn.checked == true) {
+            update_week()
+        } else if (year_btn.checked == true) {
+            update_year()
         }
-    })
 
-    yearBtn.addEventListener("click", function () {
-        yearRange.value = '2023';
-        year_label.innerHTML = ''
-        let yearRadio = document.getElementById('yearView').checked;
-        year_label.innerHTML = ''
-
-        if (yearRadio == true) {
-            console.log('year selected');
-            checkbox_dengue(data_year, data_year_hf)
-
-        }
     });
 
+    year_btn.addEventListener("click", async function () {
+        yearRange.value = '2023';
+        year_label.innerHTML = ''
 
+        if (week_btn.checked == true) {
+            update_week()
+        } else if (year_btn.checked == true) {
+            update_year()
+        }
+
+    });
 
     yearRange.addEventListener("input", async function () {
-        yearView.checked = true;
-        weekView.checked = false;
-        let year = yearRange.value;
-        year_label.innerHTML = year;
-        let data_year_select = await filter_by_year(year);
-        let data_year_select_hf = await filter_by_year_hf(year);
+        year_btn.checked = false;
+        week_btn.checked = false;
 
-        if (year > 2022) {
-            checkbox_dengue(data_year, data_year_hf)
-        } else {
-            checkbox_dengue(data_year_select, data_year_select_hf)
-        }
-
-
-
+        year_filter()
 
     });
-
-    dengue_btn.addEventListener("click", async function () {
-
-        if (yearRange.value <= 2022) {
-            let year = yearRange.value;
-            year_label.innerHTML = year;
-            let data_year_select = await filter_by_year(year);
-            let data_year_select_hf = await filter_by_year_hf(year);
-            checkbox_dengue(data_year_select, data_year_select_hf)
-        } else if (yearRange.value > 2022) {
-            console.log(yearBtn.checked)
-            if (year_btn.checked == true) {
-                checkbox_dengue(data_year, data_year_hf)
-                console.log('year')
-            } else if (week_btn.checked == true) {
-                checkbox_dengue(data_week, data_week_hf)
-                console.log('week')
-            }
-        }
-    });
-
-    dengueHF_btn.addEventListener("click", async function () {
-
-        console.log(dengueHF_check)
-
-        if (yearRange.value <= 2022) {
-            let year = yearRange.value;
-            year_label.innerHTML = year;
-            let data_year_select = await filter_by_year(year);
-            let data_year_select_hf = await filter_by_year_hf(year);
-            checkbox_dengue(data_year_select, data_year_select_hf)
-        } else if (yearRange.value > 2022) {
-            if (year_btn.checked == true) {
-                checkbox_dengue(data_year, data_year_hf)
-                console.log('year')
-            } else if (week_btn.checked == true) {
-                checkbox_dengue(data_week, data_week_hf)
-                console.log('week')
-            }
-        }
-    })
 
     clear_btn.addEventListener("click", async function () {
-
-        yearView.checked = true;
-        weekView.checked = false;
-        dengueHF_btn.checked = true;
-        dengue_btn.checked = true;
-        yearRange.value = '2023';
-        year_label.innerHTML = ''
-
-        chart_1.updateSeries([
-            {
-                "name": "Dengue",
-                "data": data_year
-            },
-            {
-                "name": "Dengue_HF",
-                "data": data_year_hf
-            }
-        ])
-
-    });
-
-    clear_btn_year.addEventListener("click", async function () {
         yearView.checked = true;
         weekView.checked = false;
         yearRange.value = '2023';
         year_label.innerHTML = ''
-        checkbox_dengue(data_year, data_year_hf)
+
+        update_year()
 
     });
 })
+
 
 // Chart_2A update
 
@@ -751,3 +637,4 @@ window.addEventListener("DOMContentLoaded", async function () {
         },
     ]);
 })
+
