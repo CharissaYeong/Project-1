@@ -1,17 +1,14 @@
 // Data paths
 const weeklyPath = "https://charissayeong.github.io/Project-1/Project%201/Data/weekly.json" // Weekly infectious disease records
-const rainyPath = "https://data.gov.sg/api/action/datastore_search?resource_id=8b94f596-91fd-4545-bf9e-7a426493b674&limit=493"
-const serology = "https://charissayeong.github.io/Project-1/Project%201/Data/dengue_serology.csv" // Weekly infectious disease records
+const quarterlyPath = "https://charissayeong.github.io/Project-1/Project%201/Data/quarterly_cases.csv"
+const serology = "https://charissayeong.github.io/Project-1/Project%201/Data/dengue_serology.csv" // Dengue serotype distribution
+const habitats = "https://charissayeong.github.io/Project-1/Project%201/Data/breeding_habitats_year.csv" // Mosquito breeding habitats
+const rainyPath = "https://data.gov.sg/api/action/datastore_search?resource_id=8b94f596-91fd-4545-bf9e-7a426493b674&limit=493" // Number of rainy days
 
 // Weekly data
 async function loadData(path) {
     const response = await axios.get(path);
     return response.data
-}
-
-async function swap_axis(a, b) {
-    
-
 }
 
 // Chart 1 data start
@@ -232,42 +229,54 @@ async function load_CSV(path) {
 }
 
 async function transformCSV_year(path) {
-        let data = await load_CSV(path);
-    
-        // Group Data into years
-        let years = {
-            "2018": [],
-            "2019": [],
-            "2020": [],
-            "2021": [],
-            "2022": []
-        }
-    
-        for (let dataPoint of data) {
-            // find the year number that the data point is in
-            let yr = dataPoint['year'];
-    
-            // add the data point to that year's container (i.e array)
-                years[yr].push(dataPoint);
-        };
-        console.log(years)
-        return years
+    let data = await load_CSV(path);
+
+    // Group Data into years
+    let years = {
+        "2018": [],
+        "2019": [],
+        "2020": [],
+        "2021": [],
+        "2022": []
+    }
+
+    for (let dataPoint of data) {
+        // find the year number that the data point is in
+        let yr = dataPoint['year'];
+
+        // add the data point to that year's container (i.e array)
+        years[yr].push(dataPoint);
+    };
+    console.log(years)
+    return years
 }
 
-async function CSV_filter_by_year(path) {
+async function CSV_year_view(path, param) {
     let data = await transformCSV_year(path);
     let series_2 = []
+    let cases = 0;
+    let total = parseFloat(0);
 
     for (let key of Object.keys(data)) {
         for (n of data[key]) {
-            console.log(key)
+            cases = parseFloat(n[param]);
+            total = total + cases
+        };
+
+        series_2.push({
+            'x': parseInt(key),
+            'y': parseFloat(total).toFixed(1)
+        })
+
+        total = parseFloat(0);
     }
+
+        
     console.log(series_2)
     return series_2
-    }
 }
 
-CSV_filter_by_year(serology)
+CSV_year_view(serology, 'denv_1')
 
 // Chart_2 data start
 // async function transformData_2() {
@@ -361,46 +370,46 @@ async function transformData_3_yearView() {
 
 const options_1 = {
     series: [{
-    name: 'Dengue',
-    type: 'area',
-    data: []
-  }, {
-    name: 'Degue_HF',
-    type: 'column',
-    data: []
-  }
-],
+        name: 'Dengue',
+        type: 'area',
+        data: []
+    }, {
+        name: 'Degue_HF',
+        type: 'column',
+        data: []
+    }
+    ],
     chart: {
-    height: '100%',
-    type: 'line',
-    stacked: false,
-  },
-  stroke: {
-    width: [4, 1],
-    curve: 'smooth'
-  },
-  plotOptions: {
-    bar: {
-      columnWidth: '50%'
-    }
-  },
-  
-  fill: {
-    opacity: [0.8, 0.35],
-    gradient: {
-      inverseColors: false,
-      shade: 'light',
-      type: "vertical",
-      opacityFrom: 0.85,
-      opacityTo: 0.55,
-      stops: [0, 100, 100, 100]
-    }
-  },
-  labels: [
-  ],
-  markers: {
-    size: 0
-  },
+        height: '100%',
+        type: 'line',
+        stacked: false,
+    },
+    stroke: {
+        width: [4, 1],
+        curve: 'smooth'
+    },
+    plotOptions: {
+        bar: {
+            columnWidth: '50%'
+        }
+    },
+
+    fill: {
+        opacity: [0.8, 0.35],
+        gradient: {
+            inverseColors: false,
+            shade: 'light',
+            type: "vertical",
+            opacityFrom: 0.85,
+            opacityTo: 0.55,
+            stops: [0, 100, 100, 100]
+        }
+    },
+    labels: [
+    ],
+    markers: {
+        size: 0
+    },
 
     yaxis: [
         {
@@ -417,15 +426,15 @@ const options_1 = {
 
         }
     ],
-  tooltip: {
-    shared: true,
-    intersect: false,
-  },
+    tooltip: {
+        shared: true,
+        intersect: false,
+    },
     theme: {
         palette: 'palette6' // upto palette10
     },
-  
-  };
+
+};
 
 const chart_1 = new ApexCharts(
     document.querySelector("#chart_1"),
@@ -476,44 +485,44 @@ const options_3 = {
         name: 'Rainy_days',
         type: 'area',
         data: []
-      }, {
+    }, {
         name: 'Dengue_cases',
         type: 'line',
         data: []
-      }],
-        chart: {
+    }],
+    chart: {
         height: '100%',
         type: 'line'
-      },
-      stroke: {
+    },
+    stroke: {
         curve: 'smooth'
-      },
-      fill: {
-        type:'solid',
+    },
+    fill: {
+        type: 'solid',
         opacity: [0.35, 1],
-      },
-      labels: [],
-      markers: {
+    },
+    labels: [],
+    markers: {
         size: 0
-      },
-      yaxis: [
+    },
+    yaxis: [
         {
-          title: {
-            text: 'Number of rainy days',
-          },
+            title: {
+                text: 'Number of rainy days',
+            },
         },
         {
-          opposite: true,
-          title: {
-            text: 'Dengue cases',
-          },
+            opposite: true,
+            title: {
+                text: 'Dengue cases',
+            },
         },
-      ],
-      tooltip: {
+    ],
+    tooltip: {
         shared: true,
         intersect: false,
-      },
-      theme: {
+    },
+    theme: {
         palette: 'palette6' // upto palette10
     }
 
