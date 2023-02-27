@@ -11,6 +11,10 @@ async function loadData(path) {
     return response.data
 }
 
+// Test chart
+
+//   Test chart end
+
 // Chart 1 data start
 async function transformData_1() {
 
@@ -271,29 +275,30 @@ async function CSV_year_view(path, param) {
         total = parseFloat(0);
     }
 
-        
+
     console.log(series_2)
     return series_2
 }
 
-CSV_year_view(serology, 'denv_1')
+// Chart_2A data start
 
-// Chart_2 data start
-// async function transformData_2() {
-//     let data = await load_CSV(serology);
-//     let series_2 = []
+async function denv_year(path, param) {
+    let data = await CSV_year_view(path, param);
+    let denv_series = []
 
-//     for (let dataPoint of data) {
-//         series_2.push({
-//             'x': dataPoint['year'],
-//             'y': dataPoint['total_cases']
-//         })  
-//     }
-//     console.log(series_2)
-// }
+    for (let n of data) {
+        let denv_percent = parseInt((n['y'] / 4))
+        denv_series.push(denv_percent)
+    }
+    console.log(denv_series)
+    return denv_series
+}
 
+async function denv_q(path, param) {
+    
+}
 
-// Chart_2 data end
+// Chart_2A data end
 
 
 // Chart_3 data start
@@ -444,16 +449,61 @@ chart_1.render();
 
 // Empty Chart_2A
 const options_2A = {
-    "chart": {
-        "type": "line",
-        "height": "100%"
-    },
-    series: [],
+    series: [{
+        name: 'DENV_1',
+        data: []
+    }, {
+        name: 'DENV_2',
+        data: []
+    }, {
+        name: 'DENV_3',
+        data: []
+    }, {
+        name: 'DENV_4',
+        data: []
+    }],
     noData: {
-        "text": "loading"
-    }
+        "text": "Loading..."
+    },
+    chart: {
+        type: 'bar',
+        height: '100%',
+        stacked: true,
+        stackType: '100%'
+    },
+    plotOptions: {
+        bar: {
+            horizontal: true,
+        },
+    },
+    stroke: {
+        width: 1,
+        colors: ['#fff']
+    },
+    title: {
+        text: ''
+    },
+    xaxis: {
+        categories: [2018, 2019, 2020, 2021, 2022]
+    },
+    tooltip: {
+        y: {
+            formatter: function (val) {
+                return val + ' cases'
+            }
+        }
+    },
+    fill: {
+        opacity: 1
 
-}
+    },
+    legend: {
+        position: 'top',
+        horizontalAlign: 'left',
+        offsetX: 40
+    }
+};
+
 const chart_2A = new ApexCharts(
     document.querySelector("#chart_2A"),
     options_2A
@@ -468,7 +518,7 @@ const options_2B = {
     },
     series: [],  // look ma, no data!!
     noData: {
-        "text": "loading"
+        "text": "Loading..."
     }
 
 }
@@ -532,6 +582,22 @@ const chart_3 = new ApexCharts(
     options_3
 );
 chart_3.render();
+
+const options_test = {
+    "chart": {
+        "type": "line",
+        "height": "100%"
+    },
+    series: [],  // look ma, no data!!
+    noData: {
+        "text": "loading"
+    }
+}
+const chart_test = new ApexCharts(
+    document.querySelector("#test"),
+    options_2B
+);
+chart_test.render();
 
 // Charts series update
 
@@ -662,10 +728,6 @@ window.addEventListener("DOMContentLoaded", async function () {
         } else {
             checkbox_dengue(data_year_select, data_year_select_hf)
         }
-
-
-
-
     });
 
     dengue_btn.addEventListener("click", async function () {
@@ -740,6 +802,34 @@ window.addEventListener("DOMContentLoaded", async function () {
 })
 
 // Chart_2A update
+
+window.addEventListener("DOMContentLoaded", async function () {
+
+    let data1 = await denv_year(serology, 'denv_1_cases')
+    let data2 = await denv_year(serology, 'denv_2_cases')
+    let data3 = await denv_year(serology, 'denv_3_cases')
+    let data4 = await denv_year(serology, 'denv_4_cases')
+
+    chart_2A.updateSeries([
+        {
+            "name": "DENV_1",
+            "data": data1
+        },
+        {
+            "name": "DENV_2",
+            "data": data2
+        },
+        {
+            "name": "DENV_3",
+            "data": data3
+        },
+        {
+            "name": "DENV_4",
+            "data": data4
+        },
+    ]);
+})
+
 
 // Chart_3 update
 window.addEventListener("DOMContentLoaded", async function () {
