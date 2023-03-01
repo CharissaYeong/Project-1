@@ -223,7 +223,6 @@ async function filter_by_year_hf(n) {
 // Chart_1 data end
 
 // CSV data
-
 async function load_CSV(path) {
     const response = await axios.get(path);
     // console.log(response.data);
@@ -231,75 +230,164 @@ async function load_CSV(path) {
     // console.log(json)
     return json;
 }
+// async function transformCSV_year(path) {
+//     let data = await load_CSV(path);
 
-async function transformCSV_year(path) {
+//     // Group Data into years
+//     let years = {
+//         "2018": [],
+//         "2019": [],
+//         "2020": [],
+//         "2021": [],
+//         "2022": []
+//     }
+
+//     for (let dataPoint of data) {
+//         // find the year number that the data point is in
+//         let yr = dataPoint['year'];
+
+//         // add the data point to that year's container (i.e array)
+//         years[yr].push(dataPoint);
+//     };
+//     // console.log(years)
+//     return years
+// }
+// async function CSV_year_view(path, param) {
+//     let data = await transformCSV_year(path);
+//     let series_2 = []
+//     let cases = 0;
+//     let total = parseFloat(0);
+
+//     for (let key of Object.keys(data)) {
+//         for (n of data[key]) {
+//             cases = parseFloat(n[param]);
+//             total = total + cases
+//         };
+
+//         series_2.push({
+//             'x': parseInt(key),
+//             'y': parseFloat(total)
+//         })
+
+//         total = parseInt(0);
+//     }
+
+
+//     // console.log(series_2)
+//     return series_2
+// }
+
+async function CSV_year_view(path, param, year) {
     let data = await load_CSV(path);
+    let series_csv = []
+    let total = 0
+    let cases = 0
 
-    // Group Data into years
-    let years = {
-        "2018": [],
-        "2019": [],
-        "2020": [],
-        "2021": [],
-        "2022": []
+    let years = year
+
+    if (years == 'all') {
+        years = [2018, 2019, 2020, 2021, 2022]
     }
 
-    for (let dataPoint of data) {
-        // find the year number that the data point is in
-        let yr = dataPoint['year'];
-
-        // add the data point to that year's container (i.e array)
-        years[yr].push(dataPoint);
-    };
-    console.log(years)
-    return years
-}
-
-async function CSV_year_view(path, param) {
-    let data = await transformCSV_year(path);
-    let series_2 = []
-    let cases = 0;
-    let total = parseFloat(0);
-
-    for (let key of Object.keys(data)) {
-        for (n of data[key]) {
-            cases = parseFloat(n[param]);
-            total = total + cases
-        };
-
-        series_2.push({
-            'x': parseInt(key),
-            'y': parseFloat(total).toFixed(1)
+    years.forEach(function (item) {
+        data.forEach(function (dataPoint) {
+            let yr = dataPoint['year'];
+            if (yr.includes(item)) {
+                // console.log(dataPoint)
+                cases = parseFloat(dataPoint[param]);
+                total = total + cases;
+            }
+        });
+        series_csv.push({
+            'x': item,
+            'y': parseInt(total)
         })
-
-        total = parseFloat(0);
-    }
-
-
-    console.log(series_2)
-    return series_2
+        total = 0;
+    });
+    // console.log(series_csv)
+    return series_csv
 }
 
-// Chart_2A data start
+async function CSV_q_view(path, param, year, quarter) {
+    let data = await load_CSV(path)
+    let series_csv = []
+    let years = year
+    let Q = quarter
 
-async function denv_year(path, param) {
-    let data = await CSV_year_view(path, param);
+    if (Q == 'all') {
+        Q = ['Q1', 'Q2', 'Q3', 'Q4']
+    }
+
+    if (years == 'all') {
+        years = [2018, 2019, 2020, 2021, 2022]
+    }
+
+    years.forEach(function (item) {
+        data.forEach(function (dataPoint) {
+            let yr = dataPoint['year'];
+            let q = dataPoint['quarter'];
+            let q_num = q.slice(-2);
+            if (yr.includes(item) && Q.includes(q_num)) {
+                series_csv.push({
+                    'x': yr + ' ' + dataPoint['quarter'],
+                    'y': dataPoint[param]
+                })
+            }
+        });
+
+    });
+
+    console.log(series_csv)
+    return series_csv
+}
+
+// Chart_2 data
+async function denv_year(param, year) {
+    let data = await CSV_year_view(serology, param, year);
     let denv_series = []
 
     for (let n of data) {
-        let denv_percent = parseInt((n['y'] / 4))
-        denv_series.push(denv_percent)
+        denv_series.push(n['y'])
     }
+    return denv_series
+}
+
+async function denv_q(year, quarter) {
+
+    let data1 = await CSV_q_view(serology, 'denv_1', year, quarter);
+    let data2 = await CSV_q_view(serology, 'denv_2', year, quarter);
+    let data3 = await CSV_q_view(serology, 'denv_3', year, quarter);
+    let data4 = await CSV_q_view(serology, 'denv_4', year, quarter);
+
+    let denv_series = []
+
+    for (let n of data1) {
+        denv_series.push(parseFloat(n['y']))
+    }
+
+    for (let n of data2) {
+        denv_series.push(parseFloat(n['y']))
+    }
+
+    for (let n of data3) {
+        denv_series.push(parseFloat(n['y']))
+    }
+    for (let n of data4) {
+        denv_series.push(parseFloat(n['y']))
+    }
+
+    // denv_series = denv_series.toString()
     console.log(denv_series)
     return denv_series
 }
 
-async function denv_q(path, param) {
-    
+// Chart_Map data
+async function map(year) {
+    let data = await CSV_year_view(habitats, 'habitat', year)
+    console.log(data)
 }
 
-// Chart_2A data end
-
+map('all')
 
 // Chart_3 data start
 
@@ -308,8 +396,6 @@ async function transformData_3() {
     let data = await loadData(rainyPath);
     data = data.result.records
     // console.log(data)
-
-    let series_3 = []
 
     let years = {
         "2012": [],
@@ -328,7 +414,6 @@ async function transformData_3() {
     for (let dataPoint of data) {
         // find the year number that the data point is in
         let date = dataPoint.month;
-        let yearNum = date.slice(0, 4);
 
         // add the data point to that year's container (i.e array)
         for (let yearNum in years) {
@@ -367,12 +452,77 @@ async function transformData_3_yearView() {
     return series_3
 }
 
-// Chart_3 data end
+// Chart_sync data start
 
-// Empty Charts
+// Chart_sync1
+async function transformData_rain_year() {
+
+    let data = await loadData(rainyPath);
+    data = data.result.records
+    // console.log(data)
+
+    let years = {
+        "2018": [],
+        "2019": [],
+        "2020": [],
+        "2021": [],
+        "2022": []
+    };
+
+    for (let dataPoint of data) {
+        let date = dataPoint.month;
+
+        for (let yearNum in years) {
+            if (date.includes(yearNum)) {
+                years[yearNum].push(dataPoint)
+            }
+        }
+    };
+    // console.log(years)
+    return years
+}
+
+async function transformData_rain_yearView() {
+    let data = await transformData_rain_year();
+    let cases = 0;
+    let total = 0;
+    let series_sync = []
+
+    // extract each month from the `months` object
+
+    for (let key of Object.keys(data)) {
+        for (n of data[key]) {
+            // console.log(n)
+            cases = parseInt(n['no_of_rainy_days']);
+            total = total + cases
+        };
+
+        series_sync.push({
+            'x': parseInt(key),
+            'y': total
+        })
+
+        total = 0;
+    }
+    // console.log(series_sync)
+    return series_sync
+}
+// Chart_sync2
+
+
+
+
+
+
+// Chart_sync3
+
+// Chart_sync4
+
+
+
+
 
 // Empty Chart_1
-
 const options_1 = {
     series: [{
         name: 'Dengue',
@@ -434,9 +584,14 @@ const options_1 = {
     tooltip: {
         shared: true,
         intersect: false,
+        y: {
+            formatter: function (val) {
+                return val + ' cases'
+            }
+        }
     },
     theme: {
-        palette: 'palette6' // upto palette10
+        palette: 'palette6'
     },
 
 };
@@ -501,6 +656,9 @@ const options_2A = {
         position: 'top',
         horizontalAlign: 'left',
         offsetX: 40
+    },
+    theme: {
+        palette: 'palette1' // upto palette10
     }
 };
 
@@ -510,27 +668,235 @@ const chart_2A = new ApexCharts(
 );
 chart_2A.render();
 
-// Empty Chart_2B
-const options_2B = {
-    "chart": {
-        "type": "line",
-        "height": "100%"
-    },
-    series: [],  // look ma, no data!!
-    noData: {
-        "text": "Loading..."
-    }
-
-}
-
-const chart_2B = new ApexCharts(
-    document.querySelector("#chart_2B"),
-    options_2B
-);
-chart_2B.render();
-
 // Empty Chart_3
 const options_3 = {
+    series: [{
+        name: 'Dengue Fever',
+        type: 'column',
+        data: []
+    }, {
+        name: 'Dengue Haemorrhagic Fever',
+        type: 'column',
+        data: []
+    }, {
+        name: 'Deaths',
+        type: 'line',
+        data: [],
+    }],
+    chart: {
+        height: 350,
+        type: 'line',
+        stacked: false,
+        height: '100%',
+    },
+    dataLabels: {
+        enabled: false
+    },
+    stroke: {
+        width: [1, 1, 4]
+    },
+    xaxis: {
+        categories: [],
+    },
+    yaxis: [
+        {
+            axisTicks: {
+                show: true,
+            },
+            axisBorder: {
+                show: true,
+                color: '#008FFB'
+            },
+            labels: {
+                style: {
+                    colors: '#008FFB',
+                }
+            },
+            title: {
+                text: "Dengue Fever",
+                style: {
+                    color: '#008FFB',
+                }
+            },
+            tooltip: {
+                enabled: true
+            }
+        },
+        {
+            seriesName: 'Income',
+            opposite: true,
+            axisTicks: {
+                show: true,
+            },
+            axisBorder: {
+                show: true,
+                color: '#00E396'
+            },
+            labels: {
+                style: {
+                    colors: '#00E396',
+                }
+            },
+            title: {
+                text: "Dengue Haemorrhagic Fever",
+                style: {
+                    color: '#00E396',
+                }
+            },
+        },
+        {
+            seriesName: 'Revenue',
+            opposite: true,
+            axisTicks: {
+                show: true,
+            },
+            axisBorder: {
+                show: true,
+                color: '#FEB019'
+            },
+            labels: {
+                style: {
+                    colors: '#FEB019',
+                },
+            },
+            title: {
+                text: "Deaths",
+                style: {
+                    color: '#FEB019',
+                }
+            }
+        },
+    ],
+    tooltip: {
+        fixed: {
+            enabled: true,
+            position: 'topLeft',
+            offsetY: 30,
+            offsetX: 60
+        },
+    },
+    legend: {
+        horizontalAlign: 'left',
+        offsetX: 40
+    }
+};
+
+const chart_3 = new ApexCharts(
+    document.querySelector("#chart_3"),
+    options_3
+);
+chart_3.render();
+
+// Empty tree map
+   
+const options_map = {
+    series: [
+    {
+      data: [
+        {
+          x: 'INTC',
+          y: 1.2
+        },
+        {
+          x: 'GS',
+          y: 0.4
+        },
+        {
+          x: 'CVX',
+          y: -1.4
+        },
+        {
+          x: 'GE',
+          y: 2.7
+        },
+        {
+          x: 'CAT',
+          y: -0.3
+        },
+        {
+          x: 'RTX',
+          y: 5.1
+        },
+        {
+          x: 'CSCO',
+          y: -2.3
+        },
+        {
+          x: 'JNJ',
+          y: 2.1
+        },
+        {
+          x: 'PG',
+          y: 0.3
+        },
+        {
+          x: 'TRV',
+          y: 0.12
+        },
+        {
+          x: 'MMM',
+          y: -2.31
+        },
+        {
+          x: 'NKE',
+          y: 3.98
+        },
+        {
+          x: 'IYT',
+          y: 1.67
+        }
+      ]
+    }
+  ],
+    legend: {
+    show: false
+  },
+  chart: {
+    height: '100%',
+    width: '100%',
+    type: 'treemap'
+  },
+  dataLabels: {
+    enabled: true,
+    style: {
+      fontSize: '12px',
+    },
+    formatter: function(text, op) {
+      return [text, op.value]
+    },
+    offsetY: -4
+  },
+  plotOptions: {
+    treemap: {
+      enableShades: true,
+      shadeIntensity: 0.5,
+      reverseNegativeShade: true,
+      colorScale: {
+        ranges: [
+          {
+            from: -6,
+            to: 0,
+            color: '#CD363A'
+          },
+          {
+            from: 0.001,
+            to: 6,
+            color: '#52B12C'
+          }
+        ]
+      }
+    }
+  }
+  };
+
+  const chart_map = new ApexCharts(
+    document.querySelector("#chart_map"),
+    options_map
+);
+chart_map.render();
+
+// Empty Chart_4
+const options_4 = {
     series: [{
         name: 'Rainy_days',
         type: 'area',
@@ -577,27 +943,115 @@ const options_3 = {
     }
 
 }
-const chart_3 = new ApexCharts(
-    document.querySelector("#chart_3"),
-    options_3
+const chart_4 = new ApexCharts(
+    document.querySelector("#chart_4"),
+    options_4
 );
-chart_3.render();
+chart_4.render();
 
-const options_test = {
-    "chart": {
-        "type": "line",
-        "height": "100%"
+// Sync charts
+const options_sync1 = {
+
+    chart: {
+        id: 'sync_1',
+        group: 'sync',
+        type: "area",
+        height: "180"
     },
-    series: [],  // look ma, no data!!
+    series: [],
     noData: {
-        "text": "loading"
+        "text": "Loading..."
+    },
+    yaxis: {
+        labels: {
+            minWidth: 40
+        }
     }
 }
-const chart_test = new ApexCharts(
-    document.querySelector("#test"),
-    options_2B
+
+const chart_sync1 = new ApexCharts(
+    document.querySelector("#sync1"),
+    options_sync1
 );
-chart_test.render();
+chart_sync1.render();
+
+const options_sync2 = {
+
+    chart: {
+        id: 'sync_2',
+        group: 'sync',
+        type: "line",
+        height: "180"
+    },
+    series: [],
+    noData: {
+        "text": "Loading..."
+    },
+    yaxis: {
+        labels: {
+            minWidth: 40
+        }
+    }
+}
+
+const chart_sync2 = new ApexCharts(
+    document.querySelector("#sync2"),
+    options_sync2
+);
+chart_sync2.render();
+
+const options_sync3 = {
+
+    chart: {
+        id: 'sync_3',
+        group: 'sync',
+        type: "line",
+        height: "180"
+    },
+    series: [],
+    noData: {
+        "text": "Loading..."
+    },
+    yaxis: {
+        labels: {
+            minWidth: 40
+        }
+    }
+}
+
+const chart_sync3 = new ApexCharts(
+    document.querySelector("#sync3"),
+    options_sync3
+);
+chart_sync3.render();
+
+const options_sync4 = {
+
+    chart: {
+        id: 'sync_4',
+        group: 'sync',
+        type: "line",
+        height: "180"
+    },
+    series: [],
+    noData: {
+        "text": "Loading..."
+    },
+    yaxis: {
+        labels: {
+            minWidth: 40
+        }
+    }
+}
+
+const chart_sync4 = new ApexCharts(
+    document.querySelector("#sync4"),
+    options_sync4
+);
+chart_sync4.render();
+
+
+// Sync charts end
 
 // Charts series update
 
@@ -713,8 +1167,6 @@ window.addEventListener("DOMContentLoaded", async function () {
         }
     });
 
-
-
     yearRange.addEventListener("input", async function () {
         yearView.checked = true;
         weekView.checked = false;
@@ -802,18 +1254,19 @@ window.addEventListener("DOMContentLoaded", async function () {
 })
 
 // Chart_2A update
-
 window.addEventListener("DOMContentLoaded", async function () {
 
-    let data1 = await denv_year(serology, 'denv_1_cases')
-    let data2 = await denv_year(serology, 'denv_2_cases')
-    let data3 = await denv_year(serology, 'denv_3_cases')
-    let data4 = await denv_year(serology, 'denv_4_cases')
+    let data1 = await denv_year('denv_1_cases', 'all')
+    let data2 = await denv_year('denv_2_cases', 'all')
+    let data3 = await denv_year('denv_3_cases', 'all')
+    let data4 = await denv_year('denv_4_cases', 'all')
+
+
 
     chart_2A.updateSeries([
         {
             "name": "DENV_1",
-            "data": data1
+            "data": data1,
         },
         {
             "name": "DENV_2",
@@ -830,12 +1283,85 @@ window.addEventListener("DOMContentLoaded", async function () {
     ]);
 })
 
+// Chart_2B Update
+window.addEventListener("DOMContentLoaded", async function () {
+    let data1 = await denv_q([2018], ['Q1'])
 
-// Chart_3 update
+    async function draw_pie(data) {
+        const options_2B = {
+            series: data,
+            noData: {
+                "text": "Loading..."
+            },
+            chart: {
+                type: 'pie',
+                height: '100%',
+                width: '100%'
+            },
+            labels: ['DENV_1', 'DENV_2', 'DENV_3', 'DENV_4'],
+            tooltip: {
+                y: {
+                    formatter: function (val) {
+                        return val + '%'
+                    }
+                }
+            },
+            responsive: [{
+                breakpoint: 480,
+                options: {
+                    chart: {
+                        width: '100%',
+                        height: '100%'
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }]
+        };
+
+        const chart_2B = new ApexCharts(
+            document.querySelector("#chart_2B"),
+            options_2B
+        );
+        chart_2B.render();
+    }
+
+    draw_pie(data1)
+
+})
+
+// Chart_3A/3B
+window.addEventListener("DOMContentLoaded", async function () {
+    // let data1 = await CSV_year_view(quarterlyPath, 'dengue', 'all')
+    // let data2 = await CSV_year_view(quarterlyPath, 'dengue_hf', 'all')
+    // let data3 = await CSV_year_view(quarterlyPath, 'deaths', 'all')
+    let data4 = await CSV_q_view(quarterlyPath, 'dengue', 'all', 'all')
+    let data5 = await CSV_q_view(quarterlyPath, 'dengue_hf', 'all', 'all')
+    let data6 = await CSV_q_view(quarterlyPath, 'deaths', 'all', 'all')
+
+    chart_3.updateSeries([
+        {
+            "name": "Dengue",
+            "data": data4
+        },
+        {
+            "name": "Dengue HF",
+            "data": data5
+        },
+        {
+            "name": "Deaths",
+            "data": data6
+        },
+    ]);
+})
+
+
+// Chart_5 update
 window.addEventListener("DOMContentLoaded", async function () {
     let series_A = await transformData_3_yearView();
     let series_B = await transformData_1_yearView()
-    chart_3.updateSeries([
+    chart_4.updateSeries([
         {
             "name": "Rainy_days",
             "data": series_A
@@ -843,6 +1369,42 @@ window.addEventListener("DOMContentLoaded", async function () {
         {
             "name": "Dengue_cases",
             "data": series_B
+        },
+    ]);
+})
+
+// Chart_sync update
+window.addEventListener("DOMContentLoaded", async function () {
+    let data1 = await transformData_rain_yearView();
+    let data2 = await CSV_year_view(quarterlyPath, 'clusters', 'all')
+    let data3 = await CSV_year_view(quarterlyPath, 'habitats', 'all')
+    let data4 = await CSV_year_view(quarterlyPath, 'total_cases', 'all')
+
+    chart_sync1.updateSeries([
+        {
+            "name": "Number of Rainy days",
+            "data": data1
+        },
+    ]);
+
+    chart_sync2.updateSeries([
+        {
+            "name": "Number of Active Clusters",
+            "data": data2
+        },
+    ]);
+
+    chart_sync3.updateSeries([
+        {
+            "name": "Number of Breeding Habitats",
+            "data": data3
+        },
+    ]);
+
+    chart_sync4.updateSeries([
+        {
+            "name": "Number of Dengue Cases",
+            "data": data4
         },
     ]);
 })
