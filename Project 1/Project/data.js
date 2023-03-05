@@ -1,11 +1,12 @@
 // Data paths
 const weeklyPath = "https://charissayeong.github.io/Project-1/Project%201/Data/weekly.json" // Weekly infectious disease records
-const quarterlyPath = "https://charissayeong.github.io/Project-1/Project%201/Data/quarterly_cases.csv"
+const quarterlyPath = "https://charissayeong.github.io/Project-1/Project%201/Data/quarterly_cases.csv" // Quarterly Surveillance Data
 const serology = "https://charissayeong.github.io/Project-1/Project%201/Data/dengue_serology.csv" // Dengue serotype distribution
 const habitats = "https://charissayeong.github.io/Project-1/Project%201/Data/breeding_habitats_year.csv" // Mosquito breeding habitats
 const rainyPath = "https://data.gov.sg/api/action/datastore_search?resource_id=8b94f596-91fd-4545-bf9e-7a426493b674&limit=493" // Number of rainy days
+const tempPath = "https://data.gov.sg/api/action/datastore_search?resource_id=07654ce7-f97f-49c9-81c6-bd41beba4e96&limit=493" // Mean Temp
 
-// Weekly data
+
 async function loadData(path) {
     const response = await axios.get(path);
     return response.data
@@ -379,28 +380,31 @@ async function map(year, param) {
     return series_csv
 }
 
-// Chart_3 data start
+// Chart_sync data start
 
-async function transformData_3_yearView(year) {
+// Chart_sync1
+
+async function transformData_rain_yearView(year) {
     let data = await loadData(rainyPath);
-    data = data.result.records
-    series = []
-    let days = 0
-    let total = 0
-    let years = [year]
+    let cases = 0;
+    let total = 0;
+    let series = []
 
-    if (years == 'all') {
+    data = data.result.records
+    let years = year
+
+    if (years == 'full') {
         years = [2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022]
-    } else if (years == 'half') {
+    } else if (years == 'all') {
         years = [2018, 2019, 2020, 2021, 2022]
     }
 
     years.forEach(function (item) {
         data.forEach(function (dataPoint) {
-            let yr = dataPoint.month;
+            let yr = dataPoint['month'];
             if (yr.includes(item)) {
-                days = parseInt(dataPoint['no_of_rainy_days']);
-                total = total + days;
+                cases = parseFloat(dataPoint['no_of_rainy_days']);
+                total = total + cases;
             }
         });
         series.push({
@@ -409,64 +413,7 @@ async function transformData_3_yearView(year) {
         })
         total = 0;
     });
-    // console.log(series)
     return series
-}
-
-// Chart_sync data start
-
-// Chart_sync1
-async function transformData_rain_year() {
-
-    let data = await loadData(rainyPath);
-    data = data.result.records
-    // console.log(data)
-
-    let years = {
-        "2018": [],
-        "2019": [],
-        "2020": [],
-        "2021": [],
-        "2022": []
-    };
-
-    for (let dataPoint of data) {
-        let date = dataPoint.month;
-
-        for (let yearNum in years) {
-            if (date.includes(yearNum)) {
-                years[yearNum].push(dataPoint)
-            }
-        }
-    };
-    // console.log(years)
-    return years
-}
-
-async function transformData_rain_yearView() {
-    let data = await transformData_rain_year();
-    let cases = 0;
-    let total = 0;
-    let series_sync = []
-
-    // extract each month from the `months` object
-
-    for (let key of Object.keys(data)) {
-        for (n of data[key]) {
-            // console.log(n)
-            cases = parseInt(n['no_of_rainy_days']);
-            total = total + cases
-        };
-
-        series_sync.push({
-            'x': parseInt(key),
-            'y': total
-        })
-
-        total = 0;
-    }
-    // console.log(series_sync)
-    return series_sync
 }
 // Chart_sync2
 
@@ -547,8 +494,128 @@ async function transformData_rain_q(year, quarter) {
     })
 
 
+    // console.log(series_q)
+    return series_q
+}
+
+async function transformData_temp_year(year) {
+    let data = await loadData(tempPath);
+    let cases = 0;
+    let total = 0;
+    let series = []
+
+    data = data.result.records
+    console.log(data)
+    let years = year
+
+    // if (years == 'all') {
+    //     years = [2018, 2019, 2020, 2021, 2022]
+    // }
+
+    if (years == 'all') {
+        years = [2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022]
+    }
+
+    years.forEach(function (item) {
+        data.forEach(function (dataPoint) {
+            let yr = dataPoint['month'];
+            if (yr.includes(item)) {
+                cases = parseFloat(dataPoint['mean_temp']);
+                total = total + cases;
+            }
+        });
+        series.push({
+            'x': item,
+            'y': parseFloat(total / 12).toFixed(1)
+        })
+        
+        total = 0;
+    });
+    return series
+}
+
+async function transformData_temp_q(year, quarter) {
+    let data = await loadData(tempPath);
+    data = data.result.records
+    let series = []
+    let series_q = []
+    let years = year
+    let Q = quarter
+
+    if (Q == 'all') {
+        Q = ['Q1', 'Q2', 'Q3', 'Q4']
+    }
+
+    if (years == 'all') {
+        years = [2018, 2019, 2020, 2021, 2022]
+    }
+
+    years.forEach(function (item) {
+        data.forEach(function (dataPoint) {
+            let date = dataPoint['month'];
+            let yr = date.slice(0, 4)
+            let q = date.slice(-2);
+            q = q.toString()
+            if (date.includes(item) && (q == '01' || q == '02' || q == '03')) {
+                series.push({
+                    'x': yr + ' ' + 'Q1',
+                    'y': dataPoint['mean_temp']
+                })
+            }
+            else if (date.includes(item) && (q == '04' || q == '05' || q == '06')) {
+                series.push({
+                    'x': yr + ' ' + 'Q2',
+                    'y': dataPoint['mean_temp']
+                })
+            }
+            else if (date.includes(item) && (q == '07' || q == '08' || q == '09')) {
+                series.push({
+                    'x': yr + ' ' + 'Q3',
+                    'y': dataPoint['mean_temp']
+                })
+            }
+            else if (date.includes(item) && (q == '10' || q == '11' || q == '12')) {
+                series.push({
+                    'x': yr + ' ' + 'Q4',
+                    'y': dataPoint['mean_temp']
+                })
+            }
+        });
+
+    });
+
+    console.log(series)
+
+    async function rain_q(y, q) {
+        let days = 0
+
+        let sum = series.filter(function (dataPoint) {
+            return dataPoint.x == y + ' ' + q;
+        });
+
+        sum.forEach(function (item) {
+            days = days + parseFloat(item.y)
+        })
+
+        series_q.push(
+            {
+                'x': y + ' ' + q,
+                'y': parseFloat(days / 4).toFixed(1)
+            }
+        )
+
+    }
+
+    years.forEach(function (year) {
+        Q.forEach(function (qt) {
+            rain_q(year, qt)
+        })
+    })
+
+
     console.log(series_q)
     return series_q
+
 }
 
 // Chart_sync3
@@ -913,7 +980,7 @@ const options_map = {
     plotOptions: {
         treemap: {
             enableShades: true,
-            shadeIntensity: 0.5,
+            shadeIntensity: 0.3,
             reverseNegativeShade: true,
             colorScale: {
                 ranges: [
@@ -930,7 +997,7 @@ const options_map = {
                 ]
             }
         }
-    }
+    },
 };
 
 const chart_map = new ApexCharts(
@@ -1000,7 +1067,7 @@ const options_sync1 = {
         id: 'sync_1',
         group: 'sync',
         type: "area",
-        height: "180"
+        height: "180",
     },
     series: [],
     noData: {
@@ -1102,7 +1169,6 @@ chart_sync4.render();
 // Chart_1 update
 window.addEventListener("DOMContentLoaded", async function () {
 
-    let data_rain = await transformData_3_yearView()
     let data_week = await transformData_1();
     let data_year = await transformData_1_yearView();
     let data_week_hf = await transformData_1_hf();
@@ -1497,12 +1563,13 @@ window.addEventListener("DOMContentLoaded", async function () {
     ]);
 })
 
-
-
 // Chart_5 update
 window.addEventListener("DOMContentLoaded", async function () {
-    let series_A = await transformData_3_yearView('all');
+    // let series_A = await transformData_3_yearView('all');
     let series_B = await transformData_1_yearView()
+
+    let series_A = await transformData_rain_yearView('full')
+    
     chart_4.updateSeries([
         {
             "name": "Rainy_days",
@@ -1518,7 +1585,7 @@ window.addEventListener("DOMContentLoaded", async function () {
 // Chart_sync update
 window.addEventListener("DOMContentLoaded", async function () {
     let data1 = await transformData_rain_q('all', 'all')
-    // let data1 = await transformData_3_yearView('half');
+    // let data1 = await transformData_rain_yearView('all');
     let data2 = await CSV_q_view(quarterlyPath, 'clusters', 'all', 'all')
     let data3 = await CSV_q_view(quarterlyPath, 'habitats', 'all', 'all')
     let data4 = await CSV_q_view(quarterlyPath, 'total_cases', 'all', 'all')

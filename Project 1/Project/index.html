@@ -21,8 +21,7 @@
     <!-- Own CSS -->
     <link rel="stylesheet" href="style.css">
 
-
-    <title>Dengue Statitics 2023 Update</title>
+    <title>Dengue Statitics Dashboard</title>
 </head>
 
 <body class="bg-light">
@@ -177,7 +176,7 @@
 
 
                         <!-- Charts row 1 -->
-                        <div class="px-4 pb-2">
+                        <div class="mx-4 pb-3">
                             <h2>
                                 10-Year Overview of Dengue Cases in Singapore (2012 - 2022)
                             </h2>
@@ -189,8 +188,8 @@
                                     <subtitle>By Year and Epidemologcal week (E-week)</subtitle>
                                 </div>
                                 <div class="filter">
-                                    <a class="icon text-decoration-none p-2 bg-light rounded-pill" href="#"
-                                        data-bs-toggle="dropdown">
+                                    <a class="icon text-decoration-none p-2 bg-light rounded-pill d-flex flex-nowrap"
+                                        href="#" data-bs-toggle="dropdown">
                                         <span class="me-1">Filter</span>
                                         <i class="bi bi-three-dots"></i></a>
                                     <div class="dropdown-menu container p-3"
@@ -238,7 +237,7 @@
                                                 value="2023" style="width: 100%;">
                                         </div>
                                         <div>
-                                            <button type="button" class="btn btn-primary mt-3"
+                                            <button type="button" class="btn btn-danger mt-3"
                                                 id="clear_1">Clear</button>
                                         </div>
                                     </div>
@@ -246,103 +245,6 @@
                             </div>
                             <div class="w-100" style="height: 70vh">
                                 <div id="chart_1"></div>
-                            </div>
-                        </div>
-
-                        <!-- Charts row 2 -->
-                        <!-- Chart 2A / 2B-->
-                        <div class="row">
-                            <div class="col-xl-6">
-                                <div class="card mb-4 p-0 py-4 shadow-sm border-0">
-                                    <div class="d-flex justify-content-between chart-title px-4 pb-4">
-                                        <div class="chart-label">
-                                            <h5>Dengue Serotype Distrubution</h5>
-                                            <subtitle>2018 - 2022</subtitle>
-                                        </div>
-                                        <div class="filter">
-                                            <a class="icon text-decoration-none" href="#" data-bs-toggle="dropdown">
-                                                <span class="me-1">Filter</span>
-                                                <i class="bi bi-three-dots"></i></a>
-                                            <div class="dropdown-menu container p-3"
-                                                style="height: fit-content; width: fit-content;">
-                                                <radio class="d-flex gap-2">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="w-100" style="height: 50vh">
-                                        <div id="chart_2A"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Chart 2B -->
-                            <div class="col-xl-6">
-                                <div class="card mb-4 p-0 py-4 shadow-sm border-0">
-                                    <div class="d-flex justify-content-between chart-title px-4 pb-4">
-                                        <div class="chart-label">
-                                            <h5>Dengue Fever / Dengue Haemorrhagic Fever</h5>
-                                            <subtitle>By Year and Epidemologcal week (E-week)</subtitle>
-                                        </div>
-                                        <div class="filter">
-                                            <a class="icon text-decoration-none" href="#" data-bs-toggle="dropdown">
-                                                <span class="me-1">Filter</span>
-                                                <i class="bi bi-three-dots"></i></a>
-                                            <div class="dropdown-menu container p-3"
-                                                style="height: fit-content; width: fit-content;">
-                                                <radio class="d-flex gap-2">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="w-100" style="height: 50vh">
-                                        <div id="chart_2B"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Chart 3A -->
-                        <div class="row">
-                            <div class="">
-                                <div class="card mb-4 p-0 py-4 shadow-sm border-0">
-                                    <div class="d-flex justify-content-between chart-title px-4 pb-4">
-                                        <div class="chart-label">
-                                            <h5>Dengue Fever / Dengue Haemorrhagic Fever</h5>
-                                            <subtitle>By Year and Epidemologcal week (E-week)</subtitle>
-                                        </div>
-                                        <div class="filter">
-                                            <a class="icon text-decoration-none" href="#" data-bs-toggle="dropdown">
-                                                <span class="me-1">Filter</span>
-                                                <i class="bi bi-three-dots"></i></a>
-                                            <div class="dropdown-menu container p-3"
-                                                style="height: fit-content; width: fit-content;">
-                                                <radio class="d-flex gap-2">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="w-100" style="height: 50vh">
-                                        <div id="chart_3"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card mb-4 p-0 py-4 shadow-sm border-0">
-                            <div class="d-flex justify-content-between chart-title px-4 pb-4">
-                                <div class="chart-label">
-                                    <h5>Habitats</h5>
-                                    <subtitle>Rainy days </subtitle>
-                                </div>
-                                <div class="filter">
-                                    <a class="icon text-decoration-none" href="#" data-bs-toggle="dropdown">
-                                        <span class="me-1">Filter</span>
-                                        <i class="bi bi-three-dots"></i></a>
-                                    <div class="dropdown-menu container p-3"
-                                        style="height: fit-content; width: fit-content;">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="w-100" style="height: 80vh">
-                                <div id="chart_map"></div>
                             </div>
                         </div>
 
@@ -366,20 +268,174 @@
                                 <div id="chart_4"></div>
                             </div>
                         </div>
-                        <!-- Test chart -->
+
+                        <!-- Charts row 2 -->
+                        <div class="px-4 pb-3 pt-4">
+                            <h2>
+                                Quarterly Surveillance Data (2018 - 2022)
+                            </h2>
+                            <h5 class="fst-italic fw-light">
+                                (A) Dengue Serotypes and Breeding Habitats
+                            </h5>
+                        </div>
+
+                        <!-- Filter for serotype/breeding habitats -->
+                        <filter class="row g-2 mb-3 mx-4 mx-lg-0">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <select class="form-select" id="year_select">
+                                        <option>All</option>
+                                        <option>2018</option>
+                                        <option>2019</option>
+                                        <option>2020</option>
+                                        <option>2021</option>
+                                        <option>2022</option>
+                                    </select>
+                                    <label for="floatingSelectGrid">Select year</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <select class="form-select" id="q_select">
+                                        <option>---</option>
+                                        <option>Q1</option>
+                                        <option>Q2</option>
+                                        <option>Q3</option>
+                                        <option>Q4</option>
+                                    </select>
+                                    <label for="floatingSelectGrid">Select quarter</label>
+                                </div>
+                            </div>
+                        </filter>
+
+                        <!-- Chart 2A / 2B-->
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <div class="card mb-4 p-0 py-4 shadow-sm border-0">
+                                    <div class="d-flex justify-content-between chart-title px-4 pb-4">
+                                        <div class="chart-label">
+                                            <h5>Dengue Serotype Distrubution</h5>
+                                            <subtitle>Year view</subtitle>
+                                        </div>
+                                        <div class="filter">
+                                            <a class="icon text-decoration-none" href="#" data-bs-toggle="dropdown">
+                                                <span class="me-1">Filter</span>
+                                                <i class="bi bi-three-dots"></i></a>
+                                            <div class="dropdown-menu container p-3"
+                                                style="height: fit-content; width: fit-content;">
+                                                <radio class="d-flex gap-2">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="w-100" style="height: 50vh">
+                                        <div id="chart_2A"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Chart 2B -->
+                            <div class="col-xl-6">
+                                <div class="card mb-4 p-0 py-4 shadow-sm border-0">
+                                    <div class="d-flex justify-content-between chart-title px-4 pb-4">
+                                        <div class="chart-label">
+                                            <h5>Dengue Serotype Distrubution</h5>
+                                            <subtitle>Quarter view</subtitle>
+                                        </div>
+                                        <div class="filter">
+                                            <a class="icon text-decoration-none" href="#" data-bs-toggle="dropdown">
+                                                <span class="me-1">Filter</span>
+                                                <i class="bi bi-three-dots"></i></a>
+                                            <div class="dropdown-menu container p-3"
+                                                style="height: fit-content; width: fit-content;">
+                                                <radio class="d-flex gap-2">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="w-100" style="height: 50vh">
+                                        <div id="chart_2B"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card mb-4 p-0 py-4 shadow-sm border-0">
+                            <div class="d-flex justify-content-between chart-title px-4 pb-4">
+                                <div class="chart-label">
+                                    <h5>Ranking of Breeding Habitats</h5>
+                                    <subtitle>0 (least common) - 100 (most common)</subtitle>
+                                </div>
+                            </div>
+                            <div class="w-100" style="height: 80vh;">
+                                <div id="chart_map"></div>
+                            </div>
+                        </div>
+
+                        <div class="px-4 pb-2 pt-4">
+
+                            <h5 class="fst-italic fw-light">
+                                (B) Death Rate and Rainfall Patterns
+                            </h5>
+                        </div>
+
+                        <!-- Filter for 5-year data -->
+                        <filter class="g-2 mb-3 mx-4 mx-lg-0 card">
+                            <div class="card-body d-flex justify-content-between row gap-3 ">
+                                <div class="col-12 col-md-4 col-lg-3 d-flex flex-column justify-content-start gap-2">
+                                    <input type="radio" class="btn-check" name="options-outlined" id="full_view_q"
+                                        autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="full_view_q">
+                                        Full view
+                                    </label>
+                                    <input type="radio" class="btn-check" name="options-outlined" id="year_view_q"
+                                        autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="year_view_q">
+                                        Year view
+                                    </label>
+                                </div>
+                                <div class="col-12 col-md-6 col-lg-7 d-flex flex-column justify-content-start">
+                                    <div class="year_slider">
+                                            <div class="d-flex justify-content-between">
+                                                <h6 class="text-muted">Select year</h6> 
+                                                <button class="btn btn-light justify-content-end">Select all</button> 
+                                            </div>
+                                            <label for="year_select_q" class="form-label">
+                                            <span class="d-flex gap-2">
+                                                <h6 class="fw-bold">Year:</h6>
+                                                <h6 id="year_select_q"></h6>
+                                            </span></label>
+                                        <input type="range" class="form-range" min="2018" max="2023" step="1"
+                                            id="year_select_q">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-1 col-lg-1 d-flex  justify-content-end">
+                                    <button type="button" class="btn btn-danger" id="clear_q">Clear</button>
+                                </div>
+                            </div>
+                        </filter>
+
+                        <!-- Chart 3A -->
+                        <div class="row">
+                            <div class="">
+                                <div class="card mb-4 p-0 py-4 shadow-sm border-0">
+                                    <div class="d-flex justify-content-between chart-title px-4 pb-4">
+                                        <div class="chart-label">
+                                            <h5>Dengue Cases and Death Rate</h5>
+                                            <subtitle>By Year and Quarter</subtitle>
+                                        </div>
+                                    </div>
+                                    <div class="w-100" style="height: 50vh">
+                                        <div id="chart_3"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Synced chart -->
                         <div class="card mb-4 p-0 py-4 shadow-sm border-0">
                             <div class="d-flex justify-content-between chart-title px-4 pb-4">
                                 <div class="chart-label">
                                     <h5>hello</h5>
                                     <subtitle>hhello</subtitle>
-                                </div>
-                                <div class="filter">
-                                    <a class="icon text-decoration-none" href="#" data-bs-toggle="dropdown">
-                                        <span class="me-1">Filter</span>
-                                        <i class="bi bi-three-dots"></i></a>
-                                    <div class="dropdown-menu container p-3"
-                                        style="height: fit-content; width: fit-content;">
-                                    </div>
                                 </div>
                             </div>
                             <div class="w-100" id="synced-charts" style="height: fit-content;">
