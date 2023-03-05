@@ -528,7 +528,7 @@ async function transformData_temp_year(year) {
             'x': item,
             'y': parseFloat(total / 12).toFixed(1)
         })
-        
+
         total = 0;
     });
     return series
@@ -769,6 +769,47 @@ const chart_2A = new ApexCharts(
     options_2A
 );
 chart_2A.render();
+
+// Empty Chart_2B
+const options_2B = {
+    series: [],
+    noData: {
+        "text": "Select a year and quarter..."
+    },
+    chart: {
+        type: 'pie',
+        height: '100%',
+        width: '100%',
+        id: 'chart_2B'
+    },
+    labels: ['DENV_1', 'DENV_2', 'DENV_3', 'DENV_4'],
+    tooltip: {
+        y: {
+            formatter: function (val) {
+                return val + '%'
+            }
+        }
+    },
+    responsive: [{
+        breakpoint: 480,
+        options: {
+            chart: {
+                width: '100%',
+                height: '100%'
+            },
+            legend: {
+                position: 'bottom'
+            }
+        }
+    }]
+};
+
+const chart_2B = new ApexCharts(
+    document.querySelector("#chart_2B"),
+    options_2B
+);
+chart_2B.render();
+
 
 // Empty Chart_3
 const options_3 = {
@@ -1364,81 +1405,167 @@ window.addEventListener("DOMContentLoaded", async function () {
     });
 })
 
-// Chart_2A update
+// Chart_2 update
 window.addEventListener("DOMContentLoaded", async function () {
 
-    let data1 = await denv_year('denv_1_cases', 'all')
-    let data2 = await denv_year('denv_2_cases', 'all')
-    let data3 = await denv_year('denv_3_cases', 'all')
-    let data4 = await denv_year('denv_4_cases', 'all')
+    // let data1 = await denv_year('denv_1_cases', 'all')
+    // let data2 = await denv_year('denv_2_cases', 'all')
+    // let data3 = await denv_year('denv_3_cases', 'all')
+    // let data4 = await denv_year('denv_4_cases', 'all')
+    // let data5 = await denv_q([], [])
+    // let data6 = await map('all', 'Bins (Litter/Refuse/Bulk)')
+    // let data7 = await map('all', 'Canvas/Plastic Sheet')
+    // let data8 = await map('all', 'Covered Drains')
+    // let data9 = await map('all', 'Discarded Receptacles')
+    // let data10 = await map('all', 'Domestic Containers')
+    // let data11 = await map('all', 'Fountains')
+    // let data12 = await map('all', 'Gully Traps')
+    // let data13 = await map('all', 'Inspection Chambers')
+    // let data14 = await map('all', 'Open Drains')
+    // let data15 = await map('all', 'Ornamental Containers')
+    // let data16 = await map('all', 'Plant Pots/Dish/Trays')
+    // let data17 = await map('all', 'Plants (Hardened soil and plant axils)')
+    // let data18 = await map('all', 'Toilet Bowls/Cisterns')
+    // let data19 = await map('all', 'Water Fountains')
 
+    let year_btn_q = document.getElementById('year_select')
+    let q_btn = document.getElementById('q_select')
 
+    async function check_chart2() {
+        console.log(year_btn_q.value)
+        console.log(q_btn.value)
 
-    chart_2A.updateSeries([
+        let y = year_btn_q.value
+
+        if(y == 'All') {
+            q_btn.value = '---'
+            y = y.toLowerCase()
+        }
+
+        let q = q_btn.value
+
+        if(q == '---') {
+            q = []
+        }
+
+        console.log(y)
+        console.log(q)
+
+        let data1 = await denv_year('denv_1_cases', [y])
+        let data2 = await denv_year('denv_2_cases', [y])
+        let data3 = await denv_year('denv_3_cases', [y])
+        let data4 = await denv_year('denv_4_cases', [y])
+        let data5 = await denv_q([y], [q])
+        let data6 = await map([y], 'Bins (Litter/Refuse/Bulk)')
+        let data7 = await map([y], 'Canvas/Plastic Sheet')
+        let data8 = await map([y], 'Covered Drains')
+        let data9 = await map([y], 'Discarded Receptacles')
+        let data10 = await map([y], 'Domestic Containers')
+        let data11 = await map([y], 'Fountains')
+        let data12 = await map([y], 'Gully Traps')
+        let data13 = await map([y], 'Inspection Chambers')
+        let data14 = await map([y], 'Open Drains')
+        let data15 = await map([y], 'Ornamental Containers')
+        let data16 = await map([y], 'Plant Pots/Dish/Trays')
+        let data17 = await map([y], 'Plants (Hardened soil and plant axils)')
+        let data18 = await map([y], 'Toilet Bowls/Cisterns')
+        let data19 = await map([y], 'Water Fountains')
+
+        chart_2A.updateSeries([
+            {
+                "name": "DENV_1",
+                "data": data1,
+            },
+            {
+                "name": "DENV_2",
+                "data": data2
+            },
+            {
+                "name": "DENV_3",
+                "data": data3
+            },
+            {
+                "name": "DENV_4",
+                "data": data4
+            },
+        ]);
+    
+        // Chart_2B Update
+        ApexCharts.exec('chart_2B', 'updateOptions', {
+            series: data5,
+            labels: ['DENV_1', 'DENV_2', 'DENV_3', 'DENV_4']
+          })
+
+        // Map update
+    chart_map.updateSeries([
         {
-            "name": "DENV_1",
-            "data": data1,
+            "name": 'Bins(Litter / Refuse / Bulk)',
+            "data": data6
         },
         {
-            "name": "DENV_2",
-            "data": data2
+            "name": "Canvas/Plastic Sheet",
+            "data": data7
         },
         {
-            "name": "DENV_3",
-            "data": data3
+            "name": "Covered Drains",
+            "data": data8
         },
         {
-            "name": "DENV_4",
-            "data": data4
+            "name": "Discarded Receptacles",
+            "data": data9
+        },
+        {
+            "name": "Domestic Containers",
+            "data": data10
+        },
+        {
+            "name": "Fountains",
+            "data": data11
+        },
+        {
+            "name": "Gully Traps",
+            "data": data12
+        },
+        {
+            "name": "Inspection Chambers",
+            "data": data13
+        },
+        {
+            "name": "Open Drains",
+            "data": data14
+        },
+        {
+            "name": "Ornamental Containers",
+            "data": data15
+        },
+        {
+            "name": "Plant Pots/Dish/Trays",
+            "data": data16
+        },
+        {
+            "name": "Plants (Hardened soil and plant axils)",
+            "data": data17
+        },
+        {
+            "name": "Toilet Bowls/Cisterns",
+            "data": data18
+        },
+        {
+            "name": "Water Fountains",
+            "data": data19
         },
     ]);
-})
-
-// Chart_2B Update
-window.addEventListener("DOMContentLoaded", async function () {
-    let data1 = await denv_q([2018], ['Q1'])
-
-    async function draw_pie(data) {
-        const options_2B = {
-            series: data,
-            noData: {
-                "text": "Loading..."
-            },
-            chart: {
-                type: 'pie',
-                height: '100%',
-                width: '100%'
-            },
-            labels: ['DENV_1', 'DENV_2', 'DENV_3', 'DENV_4'],
-            tooltip: {
-                y: {
-                    formatter: function (val) {
-                        return val + '%'
-                    }
-                }
-            },
-            responsive: [{
-                breakpoint: 480,
-                options: {
-                    chart: {
-                        width: '100%',
-                        height: '100%'
-                    },
-                    legend: {
-                        position: 'bottom'
-                    }
-                }
-            }]
-        };
-
-        const chart_2B = new ApexCharts(
-            document.querySelector("#chart_2B"),
-            options_2B
-        );
-        chart_2B.render();
     }
 
-    draw_pie(data1)
+    check_chart2()
+
+    year_btn_q.addEventListener("click", async function () {
+        check_chart2()
+    })
+
+    q_btn.addEventListener("click", async function () {
+        check_chart2()
+    })
 
 })
 
@@ -1467,109 +1594,13 @@ window.addEventListener("DOMContentLoaded", async function () {
     ]);
 })
 
-// Chart_map update
-window.addEventListener("DOMContentLoaded", async function () {
-
-    let data1 = await map('all', 'Bins (Litter/Refuse/Bulk)')
-    let data2 = await map('all', 'Canvas/Plastic Sheet')
-    let data3 = await map('all', 'Covered Drains')
-    let data4 = await map('all', 'Discarded Receptacles')
-    let data5 = await map('all', 'Domestic Containers')
-    let data6 = await map('all', 'Fountains')
-    let data7 = await map('all', 'Gully Traps')
-    let data8 = await map('all', 'Inspection Chambers')
-    let data9 = await map('all', 'Open Drains')
-    let data10 = await map('all', 'Ornamental Containers')
-    let data11 = await map('all', 'Plant Pots/Dish/Trays')
-    let data12 = await map('all', 'Plants (Hardened soil and plant axils)')
-    let data13 = await map('all', 'Toilet Bowls/Cisterns')
-    let data14 = await map('all', 'Water Fountains')
-
-
-    let data_list = [
-        'Bins (Litter/Refuse/Bulk)',
-        'Canvas/Plastic Sheet',
-        'Covered Drains',
-        'Discarded Receptacles',
-        'Domestic Containers',
-        'Fountains',
-        'Gully Traps',
-        'Inspection Chambers',
-        'Open Drains',
-        'Ornamental Containers',
-        'Plant Pots/Dish/Trays',
-        'Plants (Hardened soil and plant axils)',
-        'Toilet Bowls/Cisterns',
-        'Water Fountains']
-
-
-    chart_map.updateSeries([
-        {
-            "name": 'Bins(Litter / Refuse / Bulk)',
-            "data": data1
-        },
-        {
-            "name": "Canvas/Plastic Sheet",
-            "data": data2
-        },
-        {
-            "name": "Covered Drains",
-            "data": data3
-        },
-        {
-            "name": "Discarded Receptacles",
-            "data": data4
-        },
-        {
-            "name": "Domestic Containers",
-            "data": data5
-        },
-        {
-            "name": "Fountains",
-            "data": data6
-        },
-        {
-            "name": "Gully Traps",
-            "data": data7
-        },
-        {
-            "name": "Inspection Chambers",
-            "data": data8
-        },
-        {
-            "name": "Open Drains",
-            "data": data9
-        },
-        {
-            "name": "Ornamental Containers",
-            "data": data10
-        },
-        {
-            "name": "Plant Pots/Dish/Trays",
-            "data": data11
-        },
-        {
-            "name": "Plants (Hardened soil and plant axils)",
-            "data": data12
-        },
-        {
-            "name": "Toilet Bowls/Cisterns",
-            "data": data13
-        },
-        {
-            "name": "Water Fountains",
-            "data": data14
-        },
-    ]);
-})
-
 // Chart_5 update
 window.addEventListener("DOMContentLoaded", async function () {
     // let series_A = await transformData_3_yearView('all');
     let series_B = await transformData_1_yearView()
 
     let series_A = await transformData_rain_yearView('full')
-    
+
     chart_4.updateSeries([
         {
             "name": "Rainy_days",
