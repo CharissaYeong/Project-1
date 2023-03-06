@@ -1550,31 +1550,6 @@ window.addEventListener("DOMContentLoaded", async function () {
 
 })
 
-// Chart_3A/3B
-// window.addEventListener("DOMContentLoaded", async function () {
-//     // let data1 = await CSV_year_view(quarterlyPath, 'dengue', 'all')
-//     // let data2 = await CSV_year_view(quarterlyPath, 'dengue_hf', 'all')
-//     // let data3 = await CSV_year_view(quarterlyPath, 'deaths', 'all')
-//     let data4 = await CSV_q_view(quarterlyPath, 'dengue', 'all', 'all')
-//     let data5 = await CSV_q_view(quarterlyPath, 'dengue_hf', 'all', 'all')
-//     let data6 = await CSV_q_view(quarterlyPath, 'deaths', 'all', 'all')
-
-//     chart_3.updateSeries([
-//         {
-//             "name": "Dengue",
-//             "data": data4
-//         },
-//         {
-//             "name": "Dengue HF",
-//             "data": data5
-//         },
-//         {
-//             "name": "Deaths",
-//             "data": data6
-//         },
-//     ]);
-// })
-
 // Chart_5 update
 window.addEventListener("DOMContentLoaded", async function () {
     // let series_A = await transformData_3_yearView('all');
@@ -1593,44 +1568,7 @@ window.addEventListener("DOMContentLoaded", async function () {
     ]);
 })
 
-// Chart_sync update
-window.addEventListener("DOMContentLoaded", async function () {
-    let data1 = await transformData_rain_q('all', 'all')
-    let data2 = await CSV_q_view(quarterlyPath, 'clusters', 'all', 'all')
-    let data3 = await CSV_q_view(quarterlyPath, 'habitats', 'all', 'all')
-    let data4 = await CSV_q_view(quarterlyPath, 'total_cases', 'all', 'all')
-
-    chart_sync1.updateSeries([
-        {
-            "name": "Number of Rainy days",
-            "data": data1
-        },
-    ]);
-
-    chart_sync2.updateSeries([
-        {
-            "name": "Number of Active Clusters",
-            "data": data2
-        },
-    ]);
-
-    chart_sync3.updateSeries([
-        {
-            "name": "Number of Breeding Habitats",
-            "data": data3
-        },
-    ]);
-
-    chart_sync4.updateSeries([
-        {
-            "name": "Number of Dengue Cases",
-            "data": data4
-        },
-    ]);
-})
-
-
-
+// Chart dengue&sync
 window.addEventListener("DOMContentLoaded", async function () {
     let full_radio = document.getElementById('full_view_q')
     let yr_radio = document.getElementById('year_view_q')
@@ -1655,23 +1593,30 @@ window.addEventListener("DOMContentLoaded", async function () {
         let data1 = []
         let data2 = []
         let data3 = []
+        let data4 = []
+        let data5 = []
+        let data6 = []
+        let data7 = []
 
         if (yr_radio.checked == true) {
             full_radio.checked = false
             data1 = await CSV_year_view(quarterlyPath, 'dengue', [y])
             data2 = await CSV_year_view(quarterlyPath, 'dengue_hf', [y])
             data3 = await CSV_year_view(quarterlyPath, 'deaths', [y])
-
-            console.log(data1)
-            console.log(data2)
-            console.log(data3)
+            data4 = await transformData_rain_yearView([y])
+            data5 = await CSV_year_view(quarterlyPath, 'clusters', [y])
+            data6 = await CSV_year_view(quarterlyPath, 'habitats', [y])
+            data7 = await CSV_year_view(quarterlyPath, 'total_cases', [y])
 
         } else if (full_radio.checked == true) {
             yr_radio.checked = false
             data1 = await CSV_q_view(quarterlyPath, 'dengue', [y], 'all')
             data2 = await CSV_q_view(quarterlyPath, 'dengue_hf', [y], 'all')
             data3 = await CSV_q_view(quarterlyPath, 'deaths', [y], 'all')
-
+            data4 = await transformData_rain_q([y], 'all')
+            data5 = await CSV_q_view(quarterlyPath, 'clusters', [y], 'all')
+            data6 = await CSV_q_view(quarterlyPath, 'habitats', [y], 'all')
+            data7 = await CSV_q_view(quarterlyPath, 'total_cases', [y], 'all')
         }
 
         chart_3.updateSeries([
@@ -1686,6 +1631,34 @@ window.addEventListener("DOMContentLoaded", async function () {
             {
                 "name": "Deaths",
                 "data": data3
+            },
+        ]);
+
+        chart_sync1.updateSeries([
+            {
+                "name": "Number of Rainy days",
+                "data": data1
+            },
+        ]);
+    
+        chart_sync2.updateSeries([
+            {
+                "name": "Number of Active Clusters",
+                "data": data2
+            },
+        ]);
+    
+        chart_sync3.updateSeries([
+            {
+                "name": "Number of Breeding Habitats",
+                "data": data3
+            },
+        ]);
+    
+        chart_sync4.updateSeries([
+            {
+                "name": "Number of Dengue Cases",
+                "data": data4
             },
         ]);
     }
