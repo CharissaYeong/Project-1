@@ -62,7 +62,7 @@
                     <div class="container-fluid p-0 p-lg-4">
                         <!-- Header -->
                         <header>
-                            <h1 class="display-5 d-flex align-items-center mx-4">
+                            <h1 class="display-4 d-flex align-items-center mx-4">
                                 <span class="me-3"><iconify-icon icon="healthicons:mosquito-negative"
                                         width="70"></iconify-icon></span>
                                 DengueWatch 2023
@@ -271,9 +271,9 @@
 
                         <!-- Charts row 2 -->
                         <div class="px-4 pb-3 pt-4">
-                            <h2>
+                            <h3 class="fw-bold">
                                 Quarterly Surveillance Data (2018 - 2022)
-                            </h2>
+                            </h3>
                             <h5 class="fst-italic fw-light">
                                 (A) Dengue Serotypes and Breeding Habitats
                             </h5>
@@ -314,8 +314,14 @@
                                 <div class="card mb-4 p-0 py-4 shadow-sm border-0">
                                     <div class="d-flex justify-content-between chart-title px-4 pb-4">
                                         <div class="chart-label">
-                                            <h5>Dengue Serotype Distrubution</h5>
+                                            <h5 class="fw-bold">Dengue Serotype Distrubution</h5>
                                             <subtitle>Year view</subtitle>
+                                        </div>
+                                        <div>
+                                            <h6 class="fw-bold">
+                                                Year selected:
+                                            </h6>
+                                            <div class="text-primary" id="chart_2A_year"></div>
                                         </div>
                                     </div>
                                     <div class="w-100" style="height: 50vh">
@@ -329,8 +335,14 @@
                                 <div class="card mb-4 p-0 py-4 shadow-sm border-0">
                                     <div class="d-flex justify-content-between chart-title px-4 pb-4">
                                         <div class="chart-label">
-                                            <h5>Dengue Serotype Distrubution</h5>
+                                            <h5 class="fw-bold">Dengue Serotype Distrubution</h5>
                                             <subtitle>Quarter view</subtitle>
+                                        </div>
+                                        <div>
+                                            <h6 class="fw-bold">
+                                                Quarter selected:
+                                            </h6>
+                                            <div class="text-primary" id="chart_2B_q"></div>
                                         </div>
                                     </div>
                                     <div class="w-100" style="height: 50vh">
@@ -340,20 +352,25 @@
                             </div>
                         </div>
 
+                        <!-- Map Chart -->
                         <div class="card mb-4 p-0 py-4 shadow-sm border-0">
                             <div class="d-flex justify-content-between chart-title px-4 pb-4">
                                 <div class="chart-label">
-                                    <h5>Ranking of Breeding Habitats</h5>
+                                    <h5 class="fw-bold">Ranking of Breeding Habitats</h5>
                                     <subtitle>0 (least common) - 100 (most common)</subtitle>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold">
+                                        Year selected:
+                                    </h6>
+                                    <div class="text-primary" id="map_year"></div>
                                 </div>
                             </div>
                             <div class="w-100" style="height: 80vh;">
                                 <div id="chart_map"></div>
                             </div>
                         </div>
-
                         <div class="px-4 pb-2 pt-4">
-
                             <h5 class="fst-italic fw-light">
                                 (B) Death Rate and Rainfall Patterns
                             </h5>
@@ -363,30 +380,30 @@
                         <filter class="g-2 mb-3 mx-4 mx-lg-0 card">
                             <div class="card-body d-flex justify-content-between row gap-3 ">
                                 <div class="col-12 col-md-4 col-lg-3 d-flex flex-column justify-content-center gap-2">
-                                    <input type="radio" class="btn-check" name="options-outlined" id="full_view_q"
-                                        autocomplete="off">
+                                    <input type="radio" class="btn-check" name="view_options" id="full_view_q"
+                                        autocomplete="off" checked>
                                     <label class="btn btn-outline-primary" for="full_view_q">
-                                        Full view
+                                        Quarterly view
                                     </label>
-                                    <input type="radio" class="btn-check" name="options-outlined" id="year_view_q"
+                                    <input type="radio" class="btn-check" name="view_options" id="year_view_q"
                                         autocomplete="off">
                                     <label class="btn btn-outline-primary" for="year_view_q">
-                                        Year view
+                                        Yearly view
                                     </label>
                                 </div>
                                 <div class="col-12 col-md-6 col-lg-7 d-flex flex-column justify-content-center">
                                     <div class="year_slider">
-                                            <div class="d-flex justify-content-between">
-                                                <h6 class="text-muted">Select year</h6> 
-                                                <button class="btn btn-light justify-content-end">Select all</button> 
-                                            </div>
-                                            <label for="year_select_q" class="form-label">
+                                        <div class="d-flex justify-content-between mb-3">
+                                            <h6 class="text-muted">Select year</h6>
+                                            <button class="btn btn-light justify-content-end" id="select_all">Select all</button>
+                                        </div>
+                                        <label for="year_range_q" class="form-label">
                                             <span class="d-flex gap-2">
                                                 <h6 class="fw-bold">Year:</h6>
                                                 <h6 id="year_select_q"></h6>
                                             </span></label>
-                                        <input type="range" class="form-range" min="2018" max="2023" step="1"
-                                            id="year_select_q">
+                                        <input class="w-100" type="range" min="2018" max="2023" step="1"
+                                            id="year_range_q" value="2023">
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-1 col-lg-1 d-flex  justify-content-end">

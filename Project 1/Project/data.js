@@ -1227,7 +1227,7 @@ window.addEventListener("DOMContentLoaded", async function () {
     async function checkbox_dengue(data1, data2) {
 
         if (dengue_btn.checked == true && dengueHF_btn.checked == false) {
-            console.log('dengue')
+            // console.log('dengue')
             chart_1.updateSeries([
                 {
                     "name": "Dengue",
@@ -1239,7 +1239,7 @@ window.addEventListener("DOMContentLoaded", async function () {
                 },
             ]);
         } else if (dengue_btn.checked == false && dengueHF_btn.checked == true) {
-            console.log('HF')
+            // console.log('HF')
             chart_1.updateSeries([
                 {
                     "name": "Dengue",
@@ -1261,7 +1261,7 @@ window.addEventListener("DOMContentLoaded", async function () {
                 },
             ])
         } else if (dengue_btn.checked == true && dengueHF_btn.checked == true) {
-            console.log('dengue and HF')
+            // console.log('dengue and HF')
             chart_1.updateSeries([
                 {
                     "name": "Dengue",
@@ -1273,7 +1273,7 @@ window.addEventListener("DOMContentLoaded", async function () {
                 },
             ]);
         } else if (dengue_btn.checked == false && dengueHF_btn.checked == false) {
-            console.log('nothing')
+            // console.log('nothing')
             chart_1.updateSeries([
                 {
                     "name": "Dengue",
@@ -1408,48 +1408,25 @@ window.addEventListener("DOMContentLoaded", async function () {
 // Chart_2 update
 window.addEventListener("DOMContentLoaded", async function () {
 
-    // let data1 = await denv_year('denv_1_cases', 'all')
-    // let data2 = await denv_year('denv_2_cases', 'all')
-    // let data3 = await denv_year('denv_3_cases', 'all')
-    // let data4 = await denv_year('denv_4_cases', 'all')
-    // let data5 = await denv_q([], [])
-    // let data6 = await map('all', 'Bins (Litter/Refuse/Bulk)')
-    // let data7 = await map('all', 'Canvas/Plastic Sheet')
-    // let data8 = await map('all', 'Covered Drains')
-    // let data9 = await map('all', 'Discarded Receptacles')
-    // let data10 = await map('all', 'Domestic Containers')
-    // let data11 = await map('all', 'Fountains')
-    // let data12 = await map('all', 'Gully Traps')
-    // let data13 = await map('all', 'Inspection Chambers')
-    // let data14 = await map('all', 'Open Drains')
-    // let data15 = await map('all', 'Ornamental Containers')
-    // let data16 = await map('all', 'Plant Pots/Dish/Trays')
-    // let data17 = await map('all', 'Plants (Hardened soil and plant axils)')
-    // let data18 = await map('all', 'Toilet Bowls/Cisterns')
-    // let data19 = await map('all', 'Water Fountains')
-
     let year_btn_q = document.getElementById('year_select')
     let q_btn = document.getElementById('q_select')
+    let year_label_2A = document.getElementById('chart_2A_year')
+    let q_label_2A = document.getElementById('chart_2B_q')
+    let year_label_map = document.getElementById('map_year')
 
     async function check_chart2() {
-        console.log(year_btn_q.value)
-        console.log(q_btn.value)
-
         let y = year_btn_q.value
 
-        if(y == 'All') {
+        if (y == 'All') {
             q_btn.value = '---'
             y = y.toLowerCase()
         }
 
         let q = q_btn.value
 
-        if(q == '---') {
+        if (q == '---') {
             q = []
         }
-
-        console.log(y)
-        console.log(q)
 
         let data1 = await denv_year('denv_1_cases', [y])
         let data2 = await denv_year('denv_2_cases', [y])
@@ -1489,72 +1466,76 @@ window.addEventListener("DOMContentLoaded", async function () {
                 "data": data4
             },
         ]);
-    
+
         // Chart_2B Update
         ApexCharts.exec('chart_2B', 'updateOptions', {
             series: data5,
             labels: ['DENV_1', 'DENV_2', 'DENV_3', 'DENV_4']
-          })
+        })
 
         // Map update
-    chart_map.updateSeries([
-        {
-            "name": 'Bins(Litter / Refuse / Bulk)',
-            "data": data6
-        },
-        {
-            "name": "Canvas/Plastic Sheet",
-            "data": data7
-        },
-        {
-            "name": "Covered Drains",
-            "data": data8
-        },
-        {
-            "name": "Discarded Receptacles",
-            "data": data9
-        },
-        {
-            "name": "Domestic Containers",
-            "data": data10
-        },
-        {
-            "name": "Fountains",
-            "data": data11
-        },
-        {
-            "name": "Gully Traps",
-            "data": data12
-        },
-        {
-            "name": "Inspection Chambers",
-            "data": data13
-        },
-        {
-            "name": "Open Drains",
-            "data": data14
-        },
-        {
-            "name": "Ornamental Containers",
-            "data": data15
-        },
-        {
-            "name": "Plant Pots/Dish/Trays",
-            "data": data16
-        },
-        {
-            "name": "Plants (Hardened soil and plant axils)",
-            "data": data17
-        },
-        {
-            "name": "Toilet Bowls/Cisterns",
-            "data": data18
-        },
-        {
-            "name": "Water Fountains",
-            "data": data19
-        },
-    ]);
+        chart_map.updateSeries([
+            {
+                "name": 'Bins(Litter / Refuse / Bulk)',
+                "data": data6
+            },
+            {
+                "name": "Canvas/Plastic Sheet",
+                "data": data7
+            },
+            {
+                "name": "Covered Drains",
+                "data": data8
+            },
+            {
+                "name": "Discarded Receptacles",
+                "data": data9
+            },
+            {
+                "name": "Domestic Containers",
+                "data": data10
+            },
+            {
+                "name": "Fountains",
+                "data": data11
+            },
+            {
+                "name": "Gully Traps",
+                "data": data12
+            },
+            {
+                "name": "Inspection Chambers",
+                "data": data13
+            },
+            {
+                "name": "Open Drains",
+                "data": data14
+            },
+            {
+                "name": "Ornamental Containers",
+                "data": data15
+            },
+            {
+                "name": "Plant Pots/Dish/Trays",
+                "data": data16
+            },
+            {
+                "name": "Plants (Hardened soil and plant axils)",
+                "data": data17
+            },
+            {
+                "name": "Toilet Bowls/Cisterns",
+                "data": data18
+            },
+            {
+                "name": "Water Fountains",
+                "data": data19
+            },
+        ]);
+
+        year_label_2A.innerHTML = year_btn_q.value
+        q_label_2A.innerHTML = year_btn_q.value + ' ' + q_btn.value
+        year_label_map.innerHTML = year_btn_q.value
     }
 
     check_chart2()
@@ -1570,35 +1551,34 @@ window.addEventListener("DOMContentLoaded", async function () {
 })
 
 // Chart_3A/3B
-window.addEventListener("DOMContentLoaded", async function () {
-    // let data1 = await CSV_year_view(quarterlyPath, 'dengue', 'all')
-    // let data2 = await CSV_year_view(quarterlyPath, 'dengue_hf', 'all')
-    // let data3 = await CSV_year_view(quarterlyPath, 'deaths', 'all')
-    let data4 = await CSV_q_view(quarterlyPath, 'dengue', 'all', 'all')
-    let data5 = await CSV_q_view(quarterlyPath, 'dengue_hf', 'all', 'all')
-    let data6 = await CSV_q_view(quarterlyPath, 'deaths', 'all', 'all')
+// window.addEventListener("DOMContentLoaded", async function () {
+//     // let data1 = await CSV_year_view(quarterlyPath, 'dengue', 'all')
+//     // let data2 = await CSV_year_view(quarterlyPath, 'dengue_hf', 'all')
+//     // let data3 = await CSV_year_view(quarterlyPath, 'deaths', 'all')
+//     let data4 = await CSV_q_view(quarterlyPath, 'dengue', 'all', 'all')
+//     let data5 = await CSV_q_view(quarterlyPath, 'dengue_hf', 'all', 'all')
+//     let data6 = await CSV_q_view(quarterlyPath, 'deaths', 'all', 'all')
 
-    chart_3.updateSeries([
-        {
-            "name": "Dengue",
-            "data": data4
-        },
-        {
-            "name": "Dengue HF",
-            "data": data5
-        },
-        {
-            "name": "Deaths",
-            "data": data6
-        },
-    ]);
-})
+//     chart_3.updateSeries([
+//         {
+//             "name": "Dengue",
+//             "data": data4
+//         },
+//         {
+//             "name": "Dengue HF",
+//             "data": data5
+//         },
+//         {
+//             "name": "Deaths",
+//             "data": data6
+//         },
+//     ]);
+// })
 
 // Chart_5 update
 window.addEventListener("DOMContentLoaded", async function () {
     // let series_A = await transformData_3_yearView('all');
     let series_B = await transformData_1_yearView()
-
     let series_A = await transformData_rain_yearView('full')
 
     chart_4.updateSeries([
@@ -1616,7 +1596,6 @@ window.addEventListener("DOMContentLoaded", async function () {
 // Chart_sync update
 window.addEventListener("DOMContentLoaded", async function () {
     let data1 = await transformData_rain_q('all', 'all')
-    // let data1 = await transformData_rain_yearView('all');
     let data2 = await CSV_q_view(quarterlyPath, 'clusters', 'all', 'all')
     let data3 = await CSV_q_view(quarterlyPath, 'habitats', 'all', 'all')
     let data4 = await CSV_q_view(quarterlyPath, 'total_cases', 'all', 'all')
@@ -1648,4 +1627,93 @@ window.addEventListener("DOMContentLoaded", async function () {
             "data": data4
         },
     ]);
+})
+
+
+
+window.addEventListener("DOMContentLoaded", async function () {
+    let full_radio = document.getElementById('full_view_q')
+    let yr_radio = document.getElementById('year_view_q')
+    let year_range = document.getElementById('year_range_q')
+    let yearLabel = document.getElementById('year_select_q')
+    let clear = document.getElementById('clear_q')
+    let all_years = document.getElementById('select_all')
+
+    console.log(full_radio.checked, yr_radio.checked, year_range.value)
+
+    // Chart 3 update
+    async function check_chart3() {
+        let y = year_range.value
+
+        if (year_range.value == 2023) {
+            y = 'all'
+            yearLabel.innerHTML = 'All'
+        } else {
+            yearLabel.innerHTML = y
+        }
+
+        let data1 = []
+        let data2 = []
+        let data3 = []
+
+        if (yr_radio.checked == true) {
+            full_radio.checked = false
+            data1 = await CSV_year_view(quarterlyPath, 'dengue', [y])
+            data2 = await CSV_year_view(quarterlyPath, 'dengue_hf', [y])
+            data3 = await CSV_year_view(quarterlyPath, 'deaths', [y])
+
+            console.log(data1)
+            console.log(data2)
+            console.log(data3)
+
+        } else if (full_radio.checked == true) {
+            yr_radio.checked = false
+            data1 = await CSV_q_view(quarterlyPath, 'dengue', [y], 'all')
+            data2 = await CSV_q_view(quarterlyPath, 'dengue_hf', [y], 'all')
+            data3 = await CSV_q_view(quarterlyPath, 'deaths', [y], 'all')
+
+        }
+
+        chart_3.updateSeries([
+            {
+                "name": "Dengue",
+                "data": data1
+            },
+            {
+                "name": "Dengue HF",
+                "data": data2
+            },
+            {
+                "name": "Deaths",
+                "data": data3
+            },
+        ]);
+    }
+
+    check_chart3()
+
+    full_radio.addEventListener("click", async function () {
+        check_chart3()
+    })
+
+    yr_radio.addEventListener("click", async function () {
+        check_chart3()
+    })
+
+    year_range.addEventListener("click", async function () {
+        check_chart3()
+    })
+
+    all_years.addEventListener("click", async function () {
+        year_range.value = 2023
+        check_chart3()
+    })
+
+    clear.addEventListener("click", async function () {
+        year_range.value = 2023
+        full_radio.checked = true
+        check_chart3()
+    })
+
+
 })
