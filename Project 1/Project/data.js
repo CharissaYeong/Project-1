@@ -226,9 +226,7 @@ async function filter_by_year_hf(n) {
 // CSV data
 async function load_CSV(path) {
     const response = await axios.get(path);
-    // console.log(response.data);
     let json = await csv().fromString(response.data);
-    // console.log(json)
     return json;
 }
 
@@ -248,7 +246,6 @@ async function CSV_year_view(path, param, year) {
         data.forEach(function (dataPoint) {
             let yr = dataPoint['year'];
             if (yr.includes(item)) {
-                // console.log(dataPoint)
                 cases = parseFloat(dataPoint[param]);
                 total = total + cases;
             }
@@ -259,7 +256,6 @@ async function CSV_year_view(path, param, year) {
         })
         total = 0;
     });
-    // console.log(series_csv)
     return series_csv
 }
 
@@ -290,17 +286,6 @@ async function CSV_q_view(path, param, year, quarter) {
         });
 
     });
-
-    // years.map((year) => {
-    //     data.map((dp) => {
-    //         series_csv.push({
-    //             'x': year + ' ' + dp['quarter'],
-    //             'y': dp[param]
-    //         })
-    //     })
-    // })
-
-    // console.log(series_csv)
     return series_csv
 }
 
@@ -338,9 +323,6 @@ async function denv_q(year, quarter) {
     for (let n of data4) {
         denv_series.push(parseFloat(n['y']))
     }
-
-    // denv_series = denv_series.toString()
-    // console.log(denv_series)
     return denv_series
 }
 
@@ -492,9 +474,6 @@ async function transformData_rain_q(year, quarter) {
             rain_q(year, qt)
         })
     })
-
-
-    // console.log(series_q)
     return series_q
 }
 
@@ -505,12 +484,7 @@ async function transformData_temp_year(year) {
     let series = []
 
     data = data.result.records
-    console.log(data)
     let years = year
-
-    // if (years == 'all') {
-    //     years = [2018, 2019, 2020, 2021, 2022]
-    // }
 
     if (years == 'all') {
         years = [2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022]
@@ -584,8 +558,6 @@ async function transformData_temp_q(year, quarter) {
 
     });
 
-    console.log(series)
-
     async function rain_q(y, q) {
         let days = 0
 
@@ -612,8 +584,6 @@ async function transformData_temp_q(year, quarter) {
         })
     })
 
-
-    console.log(series_q)
     return series_q
 
 }
@@ -1231,7 +1201,6 @@ window.addEventListener("DOMContentLoaded", async function () {
     async function checkbox_dengue(data1, data2) {
 
         if (dengue_btn.checked == true && dengueHF_btn.checked == false) {
-            // console.log('dengue')
             chart_1.updateSeries([
                 {
                     "name": "Dengue",
@@ -1243,7 +1212,6 @@ window.addEventListener("DOMContentLoaded", async function () {
                 },
             ]);
         } else if (dengue_btn.checked == false && dengueHF_btn.checked == true) {
-            // console.log('HF')
             chart_1.updateSeries([
                 {
                     "name": "Dengue",
@@ -1265,7 +1233,6 @@ window.addEventListener("DOMContentLoaded", async function () {
                 },
             ])
         } else if (dengue_btn.checked == true && dengueHF_btn.checked == true) {
-            // console.log('dengue and HF')
             chart_1.updateSeries([
                 {
                     "name": "Dengue",
@@ -1277,7 +1244,6 @@ window.addEventListener("DOMContentLoaded", async function () {
                 },
             ]);
         } else if (dengue_btn.checked == false && dengueHF_btn.checked == false) {
-            // console.log('nothing')
             chart_1.updateSeries([
                 {
                     "name": "Dengue",
@@ -1299,12 +1265,10 @@ window.addEventListener("DOMContentLoaded", async function () {
     weekBtn.addEventListener("click", function () {
         yearRange.value = '2023';
         year_label.innerHTML = ''
-        // let weekRadio = document.getElementById('weekView').checked;
         yearRange.value = '2023';
         year_label.innerHTML = ''
 
         if (weekBtn.checked == true) {
-            console.log('week selected');
             checkbox_dengue(data_week, data_week_hf)
 
         }
@@ -1317,7 +1281,6 @@ window.addEventListener("DOMContentLoaded", async function () {
         year_label.innerHTML = ''
 
         if (yearRadio == true) {
-            console.log('year selected');
             checkbox_dengue(data_year, data_year_hf)
 
         }
@@ -1347,13 +1310,10 @@ window.addEventListener("DOMContentLoaded", async function () {
             let data_year_select_hf = await filter_by_year_hf(year);
             checkbox_dengue(data_year_select, data_year_select_hf)
         } else if (yearRange.value > 2022) {
-            console.log(yearBtn.checked)
             if (year_btn.checked == true) {
                 checkbox_dengue(data_year, data_year_hf)
-                console.log('year')
             } else if (week_btn.checked == true) {
                 checkbox_dengue(data_week, data_week_hf)
-                console.log('week')
             }
         }
     });
@@ -1369,10 +1329,8 @@ window.addEventListener("DOMContentLoaded", async function () {
         } else if (yearRange.value > 2022) {
             if (year_btn.checked == true) {
                 checkbox_dengue(data_year, data_year_hf)
-                console.log('year')
             } else if (week_btn.checked == true) {
                 checkbox_dengue(data_week, data_week_hf)
-                console.log('week')
             }
         }
     })
@@ -1580,8 +1538,6 @@ window.addEventListener("DOMContentLoaded", async function () {
     let yearLabel = document.getElementById('year_select_q')
     let clear = document.getElementById('clear_q')
     let all_years = document.getElementById('select_all')
-
-    console.log(full_radio.checked, yr_radio.checked, year_range.value)
 
     // Chart 3 update
     async function check_chart3() {
