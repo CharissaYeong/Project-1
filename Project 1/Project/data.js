@@ -1118,7 +1118,8 @@ const options_sync1 = {
         labels: {
             minWidth: 40
         }
-    }
+    },
+    colors: ['#60ACD8']
 }
 
 const chart_sync1 = new ApexCharts(
@@ -1143,7 +1144,8 @@ const options_sync2 = {
         labels: {
             minWidth: 40
         }
-    }
+    },
+    colors: ['#7D4DAA']
 }
 
 const chart_sync2 = new ApexCharts(
@@ -1168,7 +1170,8 @@ const options_sync3 = {
         labels: {
             minWidth: 40
         }
-    }
+    },
+    colors: ['#CEDE83']
 }
 
 const chart_sync3 = new ApexCharts(
@@ -1182,7 +1185,7 @@ const options_sync4 = {
     chart: {
         id: 'sync_4',
         group: 'sync',
-        type: "line",
+        type: "area",
         height: "180"
     },
     series: [],
@@ -1193,7 +1196,8 @@ const options_sync4 = {
         labels: {
             minWidth: 40
         }
-    }
+    },
+    colors: ['#F97D45']
 }
 
 const chart_sync4 = new ApexCharts(
@@ -1673,7 +1677,7 @@ window.addEventListener("DOMContentLoaded", async function () {
         check_chart3()
     })
 
-    year_range.addEventListener("click", async function () {
+    year_range.addEventListener("input", async function () {
         check_chart3()
     })
 
