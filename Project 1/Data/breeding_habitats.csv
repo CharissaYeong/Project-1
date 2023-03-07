@@ -1,0 +1,201 @@
+﻿id,year,quarter,months,epiweek,area,points,breeding_habitat
+1,2018,Q1,Jan-Mar,W1-13,homes,5,Domestic Containers
+2,2018,Q1,Jan-Mar,W1-13,homes,4,Flower Pot Plates / Trays
+3,2018,Q1,Jan-Mar,W1-13,homes,3,Ornamental Containers
+4,2018,Q1,Jan-Mar,W1-13,homes,2,Plants (Hardened soil and plant axils)
+5,2018,Q1,Jan-Mar,W1-13,homes,1,Canvas Sheet/ Plastic Sheet
+6,2018,Q1,Jan-Mar,W1-13,public,5,Covered Perimeter Drains
+7,2018,Q1,Jan-Mar,W1-13,public,4,Discarded Receptacles
+8,2018,Q1,Jan-Mar,W1-13,public,3,Gully Traps
+9,2018,Q1,Jan-Mar,W1-13,public,2,Scupper Drains of Housing Estates
+10,2018,Q1,Jan-Mar,W1-13,public,1,Plants (Hardened soil and plant axils)
+11,2018,Q2,Apr-Jun,W14-26,homes,5,Domestic Containers
+12,2018,Q2,Apr-Jun,W14-26,homes,4,Flower Pot Plates / Trays
+13,2018,Q2,Apr-Jun,W14-26,homes,3,Ornamental Containers
+14,2018,Q2,Apr-Jun,W14-26,homes,2,Canvas Sheet/ Plastic Sheet
+15,2018,Q2,Apr-Jun,W14-26,homes,1,Toilet Bowls / Cisterns
+16,2018,Q2,Apr-Jun,W14-26,public,5,Covered Perimeter Drains
+17,2018,Q2,Apr-Jun,W14-26,public,4,Discarded Receptacles
+18,2018,Q2,Apr-Jun,W14-26,public,3,Gully Traps
+19,2018,Q2,Apr-Jun,W14-26,public,2,Open Perimeter Drains
+20,2018,Q2,Apr-Jun,W14-26,public,1,Domestic Containers
+21,2018,Q3,Jul-Sep,W27-39,homes,5,Domestic Containers
+22,2018,Q3,Jul-Sep,W27-39,homes,4,Flower Pot Plates / Trays
+23,2018,Q3,Jul-Sep,W27-39,homes,3,Ornamental Containers
+24,2018,Q3,Jul-Sep,W27-39,homes,2,Plants (Hardened soil and plant axils)
+25,2018,Q3,Jul-Sep,W27-39,homes,1,Canvas Sheet/ Plastic Sheet
+26,2018,Q3,Jul-Sep,W27-39,public,5,Covered Perimeter Drains
+27,2018,Q3,Jul-Sep,W27-39,public,4,Discarded Receptacles
+28,2018,Q3,Jul-Sep,W27-39,public,3,Gully Traps
+29,2018,Q3,Jul-Sep,W27-39,public,2,Covered Carpark Drains
+30,2018,Q3,Jul-Sep,W27-39,public,1, Scupper Drains of Housing Estates
+31,2018,Q4,Oct-Dec,W40-52,homes,5,Domestic Containers
+32,2018,Q4,Oct-Dec,W40-52,homes,4,Flower Pot Plates / Trays
+33,2018,Q4,Oct-Dec,W40-52,homes,3,Ornamental Containers
+34,2018,Q4,Oct-Dec,W40-52,homes,2,Plants (Hardened soil and plant axils)
+35,2018,Q4,Oct-Dec,W40-52,homes,1,Fountains
+36,2018,Q4,Oct-Dec,W40-52,public,5,Covered Perimeter Drains
+37,2018,Q4,Oct-Dec,W40-52,public,4,Discarded Receptacles
+38,2018,Q4,Oct-Dec,W40-52,public,3,Gully Traps
+39,2018,Q4,Oct-Dec,W40-52,public,2,Scupper Drains of Housing Estates
+40,2018,Q4,Oct-Dec,W40-52,public,1,Plants (Hardened soil and plant axils)
+41,2019,Q1,Jan-Mar,W1-13,homes,5,Domestic Containers
+42,2019,Q1,Jan-Mar,W1-13,homes,4,Ornamental Containers
+43,2019,Q1,Jan-Mar,W1-13,homes,3,Flower Pot Plates / Trays
+44,2019,Q1,Jan-Mar,W1-13,homes,2,Toilet Bowls / Cisterns
+45,2019,Q1,Jan-Mar,W1-13,homes,1,Plants (Hardened soil and plant axils)
+46,2019,Q1,Jan-Mar,W1-13,public,5,Covered Perimeter Drains
+47,2019,Q1,Jan-Mar,W1-13,public,4,Gully Traps
+48,2019,Q1,Jan-Mar,W1-13,public,3,Discarded Receptacles
+49,2019,Q1,Jan-Mar,W1-13,public,2,Covered Carpark Drains
+50,2019,Q1,Jan-Mar,W1-13,public,1,Covered Roadside Drains
+51,2019,Q2,Apr-Jun,W14-26,homes,5,Domestic Containers
+52,2019,Q2,Apr-Jun,W14-26,homes,4,Flower Pot Plates / Trays
+53,2019,Q2,Apr-Jun,W14-26,homes,3,Ornamental Containers (Vases)
+54,2019,Q2,Apr-Jun,W14-26,homes,2,Plants (Hardened soil and plant axils)
+55,2019,Q2,Apr-Jun,W14-26,homes,1,Toilet Bowls / Cisterns
+56,2019,Q2,Apr-Jun,W14-26,public,5,Covered Perimeter Drains
+57,2019,Q2,Apr-Jun,W14-26,public,4,Discarded Receptacles
+58,2019,Q2,Apr-Jun,W14-26,public,3,Gully Traps
+59,2019,Q2,Apr-Jun,W14-26,public,2,Covered Carpark Drains
+60,2019,Q2,Apr-Jun,W14-26,public,1,Open Perimeter Drains
+61,2019,Q3,Jul-Sep,W27-39,homes,5,Domestic Containers
+62,2019,Q3,Jul-Sep,W27-39,homes,4,Ornamental Containers (Vases)
+63,2019,Q3,Jul-Sep,W27-39,homes,3,Flower Pot Plates / Trays
+64,2019,Q3,Jul-Sep,W27-39,homes,2,Toilet Bowls / Cisterns
+65,2019,Q3,Jul-Sep,W27-39,homes,1,Plants (Hardened soil and plant axils)
+66,2019,Q3,Jul-Sep,W27-39,public,5,Covered Perimeter Drains
+67,2019,Q3,Jul-Sep,W27-39,public,4,Discarded Receptacles
+68,2019,Q3,Jul-Sep,W27-39,public,3,Covered Roadside Drains
+69,2019,Q3,Jul-Sep,W27-39,public,2,Covered Carpark Drains
+70,2019,Q3,Jul-Sep,W27-39,public,1,Gully Traps
+71,2019,Q4,Oct-Dec,W40-52,homes,5,Domestic Containers
+72,2019,Q4,Oct-Dec,W40-52,homes,4,Flower Pot Plates / Trays
+73,2019,Q4,Oct-Dec,W40-52,homes,3,Ornamental Containers (Vases)
+74,2019,Q4,Oct-Dec,W40-52,homes,2,Plants (Hardened soil and plant axils)
+75,2019,Q4,Oct-Dec,W40-52,homes,1,Planter Boxes
+76,2019,Q4,Oct-Dec,W40-52,public,5,Covered Perimeter Drains
+77,2019,Q4,Oct-Dec,W40-52,public,4,Discarded Receptacles
+78,2019,Q4,Oct-Dec,W40-52,public,3,Gully Traps
+79,2019,Q4,Oct-Dec,W40-52,public,2,Covered Carpark Drains
+80,2019,Q4,Oct-Dec,W40-52,public,1,Covered Roadside Drains
+81,2020,Q1,Jan-Mar,W1-13,homes,5,Domestic Containers
+82,2020,Q1,Jan-Mar,W1-13,homes,4,Ornamental Containers (Vases)
+83,2020,Q1,Jan-Mar,W1-13,homes,3,Flower Pot Plates / Trays
+84,2020,Q1,Jan-Mar,W1-13,homes,2,Water Fountains
+85,2020,Q1,Jan-Mar,W1-13,homes,1,Toilet Bowls / Cisterns
+86,2020,Q1,Jan-Mar,W1-13,public,5,Covered Perimeter Drains
+87,2020,Q1,Jan-Mar,W1-13,public,4,Discarded Receptacles
+88,2020,Q1,Jan-Mar,W1-13,public,3,Gully Traps
+89,2020,Q1,Jan-Mar,W1-13,public,2,Covered Carpark Drains 
+90,2020,Q1,Jan-Mar,W1-13,public,1,Inspection Chambers
+91,2020,Q2,Apr-Jun,W14-26,homes,5,Domestic Containers
+92,2020,Q2,Apr-Jun,W14-26,homes,4,Flower Pot Plates / Trays
+93,2020,Q2,Apr-Jun,W14-26,homes,3,Ornamental Containers (Vases)
+94,2020,Q2,Apr-Jun,W14-26,homes,2,Toilet Bowls / Cisterns
+95,2020,Q2,Apr-Jun,W14-26,homes,1,Plants (Hardened soil and plant axils)
+96,2020,Q2,Apr-Jun,W14-26,public,5,Covered Perimeter Drains
+97,2020,Q2,Apr-Jun,W14-26,public,4,Discarded Receptacles
+98,2020,Q2,Apr-Jun,W14-26,public,3,Plants (Hardened soil and plant axils)
+99,2020,Q2,Apr-Jun,W14-26,public,2,Domestic Containers
+100,2020,Q2,Apr-Jun,W14-26,public,1,Gully Traps
+101,2020,Q3,Jul-Sep,W27-40,homes,5,Domestic Containers
+102,2020,Q3,Jul-Sep,W27-40,homes,4,Flower Pot Plates / Trays
+103,2020,Q3,Jul-Sep,W27-40,homes,3,Ornamental Containers (Vases)
+104,2020,Q3,Jul-Sep,W27-40,homes,2,Toilet Bowls / Cisterns
+105,2020,Q3,Jul-Sep,W27-40,homes,1,Plants (Hardened soil and plant axils)
+106,2020,Q3,Jul-Sep,W27-40,public,5,Discarded Receptacles
+107,2020,Q3,Jul-Sep,W27-40,public,4,Covered Perimeter Drains
+108,2020,Q3,Jul-Sep,W27-40,public,3,Gully Traps
+109,2020,Q3,Jul-Sep,W27-40,public,2,Plants (Hardened soil and plant axils)
+110,2020,Q3,Jul-Sep,W27-40,public,1,Domestic Containers
+111,2020,Q4,Oct-Dec,W41-53,homes,5,Domestic Containers
+112,2020,Q4,Oct-Dec,W41-53,homes,4,Flower Pot Plates / Trays
+113,2020,Q4,Oct-Dec,W41-53,homes,3,Ornamental Containers (Vases)
+114,2020,Q4,Oct-Dec,W41-53,homes,2,Plants (Hardened soil and plant axils)
+115,2020,Q4,Oct-Dec,W41-53,homes,1,Planter Boxes
+116,2020,Q4,Oct-Dec,W41-53,public,5,Discarded Receptacles
+117,2020,Q4,Oct-Dec,W41-53,public,4,Covered Perimeter Drains
+118,2020,Q4,Oct-Dec,W41-53,public,3,Plants (Hardened soil and plant axils)
+119,2020,Q4,Oct-Dec,W41-53,public,2,Gully Traps
+120,2020,Q4,Oct-Dec,W41-53,public,1,Domestic Containers
+121,2021,Q1,Jan-Mar,W1-13,homes,5,Domestic Containers
+122,2021,Q1,Jan-Mar,W1-13,homes,4,Flower Pot Plates / Trays
+123,2021,Q1,Jan-Mar,W1-13,homes,3,Ornamental Containers (Vases)
+124,2021,Q1,Jan-Mar,W1-13,homes,2,Bins (Litter/Refuse/Bulk)
+125,2021,Q1,Jan-Mar,W1-13,homes,1,Planter Boxes
+126,2021,Q1,Jan-Mar,W1-13,public,5,Covered Perimeter Drains
+127,2021,Q1,Jan-Mar,W1-13,public,4,Discarded Receptacles
+128,2021,Q1,Jan-Mar,W1-13,public,3,Gully Traps
+129,2021,Q1,Jan-Mar,W1-13,public,2,Inspection Chambers
+130,2021,Q1,Jan-Mar,W1-13,public,1,Covered Carpark Drains 
+131,2021,Q2,Apr-Jun,W14-26,homes,5,Domestic Containers
+132,2021,Q2,Apr-Jun,W14-26,homes,4,Flower Pot Plates / Trays
+133,2021,Q2,Apr-Jun,W14-26,homes,3,Ornamental Containers (Vases)
+134,2021,Q2,Apr-Jun,W14-26,homes,2,Refuse Bins Placed Outside Landed Houses
+135,2021,Q2,Apr-Jun,W14-26,homes,1,Canvas Sheet/ Plastic Sheet
+136,2021,Q2,Apr-Jun,W14-26,public,5,Covered Perimeter Drains
+137,2021,Q2,Apr-Jun,W14-26,public,4,Discarded Receptacles
+138,2021,Q2,Apr-Jun,W14-26,public,3,Gully Traps
+139,2021,Q2,Apr-Jun,W14-26,public,2,Plants (Hardened soil and plant axils)
+140,2021,Q2,Apr-Jun,W14-26,public,1,Open Perimeter Drains
+141,2021,Q3,Jul-Sep,W27-39,homes,5,Domestic Containers
+142,2021,Q3,Jul-Sep,W27-39,homes,4,Flower Pot Plates / Trays
+143,2021,Q3,Jul-Sep,W27-39,homes,3,Ornamental Containers (Vases)
+144,2021,Q3,Jul-Sep,W27-39,homes,2,Refuse Bins Placed Outside Landed Houses
+145,2021,Q3,Jul-Sep,W27-39,homes,1,Canvas Sheet/ Plastic Sheet
+146,2021,Q3,Jul-Sep,W27-39,public,5,Covered Perimeter Drains
+147,2021,Q3,Jul-Sep,W27-39,public,4,Discarded Receptacles
+148,2021,Q3,Jul-Sep,W27-39,public,3,Gully Traps
+149,2021,Q3,Jul-Sep,W27-39,public,2,Plants (Hardened soil and plant axils)
+150,2021,Q3,Jul-Sep,W27-39,public,1,Open Perimeter Drains
+151,2021,Q4,Oct-Dec,W40-52,homes,5,Domestic Containers
+152,2021,Q4,Oct-Dec,W40-52,homes,4,Flower Pot Plates / Trays
+153,2021,Q4,Oct-Dec,W40-52,homes,3,Ornamental Containers (Vases)
+154,2021,Q4,Oct-Dec,W40-52,homes,2,Plants (Hardened soil and plant axils)
+155,2021,Q4,Oct-Dec,W40-52,homes,1,Refuse Bins Placed Outside Landed Houses
+156,2021,Q4,Oct-Dec,W40-52,public,5,Discarded Receptacles
+157,2021,Q4,Oct-Dec,W40-52,public,4,Covered Perimeter Drains
+158,2021,Q4,Oct-Dec,W40-52,public,3,Gully Traps
+159,2021,Q4,Oct-Dec,W40-52,public,2,Open Perimeter Drains
+160,2021,Q4,Oct-Dec,W40-52,public,1,Domestic Containers
+161,2022,Q1,Jan-Mar,W1-13,homes,5,Domestic Containers
+162,2022,Q1,Jan-Mar,W1-13,homes,4,Flower Pot Plates / Trays
+163,2022,Q1,Jan-Mar,W1-13,homes,3,Ornamental Containers (Vases)
+164,2022,Q1,Jan-Mar,W1-13,homes,2,Canvas Sheet/ Plastic Sheet
+165,2022,Q1,Jan-Mar,W1-13,homes,1,Plants (Hardened soil and plant axils)
+166,2022,Q1,Jan-Mar,W1-13,public,5,Covered Perimeter Drains
+167,2022,Q1,Jan-Mar,W1-13,public,4,Discarded Receptacles
+168,2022,Q1,Jan-Mar,W1-13,public,3,Gully Traps
+169,2022,Q1,Jan-Mar,W1-13,public,2,Open Perimeter Drains
+170,2022,Q1,Jan-Mar,W1-13,public,1,Plants (Hardened soil and plant axils)
+171,2022,Q2,Apr-Jun,W14-26,homes,5,Domestic Containers (Pails)
+172,2022,Q2,Apr-Jun,W14-26,homes,4,Flower Pot Plates / Trays
+173,2022,Q2,Apr-Jun,W14-26,homes,3,Ornamental Containers (Vases)
+174,2022,Q2,Apr-Jun,W14-26,homes,2,Refuse Bins Placed Outside Landed Houses
+175,2022,Q2,Apr-Jun,W14-26,homes,1,Canvas Sheet/ Plastic Sheet
+176,2022,Q2,Apr-Jun,W14-26,public,5,Covered Perimeter Drains
+177,2022,Q2,Apr-Jun,W14-26,public,4,Discarded Receptacles
+178,2022,Q2,Apr-Jun,W14-26,public,3,Gully Traps
+179,2022,Q2,Apr-Jun,W14-26,public,2,Plants (Hardened soil and plant axils)
+180,2022,Q2,Apr-Jun,W14-26,public,1,Domestic Containers (Pails)
+181,2022,Q3,Jul-Sep,W27-39,homes,5,Domestic Containers (Pails)
+182,2022,Q3,Jul-Sep,W27-39,homes,4,Flower Pot Plates / Trays
+183,2022,Q3,Jul-Sep,W27-39,homes,3,Ornamental Containers (Vases)
+184,2022,Q3,Jul-Sep,W27-39,homes,2,Toilet Bowls / Cisterns
+185,2022,Q3,Jul-Sep,W27-39,homes,1,Plants (Hardened soil and plant axils)
+186,2022,Q3,Jul-Sep,W27-39,public,5,Covered Perimeter Drains
+187,2022,Q3,Jul-Sep,W27-39,public,4,Discarded Receptacles
+188,2022,Q3,Jul-Sep,W27-39,public,3,Gully Traps
+189,2022,Q3,Jul-Sep,W27-39,public,2,Covered Carpark Drains
+190,2022,Q3,Jul-Sep,W27-39,public,1,Domestic Containers (Pails)
+191,2022,Q4,Oct-Dec,W40-52,homes,5,Domestic Containers (Pails)
+192,2022,Q4,Oct-Dec,W40-52,homes,4,Flower Pot Plates / Trays
+193,2022,Q4,Oct-Dec,W40-52,homes,3,Ornamental Containers (Vases)
+194,2022,Q4,Oct-Dec,W40-52,homes,2,Canvas Sheet/ Plastic Sheet
+195,2022,Q4,Oct-Dec,W40-52,homes,1,Refuse Bins Placed Outside Landed Houses
+196,2022,Q4,Oct-Dec,W40-52,public,5,Discarded Receptacles
+197,2022,Q4,Oct-Dec,W40-52,public,4,Covered Perimeter Drains
+198,2022,Q4,Oct-Dec,W40-52,public,3,Plants (Hardened soil and plant axils)
+199,2022,Q4,Oct-Dec,W40-52,public,2,Gully Traps
+200,2022,Q4,Oct-Dec,W40-52,public,1,Domestic Containers (Pails)
