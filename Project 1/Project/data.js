@@ -1641,28 +1641,28 @@ window.addEventListener("DOMContentLoaded", async function () {
         chart_sync1.updateSeries([
             {
                 "name": "Number of Rainy days",
-                "data": data1
+                "data": data4
             },
         ]);
     
         chart_sync2.updateSeries([
             {
                 "name": "Number of Active Clusters",
-                "data": data2
+                "data": data5
             },
         ]);
     
         chart_sync3.updateSeries([
             {
                 "name": "Number of Breeding Habitats",
-                "data": data3
+                "data": data6
             },
         ]);
     
         chart_sync4.updateSeries([
             {
                 "name": "Number of Dengue Cases",
-                "data": data4
+                "data": data7
             },
         ]);
     }
