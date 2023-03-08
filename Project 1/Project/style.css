@@ -4,4 +4,7 @@ body {
     font-family: 'Sofia Sans Semi Condensed', sans-serif;
 }
 
-
+.nav-link:hover {
+    transform: scale(1.25, 1.25);
+    color: lightblue;
+}

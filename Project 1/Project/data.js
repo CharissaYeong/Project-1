@@ -1020,7 +1020,7 @@ const options_4 = {
     series: [{
         name: 'Rainy_days',
         type: 'area',
-        data: []
+        data: [],
     }, {
         name: 'Dengue_cases',
         type: 'line',
@@ -1060,8 +1060,7 @@ const options_4 = {
     },
     theme: {
         palette: 'palette6'
-    }
-
+    },
 }
 const chart_4 = new ApexCharts(
     document.querySelector("#chart_4"),
@@ -1079,7 +1078,7 @@ const options_sync1 = {
         height: "25%",
     },
     dataLabels: {
-        enabled: false,
+        enabled: true,
     },
     series: [],
     noData: {
@@ -1114,6 +1113,9 @@ const options_sync2 = {
     noData: {
         "text": "Loading..."
     },
+    dataLabels: {
+        enabled: true,
+    },
     yaxis: {
         labels: {
             minWidth: 40
@@ -1143,6 +1145,9 @@ const options_sync3 = {
     noData: {
         "text": "Loading..."
     },
+    dataLabels: {
+        enabled: true,
+    },
     yaxis: {
         labels: {
             minWidth: 40
@@ -1166,7 +1171,7 @@ const options_sync4 = {
         height: "25%"
     },
     dataLabels: {
-        enabled: false,
+        enabled: true,
     },
     series: [],
     noData: {
