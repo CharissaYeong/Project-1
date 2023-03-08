@@ -67,33 +67,28 @@
                                         width="70"></iconify-icon></span>
                                 DengueWatch 2023
                             </h1>
-                            <hr class="m-0 p-0">
+                            <hr class="mb-4 p-0">
                             </hr>
                         </header>
                         <!-- Header end -->
 
-                        <!-- Header text -->
-                        <p class="p-4">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex totam commodi consequuntur,
-                            maiores in sapiente doloribus earum? Quam maiores dolores, magnam et, sequi, laboriosam
-                            non
-                            commodi minima impedit cupiditate nulla!
-                        </p>
-                        <!-- Header text end -->
+                        <h3 class="fw-bold px-4 py-3">
+                            Daily Dengue Surveillance Update (2023)
+                        </h3>
 
                         <!-- Highlight cards -->
                         <div class="row px-4 pb-4">
                             <!-- Card 1 -->
                             <div class="col-xl-3 col-md-6">
-                                <div class="card bg-primary text-white mb-4 shadow-sm border-0" style="height: auto">
+                                <div class="card bg-primary text-white mb-4 shadow-sm border-0">
                                     <div class="card-body row">
                                         <div class="col-10" id="card-content">
                                             <h5>
                                                 Cases reported today:
                                             </h5>
                                             <h2>
-                                                16 <small class="ms-1"
-                                                    style="color: lightgreen; font-size: 0.6em;">(-42%)</small>
+                                                8 <small class="ms-1"
+                                                    style="color: lightgreen; font-size: 0.6em;">(-55%)</small>
                                             </h2>
                                         </div>
                                         <div class="col-2 d-flex align-items-end justify-content-end">
@@ -101,21 +96,21 @@
                                         </div>
                                     </div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <small class="text-white">Last updated 17th Feb 2023, 3:00pm</small>
+                                        <small class="text-white currDate">Last updated 17th Feb 2023, 3:00pm</small>
                                     </div>
                                 </div>
                             </div>
                             <!-- Card 2 -->
                             <div class="col-xl-3 col-md-6">
-                                <div class="card bg-warning text-white mb-4 shadow-sm border-0" style="height: auto">
+                                <div class="card bg-warning text-white mb-4 shadow-sm border-0">
                                     <div class="card-body row">
                                         <div class="col-10" id="card-content">
                                             <h5>
-                                                Number of active clusters:
+                                                Active clusters:
                                             </h5>
                                             <h2>
-                                                16 <small class="ms-1"
-                                                    style="color: lightgreen; font-size: 0.6em;">(-42%)</small>
+                                                25 <small class="ms-1" style="color: 
+                                                    #Fd0035; font-size: 0.6em;">(+32%)</small>
                                             </h2>
                                         </div>
                                         <div class="col-2 d-flex align-items-end justify-content-end">
@@ -129,15 +124,14 @@
                             </div>
                             <!-- Card 3 -->
                             <div class="col-xl-3 col-md-6">
-                                <div class="card bg-success text-white mb-4 shadow-sm border-0" style="height: auto">
+                                <div class="card bg-success text-white mb-4 shadow-sm border-0">
                                     <div class="card-body row">
                                         <div class="col-10" id="card-content">
                                             <h5>
-                                                Total cases 2023:
+                                                Cummulative cases:
                                             </h5>
                                             <h2>
-                                                16 <small class="ms-1"
-                                                    style="color: lightgreen; font-size: 0.6em;">(-42%)</small>
+                                                1858
                                             </h2>
                                         </div>
                                         <div class="col-2 d-flex align-items-end justify-content-end">
@@ -151,15 +145,14 @@
                             </div>
                             <!-- Card 4 -->
                             <div class="col-xl-3 col-md-6">
-                                <div class="card bg-danger text-white mb-4 shadow-sm border-0" style="height: auto">
+                                <div class="card bg-danger text-white mb-4 shadow-sm border-0">
                                     <div class="card-body row">
                                         <div class="col-10" id="card-content">
                                             <h5>
-                                                Number of deaths 2023:
+                                                Deaths reported:
                                             </h5>
                                             <h2>
-                                                0 <small class="ms-1"
-                                                    style="color: lightgreen; font-size: 0.6em;">(-42%)</small>
+                                                0
                                             </h2>
                                         </div>
                                         <div class="col-2 d-flex align-items-end justify-content-end">
@@ -176,15 +169,15 @@
 
 
                         <!-- Charts row 1 -->
-                        <div class="mx-4 pb-3">
-                            <h2>
-                                10-Year Overview of Dengue Cases in Singapore (2012 - 2022)
-                            </h2>
+                        <div class="mx-4 pb-3 mt-4">
+                            <h3 class="fw-bold">
+                                Overview of Dengue Cases in Singapore (2012 - 2022)
+                            </h3>
                         </div>
                         <div class="card mb-4 p-0 py-4 shadow-sm border-0">
                             <div class="d-flex justify-content-between chart-title px-4 pb-4">
                                 <div class="chart-label">
-                                    <h5>Dengue Fever / Dengue Haemorrhagic Fever</h5>
+                                    <h5 class="fw-bold">Dengue Fever / Dengue Haemorrhagic Fever</h5>
                                     <subtitle>By Year and Epidemologcal week (E-week)</subtitle>
                                 </div>
                                 <div class="filter">
@@ -252,16 +245,8 @@
                         <div class="card mb-4 p-0 py-4 shadow-sm border-0">
                             <div class="d-flex justify-content-between chart-title px-4 pb-4">
                                 <div class="chart-label">
-                                    <h5>No of Rain days against Dengue cases</h5>
-                                    <subtitle>Rainy days </subtitle>
-                                </div>
-                                <div class="filter">
-                                    <a class="icon text-decoration-none" href="#" data-bs-toggle="dropdown">
-                                        <span class="me-1">Filter</span>
-                                        <i class="bi bi-three-dots"></i></a>
-                                    <div class="dropdown-menu container p-3"
-                                        style="height: fit-content; width: fit-content;">
-                                    </div>
+                                    <h5 class="fw-bold">Effect of Rainfall on Dengue cases</h5>
+                                    <subtitle>2012 - 2022</subtitle>
                                 </div>
                             </div>
                             <div class="w-100" style="height: 70vh">
@@ -356,7 +341,7 @@
                         <div class="card mb-4 p-0 py-4 shadow-sm border-0">
                             <div class="d-flex justify-content-between chart-title px-4 pb-4">
                                 <div class="chart-label">
-                                    <h5 class="fw-bold">Ranking of Breeding Habitats</h5>
+                                    <h5 class="fw-bold">Ranking of Common Breeding Habitats</h5>
                                     <subtitle>0 (least common) - 100 (most common)</subtitle>
                                 </div>
                                 <div>
@@ -366,8 +351,8 @@
                                     <div class="text-primary" id="map_year"></div>
                                 </div>
                             </div>
-                            <div class="w-100" style="height: 80vh;">
-                                <div id="chart_map"></div>
+                            <div class="w-100" style="height: 70vh;">
+                                <div id="chart_map" style="width: 105%;"></div>
                             </div>
                         </div>
                         <div class="px-4 pb-2 pt-4">
@@ -395,7 +380,8 @@
                                     <div class="year_slider">
                                         <div class="d-flex justify-content-between mb-3">
                                             <h6 class="text-muted">Select year</h6>
-                                            <button class="btn btn-light justify-content-end" id="select_all">Select all</button>
+                                            <button class="btn btn-light justify-content-end" id="select_all">Select
+                                                all</button>
                                         </div>
                                         <label for="year_range_q" class="form-label">
                                             <span class="d-flex gap-2">
@@ -411,14 +397,14 @@
                                 </div>
                             </div>
                         </filter>
-
+                        
                         <!-- Chart 3A -->
                         <div class="row">
                             <div class="">
                                 <div class="card mb-4 p-0 py-4 shadow-sm border-0">
                                     <div class="d-flex justify-content-between chart-title px-4 pb-4">
                                         <div class="chart-label">
-                                            <h5>Dengue Cases and Death Rate</h5>
+                                            <h5 class="fw-bold">Dengue Cases and Death Rate</h5>
                                             <subtitle>By Year and Quarter</subtitle>
                                         </div>
                                     </div>
@@ -433,11 +419,11 @@
                         <div class="card mb-4 p-0 py-4 shadow-sm border-0">
                             <div class="d-flex justify-content-between chart-title px-4 pb-4">
                                 <div class="chart-label">
-                                    <h5>hello</h5>
-                                    <subtitle>hhello</subtitle>
+                                    <h5 class="fw-bold">Rainfall, Breeding Habitats and Active Clusters</h5>
+                                    <subtitle>By year and quarter</subtitle>
                                 </div>
                             </div>
-                            <div class="w-100" id="synced-charts" style="height: fit-content;">
+                            <div class="w-100" id="synced-charts" style="height: 95vh;">
                                 <div id="sync1"></div>
                                 <div id="sync2"></div>
                                 <div id="sync3"></div>
@@ -446,13 +432,12 @@
                         </div>
                     </div>
                 </main>
-
             </div>
         </div>
         <!-- Content end -->
 
         <!-- Footer -->
-        <footer class="row bg-primary text-center text-lg-start">
+        <footer class="row text-center text-lg-start" style="background-color: #449DD1;">
             <div class="text-center p-3">
                 © Data from National Environmental Agency (NEA), Ministry of Health (MOH), www.Data.gov
             </div>

@@ -973,10 +973,8 @@ const options_map = {
         width: '100%',
         type: 'treemap',
         toolbar: {
-            show: false,
-            offsetX: 0,
-            offsetY: 0,
-        },
+            show: false
+        }
     },
     dataLabels: {
         enabled: true,
@@ -1061,7 +1059,7 @@ const options_4 = {
         intersect: false,
     },
     theme: {
-        palette: 'palette6' // upto palette10
+        palette: 'palette6'
     }
 
 }
@@ -1078,7 +1076,10 @@ const options_sync1 = {
         id: 'sync_1',
         group: 'sync',
         type: "area",
-        height: "180",
+        height: "25%",
+    },
+    dataLabels: {
+        enabled: false,
     },
     series: [],
     noData: {
@@ -1089,7 +1090,7 @@ const options_sync1 = {
             minWidth: 40
         }
     },
-    colors: ['#60ACD8']
+    colors: ['#008FFB']
 }
 
 const chart_sync1 = new ApexCharts(
@@ -1104,7 +1105,10 @@ const options_sync2 = {
         id: 'sync_2',
         group: 'sync',
         type: "line",
-        height: "180"
+        height: "25%",
+        toolbar: {
+            show: false
+        },
     },
     series: [],
     noData: {
@@ -1115,7 +1119,7 @@ const options_sync2 = {
             minWidth: 40
         }
     },
-    colors: ['#7D4DAA']
+    colors: ['#FF4560']
 }
 
 const chart_sync2 = new ApexCharts(
@@ -1130,7 +1134,10 @@ const options_sync3 = {
         id: 'sync_3',
         group: 'sync',
         type: "line",
-        height: "180"
+        height: "25%",
+        toolbar: {
+            show: false
+        }
     },
     series: [],
     noData: {
@@ -1141,7 +1148,7 @@ const options_sync3 = {
             minWidth: 40
         }
     },
-    colors: ['#CEDE83']
+    colors: ['#775DD0']
 }
 
 const chart_sync3 = new ApexCharts(
@@ -1156,7 +1163,10 @@ const options_sync4 = {
         id: 'sync_4',
         group: 'sync',
         type: "area",
-        height: "180"
+        height: "25%"
+    },
+    dataLabels: {
+        enabled: false,
     },
     series: [],
     noData: {
@@ -1178,8 +1188,6 @@ chart_sync4.render();
 
 
 // Sync charts end
-
-// Charts series update
 
 // Chart_1 update
 window.addEventListener("DOMContentLoaded", async function () {
@@ -1203,54 +1211,54 @@ window.addEventListener("DOMContentLoaded", async function () {
         if (dengue_btn.checked == true && dengueHF_btn.checked == false) {
             chart_1.updateSeries([
                 {
-                    "name": "Dengue",
+                    "name": "Dengue Fever",
                     "data": data1
                 },
                 {
-                    "name": "Dengue_HF",
+                    "name": "Dengue HF",
                     "data": []
                 },
             ]);
         } else if (dengue_btn.checked == false && dengueHF_btn.checked == true) {
             chart_1.updateSeries([
                 {
-                    "name": "Dengue",
+                    "name": "Dengue Fever",
                     "data": data1
                 },
                 {
-                    "name": "Dengue_HF",
+                    "name": "Dengue HF",
                     "data": data2
                 },
             ]);
             chart_1.updateSeries([
                 {
-                    "name": "Dengue",
+                    "name": "Dengue Fever",
                     "data": []
                 },
                 {
-                    "name": "Dengue_HF",
+                    "name": "Dengue HF",
                     "data": data2
                 },
             ])
         } else if (dengue_btn.checked == true && dengueHF_btn.checked == true) {
             chart_1.updateSeries([
                 {
-                    "name": "Dengue",
+                    "name": "Dengue Fever",
                     "data": data1
                 },
                 {
-                    "name": "Dengue_HF",
+                    "name": "Dengue HF",
                     "data": data2
                 },
             ]);
         } else if (dengue_btn.checked == false && dengueHF_btn.checked == false) {
             chart_1.updateSeries([
                 {
-                    "name": "Dengue",
+                    "name": "Dengue Fever",
                     "data": []
                 },
                 {
-                    "name": "Dengue_HF",
+                    "name": "Dengue HF",
                     "data": []
                 },
             ]);
@@ -1346,11 +1354,11 @@ window.addEventListener("DOMContentLoaded", async function () {
 
         chart_1.updateSeries([
             {
-                "name": "Dengue",
+                "name": "Dengue Fever",
                 "data": data_year
             },
             {
-                "name": "Dengue_HF",
+                "name": "Dengue HF",
                 "data": data_year_hf
             }
         ])
@@ -1514,17 +1522,16 @@ window.addEventListener("DOMContentLoaded", async function () {
 
 // Chart_5 update
 window.addEventListener("DOMContentLoaded", async function () {
-    // let series_A = await transformData_3_yearView('all');
     let series_B = await transformData_1_yearView()
     let series_A = await transformData_rain_yearView('full')
 
     chart_4.updateSeries([
         {
-            "name": "Rainy_days",
+            "name": "Rainy days",
             "data": series_A
         },
         {
-            "name": "Dengue_cases",
+            "name": "Dengue cases",
             "data": series_B
         },
     ]);
@@ -1581,7 +1588,7 @@ window.addEventListener("DOMContentLoaded", async function () {
 
         chart_3.updateSeries([
             {
-                "name": "Dengue",
+                "name": "Dengue Fever",
                 "data": data1
             },
             {
@@ -1596,28 +1603,28 @@ window.addEventListener("DOMContentLoaded", async function () {
 
         chart_sync1.updateSeries([
             {
-                "name": "Number of Rainy days",
+                "name": "Rainy days",
                 "data": data4
             },
         ]);
-    
+
         chart_sync2.updateSeries([
             {
-                "name": "Number of Active Clusters",
+                "name": "Active Clusters",
                 "data": data5
             },
         ]);
-    
+
         chart_sync3.updateSeries([
             {
-                "name": "Number of Breeding Habitats",
+                "name": "Breeding Habitats",
                 "data": data6
             },
         ]);
-    
+
         chart_sync4.updateSeries([
             {
-                "name": "Number of Dengue Cases",
+                "name": "Dengue Cases",
                 "data": data7
             },
         ]);
