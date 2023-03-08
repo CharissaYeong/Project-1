@@ -1510,11 +1510,11 @@ window.addEventListener("DOMContentLoaded", async function () {
 
     check_chart2()
 
-    year_btn_q.addEventListener("click", async function () {
+    year_btn_q.addEventListener("input", async function () {
         check_chart2()
     })
 
-    q_btn.addEventListener("click", async function () {
+    q_btn.addEventListener("input", async function () {
         check_chart2()
     })
 
@@ -1545,6 +1545,9 @@ window.addEventListener("DOMContentLoaded", async function () {
     let yearLabel = document.getElementById('year_select_q')
     let clear = document.getElementById('clear_q')
     let all_years = document.getElementById('select_all')
+    let label_3 = this.document.getElementById('chart_3_label')
+    let label_sync = this.document.getElementById('chart_sync_label')
+    let view_label = ''
 
     // Chart 3 update
     async function check_chart3() {
@@ -1567,6 +1570,7 @@ window.addEventListener("DOMContentLoaded", async function () {
 
         if (yr_radio.checked == true) {
             full_radio.checked = false
+            view_label = 'Yearly View'
             data1 = await CSV_year_view(quarterlyPath, 'dengue', [y])
             data2 = await CSV_year_view(quarterlyPath, 'dengue_hf', [y])
             data3 = await CSV_year_view(quarterlyPath, 'deaths', [y])
@@ -1577,6 +1581,7 @@ window.addEventListener("DOMContentLoaded", async function () {
 
         } else if (full_radio.checked == true) {
             yr_radio.checked = false
+            view_label = 'Quarterly View'
             data1 = await CSV_q_view(quarterlyPath, 'dengue', [y], 'all')
             data2 = await CSV_q_view(quarterlyPath, 'dengue_hf', [y], 'all')
             data3 = await CSV_q_view(quarterlyPath, 'deaths', [y], 'all')
@@ -1628,6 +1633,9 @@ window.addEventListener("DOMContentLoaded", async function () {
                 "data": data7
             },
         ]);
+
+        label_3.innerHTML = view_label + ' - ' + yearLabel.innerHTML
+        label_sync.innerHTML = view_label + ' - ' + yearLabel.innerHTML
     }
 
     check_chart3()
