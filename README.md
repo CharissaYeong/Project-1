@@ -12,7 +12,7 @@
 
 The live demo can be accessed via the link below:
 
-[Project Demo](https://charissayeong.github.io/Project-1/Project%201/Project/index.html)
+[https://charissayeong.github.io/Project-1/Project%201/Project/index.html](https://charissayeong.github.io/Project-1/Project%201/Project/index.html)
 
 <br>
 
