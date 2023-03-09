@@ -1074,7 +1074,7 @@ const options_sync1 = {
         id: 'sync_1',
         group: 'sync',
         type: "area",
-        height: "25%",
+        height: "210",
     },
     dataLabels: {
         enabled: true,
@@ -1107,7 +1107,7 @@ const options_sync2 = {
         id: 'sync_2',
         group: 'sync',
         type: "line",
-        height: "25%",
+        height: "210",
         toolbar: {
             show: false
         },
@@ -1136,7 +1136,7 @@ const options_sync3 = {
         id: 'sync_3',
         group: 'sync',
         type: "line",
-        height: "25%",
+        height: "210",
         toolbar: {
             show: false
         }
@@ -1165,7 +1165,7 @@ const options_sync4 = {
         id: 'sync_4',
         group: 'sync',
         type: "line",
-        height: "25%"
+        height: "210"
     },
     dataLabels: {
         enabled: false,
