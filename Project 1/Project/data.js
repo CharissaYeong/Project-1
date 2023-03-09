@@ -310,18 +310,18 @@ async function denv_q(year, quarter) {
     let denv_series = []
 
     for (let n of data1) {
-        denv_series.push(parseFloat(n['y']))
+        denv_series.push(parseInt(n['y']))
     }
 
     for (let n of data2) {
-        denv_series.push(parseFloat(n['y']))
+        denv_series.push(parseInt(n['y']))
     }
 
     for (let n of data3) {
-        denv_series.push(parseFloat(n['y']))
+        denv_series.push(parseInt(n['y']))
     }
     for (let n of data4) {
-        denv_series.push(parseFloat(n['y']))
+        denv_series.push(parseInt(n['y']))
     }
     return denv_series
 }
@@ -753,7 +753,7 @@ const options_2B = {
     tooltip: {
         y: {
             formatter: function (val) {
-                return val + '%'
+                return val + ' cases'
             }
         }
     },
@@ -800,13 +800,11 @@ const options_3 = {
         height: '100%',
     },
     dataLabels: {
-        enabled: false
+        enabled: true,
+        enabledOnSeries: [2],
     },
     stroke: {
         width: [1, 1, 4]
-    },
-    xaxis: {
-        categories: [],
     },
     yaxis: [
         {
@@ -976,7 +974,7 @@ const options_map = {
     dataLabels: {
         enabled: true,
         style: {
-            fontSize: '12px',
+            fontSize: '16px',
         },
         formatter: function (text, op) {
             return [text, op.value]
@@ -1027,6 +1025,10 @@ const options_4 = {
         height: '100%',
         type: 'line'
     },
+    dataLabels: {
+        enabled: true,
+        enabledOnSeries: [1],
+    },
     stroke: {
         curve: 'smooth'
     },
@@ -1076,6 +1078,10 @@ const options_sync1 = {
     },
     dataLabels: {
         enabled: true,
+        style: {
+            fontSize: '12px',
+            fontWeight: 'bold',
+          },
     },
     series: [],
     noData: {
@@ -1110,9 +1116,6 @@ const options_sync2 = {
     noData: {
         "text": "Loading..."
     },
-    dataLabels: {
-        enabled: true,
-    },
     yaxis: {
         labels: {
             minWidth: 40
@@ -1142,9 +1145,6 @@ const options_sync3 = {
     noData: {
         "text": "Loading..."
     },
-    dataLabels: {
-        enabled: true,
-    },
     yaxis: {
         labels: {
             minWidth: 40
@@ -1164,11 +1164,11 @@ const options_sync4 = {
     chart: {
         id: 'sync_4',
         group: 'sync',
-        type: "area",
+        type: "line",
         height: "25%"
     },
     dataLabels: {
-        enabled: true,
+        enabled: false,
     },
     series: [],
     noData: {
@@ -1399,6 +1399,10 @@ window.addEventListener("DOMContentLoaded", async function () {
         if (q == '---') {
             q = []
         }
+
+        year_label_2A.innerText = year_btn_q.value
+        q_label_2A.innerText = year_btn_q.value + ' ' + q
+        year_label_map.innerText = year_btn_q.value
 
         let data1 = await denv_year('denv_1_cases', [y])
         let data2 = await denv_year('denv_2_cases', [y])
