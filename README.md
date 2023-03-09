@@ -63,7 +63,6 @@ This data visualization project aims to showcase the Dengue fever statistics in 
 
 # Tests
 
-
 |No.| Test Case | Result |
 |:--|:----------|:-------|
 |1.| Verify data accuracy | Data processing was performed correctly. Data displayed in charts matches the source data. |
