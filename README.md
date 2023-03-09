@@ -38,9 +38,9 @@ This data visualization project aims to showcase the Dengue fever statistics in 
 ## Key Data Points
 <br>
 
+
 |No.| Data | Description |
 |:---|:----------|:-------|
-
 |1.| Dengue Fever | Number of dengue cases reported. |
 |2.| Dengue Haemorrhagic Fever (DHF/Dengue HF) | Number of DHF cases reported. A more severe form of dengue.|
 |3.| DENV_1, DENV_2, DENV_3, DENV_4 | Serotype groups of the dengue virus based on distinct variations of the antigens or other molecules found on its surface.|
@@ -63,6 +63,7 @@ This data visualization project aims to showcase the Dengue fever statistics in 
 <br><br>
 
 # Tests
+
 
 |No.| Test Case | Result |
 |:--|:----------|:-------|
