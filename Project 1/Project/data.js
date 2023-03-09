@@ -729,9 +729,6 @@ const options_2A = {
         horizontalAlign: 'left',
         offsetX: 40
     },
-    theme: {
-        palette: 'palette1' // upto palette10
-    }
 };
 
 const chart_2A = new ApexCharts(
@@ -1089,7 +1086,7 @@ const options_sync1 = {
             minWidth: 40
         }
     },
-    colors: ['#60ACD8']
+    colors: ['#43BCCD']
 }
 
 const chart_sync1 = new ApexCharts(
@@ -1115,7 +1112,7 @@ const options_sync2 = {
             minWidth: 40
         }
     },
-    colors: ['#7D4DAA']
+    colors: ['#1B998B']
 }
 
 const chart_sync2 = new ApexCharts(
@@ -1141,7 +1138,7 @@ const options_sync3 = {
             minWidth: 40
         }
     },
-    colors: ['#CEDE83']
+    colors: ['#EA3546']
 }
 
 const chart_sync3 = new ApexCharts(
@@ -1167,7 +1164,7 @@ const options_sync4 = {
             minWidth: 40
         }
     },
-    colors: ['#F97D45']
+    colors: ['#F86624']
 }
 
 const chart_sync4 = new ApexCharts(
@@ -1494,10 +1491,6 @@ window.addEventListener("DOMContentLoaded", async function () {
                 "data": data19
             },
         ]);
-
-        year_label_2A.innerHTML = year_btn_q.value
-        q_label_2A.innerHTML = year_btn_q.value + ' ' + q_btn.value
-        year_label_map.innerHTML = year_btn_q.value
     }
 
     check_chart2()
