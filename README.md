@@ -4,7 +4,7 @@
 
 <div align="center">
   <a href="https://charissayeong.github.io/Project-1/Project%201/Project/index.html">
-    <img src="Project 1/imgs/Logo.png" alt="Logo" width="100%">
+    <img src="https://github.com/CharissaYeong/Project-1/blob/50dd804ca213737abf1b4c6008729724fcfa5660/Project%201/imgs/Logo.png" alt="Logo" width="100%">
   </a>
 </div>
 
@@ -48,7 +48,7 @@ Currently dengue statistics made available to the public are scattered across mu
 
 <div align="center">
   <a href="https://charissayeong.github.io/Project-1/Project%201/Project/index.html">
-    <img src="Project 1/imgs/mockup.png" alt="Logo" width="100%">
+    <img src="https://github.com/CharissaYeong/Project-1/blob/50dd804ca213737abf1b4c6008729724fcfa5660/Project%201/imgs/mockup.png" alt="Logo" width="100%">
   </a>
 </div>
 
