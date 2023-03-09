@@ -66,7 +66,6 @@ This data visualization project aims to showcase the Dengue fever statistics in 
 
 |No.| Test Case | Result |
 |:--|:----------|:-------|
-
 |1.| Verify data accuracy | Data processing was performed correctly. Data displayed in charts matches the source data. |
 |2.| Test chart interactivity   | Charts are interactive, users can hover/click over data points to view all necessary information in the tootips. |
 |3.| Test filter functionality  | User can choose to view data by years or quarters by selecting the appropriate filters. Calculations to obtain filtered data are accurate. |
