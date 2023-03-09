@@ -1,7 +1,5 @@
 <br>
 
-<!-- ![Logo](https://via.placeholder.com/468x300?text=App+Screenshot+Here) -->
-
 <div align="center">
   <a href="https://charissayeong.github.io/Project-1/Project%201/Project/index.html">
     <img src="https://github.com/CharissaYeong/Project-1/blob/50dd804ca213737abf1b4c6008729724fcfa5660/Project%201/imgs/Logo.png" alt="Logo" width="100%">
@@ -14,7 +12,7 @@
 
 The live demo can be accessed via the link below:
 
-https://charissayeong.github.io/Project-1/Project%201/Project/index.html
+(https://charissayeong.github.io/Project-1/Project%201/Project/index.html)
 
 <br>
 
