@@ -48,7 +48,7 @@ This data visualization project aims to showcase the Dengue fever statistics in 
 |6.| Breeding Habitats | Aedes mosquito breeding sites found by NEA in homes and public areas.|
 |7.| Rainy Days | Number of rainy days recorded at the Changi Climate Station. |
 |8.| Epi-week (Epidemiological Week) | A standardized method of counting weeks to allow for the comparison of data across the years. Each year is typically seperated into 1-52 or 1-53 Epi-weeks.
----
+___
 
 <br><br>
 
@@ -71,7 +71,7 @@ This data visualization project aims to showcase the Dengue fever statistics in 
 |3.| Test filter functionality  | User can choose to view data by years or quarters by selecting the appropriate filters. Calculations to obtain filtered data are accurate. |
 |4.| Check for responsiveness   | Charts are responsive and adjust to different screen sizes. |
 |5.| Evaluate page usability | All elements in page load correctly and navigation links are working.|
----
+___
 
 <br><br>
 
