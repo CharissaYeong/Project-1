@@ -46,7 +46,7 @@ Currently dengue statistics made available to the public are scattered across mu
 
 <div align="center">
   <a href="https://charissayeong.github.io/Project-1/Project%201/Project/index.html">
-    <img src="Project%201/imgs/mockup.png" alt="Logo" width="100%">
+    <img src="Project%201/imgs/mockup.png" alt="mockup" width="100%">
   </a>
 </div>
 
